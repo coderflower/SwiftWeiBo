@@ -56,6 +56,8 @@ extension CFBaseViewController {
     /// 添加tableView
     private func setupTableView() {
         tableView = UITableView(frame: view.bounds, style: .plain)
+        tableView?.delegate = self
+        tableView?.dataSource = self
         // 将tableView放在最底下
         view.insertSubview(tableView!, at: 0)
     }
@@ -70,5 +72,18 @@ extension CFBaseViewController {
         navigationBar.setBackgroundImage(UIImage.cf_image(with:  UIColor.cf_coler(hex: 0xf6f6f6)), for: .default)
         
         navItem.rightBarButtonItem = UIBarButtonItem(title: "下一个", target: self, action: #selector(pushToNext))
+    }
+}
+
+// MARK: - UITableViewDelegate,UITableViewDataSource
+extension CFBaseViewController: UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    // 基类只是准备方法,子类负责具体的实现
+    // 子类的数据源方法不需要super
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 只是保证没有语法错误
+        return UITableViewCell()
     }
 }
