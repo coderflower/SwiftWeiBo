@@ -14,7 +14,9 @@ class CFBaseViewController: UIViewController {
     /// 自定义的导航栏的内容类目
     lazy var navItem = UINavigationItem()
     /// 表格控件
-    var tableView : UITableView?
+    var tableView: UITableView?
+    var refreshControl: UIRefreshControl?
+    
     // MARK: - 入口
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,19 +68,8 @@ extension CFBaseViewController {
         setupNavgationBar()
         // 添加表格控件
         setupTableView()
-    }
-    
-    /// 添加tableView
-    private func setupTableView() {
-        tableView = UITableView(frame: view.bounds, style: .plain)
-        tableView?.delegate = self
-        tableView?.dataSource = self
-        tableView?.contentInset = UIEdgeInsets(top: navigationBar.bounds.height,
-                                               left: 0,
-                                               bottom: tabBarController?.tabBar.bounds.height ?? CFTabBarHeight,
-                                               right: 0)
-        // 将tableView放在最底下
-        view.insertSubview(tableView!, at: 0)
+        // 添加下拉刷新控件
+        setupRefreshControl()
     }
     
     // 添加自定义的导航条
@@ -91,6 +82,30 @@ extension CFBaseViewController {
         navigationBar.setBackgroundImage(UIImage.cf_image(with:  UIColor.cf_coler(hex: 0xf6f6f6)), for: .default)
         
         navItem.rightBarButtonItem = UIBarButtonItem(title: "下一个", target: self, action: #selector(pushToNext))
+    }
+    /// 添加tableView
+    private func setupTableView() {
+        tableView = UITableView(frame: view.bounds, style: .plain)
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        // 设置内边距
+        tableView?.contentInset = UIEdgeInsets(top: navigationBar.bounds.height,
+                                               left: 0,
+                                               bottom: tabBarController?.tabBar.bounds.height ?? CFTabBarHeight,
+                                               right: 0)
+        // 设置滚动条内边距
+        tableView?.scrollIndicatorInsets = UIEdgeInsets(top: navigationBar.bounds.height,
+                                                        left: 0,
+                                                        bottom: tabBarController?.tabBar.bounds.height ?? CFTabBarHeight,
+                                                        right: 0)
+        // 将tableView放在最底下
+        view.insertSubview(tableView!, at: 0)
+    }
+    /// 添加上架刷新控件
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(requestNewData), for: .valueChanged)
+        tableView?.addSubview(refreshControl!)
     }
 }
 
