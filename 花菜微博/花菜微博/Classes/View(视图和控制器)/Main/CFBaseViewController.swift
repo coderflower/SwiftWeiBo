@@ -21,6 +21,8 @@ class CFBaseViewController: UIViewController {
         // Do any additional setup after loading the view.
         // 添加子控制器
         configSubviews()
+        // 请求数据
+        requestNewData()
     }
     /// 重写title的set方法
     override var title: String? {
@@ -58,6 +60,8 @@ extension CFBaseViewController {
     func configSubviews() {
         // 设置随机背景色
         view.backgroundColor = UIColor.cf_randomColor()
+        // 取消自动缩进 - 如果隐藏了导航栏,会缩进20个点
+        automaticallyAdjustsScrollViewInsets = false
         // 添加导航条
         setupNavgationBar()
         // 添加表格控件
@@ -69,6 +73,10 @@ extension CFBaseViewController {
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView?.delegate = self
         tableView?.dataSource = self
+        tableView?.contentInset = UIEdgeInsets(top: navigationBar.bounds.height,
+                                               left: 0,
+                                               bottom: tabBarController?.tabBar.bounds.height ?? CFTabBarHeight,
+                                               right: 0)
         // 将tableView放在最底下
         view.insertSubview(tableView!, at: 0)
     }

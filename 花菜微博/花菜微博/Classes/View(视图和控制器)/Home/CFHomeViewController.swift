@@ -8,13 +8,17 @@
 
 import UIKit
 
+private let homeCellId = "CFHomeCellId"
+
 class CFHomeViewController: CFBaseViewController {
 
+    fileprivate lazy var statusList = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-        setupNav()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,24 +29,41 @@ class CFHomeViewController: CFBaseViewController {
     @objc fileprivate func showFriends() {
         navigationController?.pushViewController(CFBaseViewController(), animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
 // MARK: - 设置UI
 extension CFHomeViewController {
+    override func configSubviews() {
+        super.configSubviews()
+        
+        setupNav()
+        
+        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: homeCellId)
+    }
     // MARK: - 设置导航条
-    fileprivate func setupNav() {
+    private func setupNav() {
         navItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
     }
+}
+
+// MARK: - 加载数据
+extension CFHomeViewController {
+    override func requestNewData() {
+        for i in 0..<15 {
+            statusList.insert(i.description, at: 0)
+        }
+    }
+}
+// MARK: - tableViewDataSource和tableViewDelegate具体实现
+extension CFHomeViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statusList.count
+    }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: homeCellId, for: indexPath)
+        cell.textLabel?.text = statusList[indexPath.row]
+        return cell
+    }
     
 }
