@@ -24,6 +24,16 @@ class CFMainViewController: UITabBarController {
         // 保证composeButton在最顶部
         tabBar.bringSubview(toFront: composeButton)
     }
+    /**
+     portrait  : 竖屏
+     landscape : 横屏
+     - 设置支持的方向之后,当前的控制器及子控制器都会遵守这个方向
+     - 如果播放视频,通常是通过model展现的
+    */
+    /// 使用代码控制设置的方向,可以在需要的时候需要横屏的时候,单独处理
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
