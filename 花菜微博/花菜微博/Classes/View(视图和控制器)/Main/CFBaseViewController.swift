@@ -13,9 +13,13 @@ class CFBaseViewController: UIViewController {
     lazy var navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.cf_screenWidth, height:CFNavigationBarHeight))
     /// 自定义的导航栏的内容类目
     lazy var navItem = UINavigationItem()
+    /// 表格控件
+    var tableView : UITableView?
+    // MARK: - 入口
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        // 添加子控制器
         configSubviews()
     }
     /// 重写title的set方法
@@ -34,7 +38,6 @@ class CFBaseViewController: UIViewController {
     @objc fileprivate func pushToNext() {
         let vc = CFBaseViewController()
         
-        
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -46,6 +49,15 @@ extension CFBaseViewController {
         view.backgroundColor = UIColor.cf_randomColor()
         // 添加导航条
         setupNavgationBar()
+        // 添加表格控件
+        setupTableView()
+    }
+    
+    /// 添加tableView
+    private func setupTableView() {
+        tableView = UITableView(frame: view.bounds, style: .plain)
+        // 将tableView放在最底下
+        view.insertSubview(tableView!, at: 0)
     }
     
     // 添加自定义的导航条
