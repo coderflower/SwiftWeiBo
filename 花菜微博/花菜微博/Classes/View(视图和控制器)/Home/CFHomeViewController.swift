@@ -52,10 +52,12 @@ extension CFHomeViewController {
         for i in 0..<15 {
             statusList.insert(i.description, at: 0)
         }
-        tableView?.reloadData()
-        if refreshControl?.isRefreshing == true {
-            refreshControl?.endRefreshing()
-        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+            self.tableView?.reloadData()
+            if self.refreshControl?.isRefreshing == true {
+                self.refreshControl?.endRefreshing()
+            }
+        })
     }
 }
 // MARK: - tableViewDataSource和tableViewDelegate具体实现
