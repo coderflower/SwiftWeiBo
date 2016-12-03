@@ -107,6 +107,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8322C3881DF324E1006C7EB7 /* 主控制器 */ = {
+			isa = PBXGroup;
+			children = (
+				83F6C6E01DEF255600ACF9E5 /* CFMainViewController.swift */,
+				83F6C6E21DEF256D00ACF9E5 /* CFNavigationController.swift */,
+			);
+			name = "主控制器";
+			sourceTree = "<group>";
+		};
+		8322C3891DF324F3006C7EB7 /* 根控制器 */ = {
+			isa = PBXGroup;
+			children = (
+				83F6C6E41DEF257900ACF9E5 /* CFBaseViewController.swift */,
+			);
+			name = "根控制器";
+			sourceTree = "<group>";
+		};
 		83D71CF11DF02D76008A8CEA /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,9 +292,8 @@
 		83F6C6DC1DEF250500ACF9E5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				83F6C6E01DEF255600ACF9E5 /* CFMainViewController.swift */,
-				83F6C6E21DEF256D00ACF9E5 /* CFNavigationController.swift */,
-				83F6C6E41DEF257900ACF9E5 /* CFBaseViewController.swift */,
+				8322C3881DF324E1006C7EB7 /* 主控制器 */,
+				8322C3891DF324F3006C7EB7 /* 根控制器 */,
 			);
 			path = Main;
 			sourceTree = "<group>";

@@ -44,6 +44,12 @@ extension CFBaseViewController {
     public func configSubviews() {
         // 设置随机背景色
         view.backgroundColor = UIColor.cf_randomColor()
+        // 添加导航条
+        setupNavgationBar()
+    }
+    
+    // 添加自定义的导航条
+    private func setupNavgationBar() {
         // 添加自定义的导航栏
         view.addSubview(navigationBar)
         // 设置item

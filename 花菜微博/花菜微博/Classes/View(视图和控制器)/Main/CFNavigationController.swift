@@ -36,10 +36,10 @@ class CFNavigationController: UINavigationController {
             viewController.hidesBottomBarWhenPushed = true
             
             if let vc = viewController as? CFBaseViewController {
-                var title : String = ""
+                var title : String = "返回"
                 // 判断控制器的级数,只有一个子控制器的时候显示栈底控制的标题,其他为返回
                 if childViewControllers.count == 1 {
-                    title = childViewControllers.first?.title ?? "返回"
+                    title = childViewControllers.first?.title ?? title
                 }
                 // 统一设置导航栏返回按钮
                 vc.navItem.leftBarButtonItem = UIBarButtonItem(title: title, target: self, action: #selector(popToParent), isBack: true)
