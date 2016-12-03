@@ -40,11 +40,22 @@ class CFBaseViewController: UIViewController {
         
         navigationController?.pushViewController(vc, animated: true)
     }
-
 }
+// MARK: - 供子类重写的方法
+extension CFBaseViewController {
+    /// 请求新数据
+    func requestNewData() {
+        
+    }
+    /// 请求下一页数据
+    func requestNextPageData() {
+        
+    }
+}
+
 // MARK: - 设置UI界面
 extension CFBaseViewController {
-    public func configSubviews() {
+    func configSubviews() {
         // 设置随机背景色
         view.backgroundColor = UIColor.cf_randomColor()
         // 添加导航条
