@@ -45,7 +45,7 @@ class CFVisitorView: UIView {
 
 extension CFVisitorView {
     fileprivate func  setupSubviews() {
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.cf_coler(hex: 0xededed)
         
         addSubview(iconView)
         addSubview(coverView)
@@ -164,6 +164,8 @@ extension CFVisitorView {
         // 遮罩
         /*
         options: oc中使用0,swift使用[], 如果使用多个[.alignAllBottom |.alignAllCenterX]
+        views: 视图字典 定义 VFL 中的控件名称和实际名称的映射关系
+        metrics: 约束值字典, 定义控件的宽高 定义 VFL 中()指定的常数的映射关系   ()貌似可以省略
         */
         let metrics = ["margin": -35]
         let views = ["coverView": coverView, "registerButton": registerButton] as [String : Any]
@@ -171,7 +173,7 @@ extension CFVisitorView {
                                                       options: [],
                                                       metrics: nil,
                                                       views: ["coverView": coverView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[coverView]-margin-[registerButton]",
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[coverView]-(margin)-[registerButton]",
                                                       options: [],
                                                       metrics: metrics,
                                                       views: views))
