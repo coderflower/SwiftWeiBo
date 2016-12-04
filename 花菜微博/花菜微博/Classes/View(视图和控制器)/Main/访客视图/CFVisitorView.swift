@@ -29,8 +29,19 @@ class CFVisitorView: UIView {
             }
         }
     }
-    
-    
+    /// 注册按钮
+    lazy var registerButton: UIButton = UIButton(title: "注册",
+                                                             fontSize: 14,
+                                                             color: UIColor.orange,
+                                                             highlighterColor: UIColor.black,
+                                                             backgroundImageName: "common_button_white_disable")
+    /// 登录按钮
+    lazy var loginButton: UIButton = UIButton(title: "登录",
+                                                          fontSize: 14,
+                                                          color: UIColor.darkGray,
+                                                          highlighterColor: UIColor.darkGray,
+                                                          backgroundImageName: "common_button_white_disable")
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()
@@ -57,24 +68,12 @@ class CFVisitorView: UIView {
     fileprivate lazy var hoseIconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
     /// 提示标签
     fileprivate lazy var tipLabel: UILabel = UILabel(text: "关注一些人,回这里看看有什么惊喜关注一些人,回这里看看有什么惊喜")
-    /// 注册按钮
-    fileprivate lazy var registerButton: UIButton = UIButton(title: "注册",
-                                                             fontSize: 14,
-                                                             color: UIColor.orange,
-                                                             highlighterColor: UIColor.black,
-                                                             backgroundImageName: "common_button_white_disable")
-    /// 登录按钮
-    fileprivate lazy var loginButton: UIButton = UIButton(title: "登录",
-                                                          fontSize: 14,
-                                                          color: UIColor.darkGray,
-                                                          highlighterColor: UIColor.darkGray,
-                                                          backgroundImageName: "common_button_white_disable")
     /// 遮罩
     fileprivate lazy var coverView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
     
 }
 
-
+// MARK: - 设置UI界面
 extension CFVisitorView {
     fileprivate func  setupSubviews() {
         backgroundColor = UIColor.cf_coler(hex: 0xededed)

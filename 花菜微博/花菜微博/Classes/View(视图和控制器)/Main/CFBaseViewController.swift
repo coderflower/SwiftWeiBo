@@ -10,7 +10,7 @@ import UIKit
 
 class CFBaseViewController: UIViewController {
     /// 用户登录状态
-    var userIsLogin: Bool = false
+    var userIsLogin: Bool = true
     /// 访客视图信息
     var visitorInfo: [String: String]?
     /// 自定义的导航栏
@@ -52,6 +52,14 @@ class CFBaseViewController: UIViewController {
         
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc fileprivate func loginClick() {
+        print("点击了登录")
+    }
+    
+    @objc fileprivate func registerClick() {
+        print("点击了注册")
+    }
 }
 // MARK: - 供子类重写的方法
 extension CFBaseViewController {
@@ -65,7 +73,7 @@ extension CFBaseViewController {
 // MARK: - 设置UI界面
 extension CFBaseViewController {
     /// 初始化UI界面
-    func setupUI() {
+    fileprivate func setupUI() {
         // 设置随机背景色
         view.backgroundColor = UIColor.cf_randomColor()
         // 取消自动缩进 - 如果隐藏了导航栏,会缩进20个点
@@ -85,11 +93,9 @@ extension CFBaseViewController {
         navigationBar.items = [navItem]
         // 设置导航栏背景色
         navigationBar.setBackgroundImage(UIImage.cf_image(with:  UIColor.cf_coler(hex: 0xf6f6f6)), for: .default)
-        
-        navItem.rightBarButtonItem = UIBarButtonItem(title: "下一个", target: self, action: #selector(pushToNext))
     }
     /// 添加tableView
-    private func setupTableView() {
+    func setupTableView() {
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView?.delegate = self
         tableView?.dataSource = self
@@ -112,7 +118,11 @@ extension CFBaseViewController {
     private func setupVisitorView () {
         let visitorView = CFVisitorView(frame: view.bounds)
         visitorView.visitorInfo = visitorInfo
+        visitorView.registerButton.addTarget(self, action: #selector(registerClick), for: .touchUpInside)
+        visitorView.loginButton.addTarget(self, action: #selector(loginClick), for: .touchUpInside)
         view.insertSubview(visitorView, belowSubview: navigationBar)
+        navItem.leftBarButtonItem = UIBarButtonItem(title: "注册", target: self, action: #selector(registerClick))
+        navItem.rightBarButtonItem = UIBarButtonItem(title: "登录", target: self, action: #selector(loginClick))
     }
     /// 添加上架刷新控件
     private func setupRefreshControl() {
