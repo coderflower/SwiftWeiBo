@@ -64,45 +64,6 @@
     return  string;
     
 }
-
-#pragma mark -
-#pragma mark - 获取沙盒全路径
-
-- (NSString *)cf_docDir {
-    
-    NSString *newStr = [self lastPathComponent];
-    
-    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    
-    NSString *docFile = [docPath stringByAppendingPathComponent:newStr];
-    return docFile;
-}
-
-#pragma mark -
-#pragma mark - 获取caches文件全路径
-- (NSString *)cf_cachesDir {
-    
-    NSString *newStr = [self lastPathComponent];
-    
-    NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
-    
-    NSString *cachesFile = [cachesPath stringByAppendingPathComponent:newStr];
-    
-    return cachesFile;
-    
-}
-
-- (NSString *)cf_tempDir {
-    
-    NSString *newStr = [self lastPathComponent];
-    
-    NSString *tepPath = NSTemporaryDirectory();
-    
-    NSString *tepFile = [tepPath stringByAppendingPathComponent:newStr];
-    
-    return tepFile;
-}
-
 #pragma mark -
 #pragma mark - 获取文件类型
 + (NSString *)cf_mimeTypeForFileAtPath:(NSString *)path {

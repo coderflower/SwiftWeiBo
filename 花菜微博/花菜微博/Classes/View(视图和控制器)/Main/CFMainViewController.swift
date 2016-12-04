@@ -56,14 +56,18 @@ extension CFMainViewController {
     }
     
     fileprivate func setupChildViewControllers() {
+    
+        let jsonPath = "main.json".cf_caches()
+
+        var data = NSData(contentsOfFile: jsonPath)
         
-        
-        guard let path = Bundle.main.path(forResource: "main", ofType: "json") else {
-            return
+        if data == nil {
+            // 从bundle中加载
+            let path = Bundle.main.path(forResource: "main", ofType: "json")
+            data = NSData(contentsOfFile: path!)
         }
         
-        let data = NSData(contentsOfFile: path)
-        
+        // 反序列化json
         guard let tmp = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [[String : AnyObject]] else {
             return
         }

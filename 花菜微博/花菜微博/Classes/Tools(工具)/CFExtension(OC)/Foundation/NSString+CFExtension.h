@@ -46,25 +46,6 @@
  *
  */
 - (NSString *)cf_rangeFromeStartString:(NSString *)startString toEndString:(NSString *)endString;
-
-/**
- *  获取Documents文件夹全路径
- *
- *  @return Documents全路径
- */
-- (NSString *)cf_docDir;
-/**
- *  获取Caches文件夹全路径
- *
- *  @return Caches全路径
- */
-- (NSString *)cf_cachesDir;
-/**
- *  获取tmp文件夹全路径
- *
- *  @return tmp全路径
- */
-- (NSString *)cf_tempDir;
 /**
  *  获取MIMEType
  *
