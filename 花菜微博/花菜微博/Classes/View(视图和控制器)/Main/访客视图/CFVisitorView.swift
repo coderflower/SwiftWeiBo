@@ -22,6 +22,10 @@ class CFVisitorView: UIView {
                     hoseIconView.isHidden = true
                     coverView.isHidden = true
                 }
+                else {
+                    // 首页加动画
+                    setupAnim()
+                }
             }
         }
     }
@@ -35,6 +39,17 @@ class CFVisitorView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupAnim() {
+        let anim = CABasicAnimation(keyPath: "transform.rotation")
+        anim.toValue = 2 * M_PI
+        anim.repeatCount = MAXFLOAT
+        anim.duration = 20
+        // 设置完成后不删除
+        anim.isRemovedOnCompletion = false
+        iconView.layer.add(anim, forKey: nil)
+    }
+    
     // MARK: - 私有控件
     /// 圆形视图
     fileprivate lazy var iconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_smallicon"))
@@ -70,6 +85,7 @@ extension CFVisitorView {
         addSubview(tipLabel)
         addSubview(registerButton)
         addSubview(loginButton)
+        tipLabel.textAlignment = .center
         // 使用苹果原生的自动布局,必须先关闭Autoresizing
         for view in subviews {
             view.translatesAutoresizingMaskIntoConstraints = false
