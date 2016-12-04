@@ -1,0 +1,15 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target '花菜微博' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for 花菜微博
+pod 'AFNetworking'
+pod 'SDWebImage'
+pod 'YYModel'
+pod 'SVProgressHUD'
+pod 'FMDB'
+pod 'pop'
+end
