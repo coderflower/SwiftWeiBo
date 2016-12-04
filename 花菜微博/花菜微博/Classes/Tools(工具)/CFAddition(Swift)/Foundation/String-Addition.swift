@@ -28,5 +28,17 @@ extension String {
         let docPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         return (docPath as NSString).appendingPathComponent(path)
     }
+    
+    // 计算属性
+    var caches: String {
+        return (NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(self)
+    }
+    var temp: String {
+        return (NSTemporaryDirectory() as NSString).appendingPathComponent(self)
+    }
+    var document: String {
+        return (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(self)
+    }
+    
 }
 

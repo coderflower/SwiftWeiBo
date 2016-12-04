@@ -57,7 +57,7 @@ extension CFMainViewController {
     
     fileprivate func setupChildViewControllers() {
     
-        let jsonPath = "main.json".cf_caches()
+        let jsonPath = "main.json".caches
 
         var data = NSData(contentsOfFile: jsonPath)
         

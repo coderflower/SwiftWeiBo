@@ -25,7 +25,7 @@ extension UIBarButtonItem {
             let imageName = "navigationbar_back_withtext"
             btn.setImage(UIImage(named: imageName), for: .normal)
             btn.setImage(UIImage(named: imageName + "_highlighted"), for: .highlighted)
-            btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+            btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
             btn.sizeToFit()
         }
         btn.addTarget(target, action: action, for: .touchUpInside)
