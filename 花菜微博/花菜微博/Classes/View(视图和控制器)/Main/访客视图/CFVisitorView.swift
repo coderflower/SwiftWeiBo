@@ -9,7 +9,24 @@
 import UIKit
 
 class CFVisitorView: UIView {
-
+    /// 使用字典设置访客视图的信息
+    /// - Parameter dict: dict[imageName / message]
+    /// 如果是首页 imageName = ""
+    var visitorInfo: [String: String]? {
+        didSet {
+            if let imageName = visitorInfo?["imageName"],
+                let message = visitorInfo?["message"] {
+                tipLabel.text = message
+                
+                if imageName != "" {
+                    iconView.image = UIImage(named: imageName)
+                }
+            }
+ 
+        }
+    }
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()
