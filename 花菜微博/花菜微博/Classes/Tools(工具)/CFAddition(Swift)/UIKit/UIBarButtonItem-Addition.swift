@@ -19,7 +19,7 @@ extension UIBarButtonItem {
     ///   - action: action
     ///   - isBack: 是否是返回按钮,如果是加上箭头
     convenience init(title: String, fontSize: CGFloat = 16, target: AnyObject?,action: Selector, isBack: Bool = false) {
-        let btn : UIButton = UIButton.cf_textButton(title, fontSize: fontSize, normalColor: UIColor.darkGray, highlightedColor: UIColor.orange)
+        let btn : UIButton = UIButton.cf_textButton(title, fontSize: fontSize, normalColor: UIColor.orange, highlightedColor: UIColor.orange)
         
         if isBack {
             let imageName = "navigationbar_back_withtext"

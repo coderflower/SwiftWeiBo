@@ -10,7 +10,7 @@ import UIKit
 
 class CFBaseViewController: UIViewController {
     /// 用户登录状态
-    var userIsLogin: Bool = true
+    var userIsLogin: Bool = false
     /// 访客视图信息
     var visitorInfo: [String: String]?
     /// 自定义的导航栏
@@ -68,6 +68,27 @@ extension CFBaseViewController {
         // 如果子类不实现任何方法,默认关闭刷新控件
         refreshControl?.endRefreshing()
     }
+    
+    /// 添加tableView
+    func setupTableView() {
+        tableView = UITableView(frame: view.bounds, style: .plain)
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        // 设置内边距
+        tableView?.contentInset = UIEdgeInsets(top: navigationBar.bounds.height,
+                                               left: 0,
+                                               bottom: tabBarController?.tabBar.bounds.height ?? CFTabBarHeight,
+                                               right: 0)
+        // 设置滚动条内边距
+        tableView?.scrollIndicatorInsets = UIEdgeInsets(top: navigationBar.bounds.height,
+                                                        left: 0,
+                                                        bottom: tabBarController?.tabBar.bounds.height ?? CFTabBarHeight,
+                                                        right: 0)
+        // 将tableView放在最底下
+        view.insertSubview(tableView!, belowSubview: navigationBar)
+        // 添加下拉刷新控件
+        setupRefreshControl()
+    }
 }
 
 // MARK: - 设置UI界面
@@ -93,26 +114,10 @@ extension CFBaseViewController {
         navigationBar.items = [navItem]
         // 设置导航栏背景色
         navigationBar.setBackgroundImage(UIImage.cf_image(with:  UIColor.cf_coler(hex: 0xf6f6f6)), for: .default)
-    }
-    /// 添加tableView
-    func setupTableView() {
-        tableView = UITableView(frame: view.bounds, style: .plain)
-        tableView?.delegate = self
-        tableView?.dataSource = self
-        // 设置内边距
-        tableView?.contentInset = UIEdgeInsets(top: navigationBar.bounds.height,
-                                               left: 0,
-                                               bottom: tabBarController?.tabBar.bounds.height ?? CFTabBarHeight,
-                                               right: 0)
-        // 设置滚动条内边距
-        tableView?.scrollIndicatorInsets = UIEdgeInsets(top: navigationBar.bounds.height,
-                                                        left: 0,
-                                                        bottom: tabBarController?.tabBar.bounds.height ?? CFTabBarHeight,
-                                                        right: 0)
-        // 将tableView放在最底下
-        view.insertSubview(tableView!, belowSubview: navigationBar)
-        // 添加下拉刷新控件
-        setupRefreshControl()
+        // 设置导航栏系统按钮的想渲染颜色
+        navigationBar.tintColor = UIColor.orange
+        // 设置导航条标题颜色
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.darkGray]
     }
     /// 添加访客视图
     private func setupVisitorView () {
@@ -125,7 +130,7 @@ extension CFBaseViewController {
         navItem.rightBarButtonItem = UIBarButtonItem(title: "登录", target: self, action: #selector(loginClick))
     }
     /// 添加上架刷新控件
-    private func setupRefreshControl() {
+    fileprivate func setupRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(requestData), for: .valueChanged)
         tableView?.addSubview(refreshControl!)

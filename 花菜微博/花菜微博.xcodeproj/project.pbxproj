@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29AAD6FC3BD434403FD769A4 /* Pods_____.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119527516A4900777DB1D7F2 /* Pods_____.framework */; };
 		8322C38C1DF40CD4006C7EB7 /* CFVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C38B1DF40CD4006C7EB7 /* CFVisitorView.swift */; };
 		8322C38E1DF414D7006C7EB7 /* UILabel-Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C38D1DF414D7006C7EB7 /* UILabel-Addition.swift */; };
 		8322C3901DF4165D006C7EB7 /* UIButton-Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C38F1DF4165D006C7EB7 /* UIButton-Addition.swift */; };
@@ -46,6 +47,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		119527516A4900777DB1D7F2 /* Pods_____.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_____.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		377D626C853BF8E79468C1DD /* Pods-花菜微博.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-花菜微博.release.xcconfig"; path = "Pods/Target Support Files/Pods-花菜微博/Pods-花菜微博.release.xcconfig"; sourceTree = "<group>"; };
+		7709EFA69B9A836654A05F7B /* Pods-花菜微博.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-花菜微博.debug.xcconfig"; path = "Pods/Target Support Files/Pods-花菜微博/Pods-花菜微博.debug.xcconfig"; sourceTree = "<group>"; };
 		8322C38B1DF40CD4006C7EB7 /* CFVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFVisitorView.swift; sourceTree = "<group>"; };
 		8322C38D1DF414D7006C7EB7 /* UILabel-Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel-Addition.swift"; sourceTree = "<group>"; };
 		8322C38F1DF4165D006C7EB7 /* UIButton-Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton-Addition.swift"; sourceTree = "<group>"; };
@@ -108,12 +112,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29AAD6FC3BD434403FD769A4 /* Pods_____.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BBE4CBEB85D7E6C8B6005CF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7709EFA69B9A836654A05F7B /* Pods-花菜微博.debug.xcconfig */,
+				377D626C853BF8E79468C1DD /* Pods-花菜微博.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8322C3881DF324E1006C7EB7 /* 主控制器 */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +240,8 @@
 			children = (
 				83F6C6C31DEF233900ACF9E5 /* 花菜微博 */,
 				83F6C6C21DEF233900ACF9E5 /* Products */,
+				3BBE4CBEB85D7E6C8B6005CF /* Pods */,
+				CB92F8B939F5FBDDF4011B56 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -359,6 +375,14 @@
 			path = "CFExtension(OC)";
 			sourceTree = "<group>";
 		};
+		CB92F8B939F5FBDDF4011B56 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				119527516A4900777DB1D7F2 /* Pods_____.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -366,9 +390,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83F6C6D31DEF233900ACF9E5 /* Build configuration list for PBXNativeTarget "花菜微博" */;
 			buildPhases = (
+				BC914C370EF4DFE530E9D3A3 /* [CP] Check Pods Manifest.lock */,
 				83F6C6BD1DEF233900ACF9E5 /* Sources */,
 				83F6C6BE1DEF233900ACF9E5 /* Frameworks */,
 				83F6C6BF1DEF233900ACF9E5 /* Resources */,
+				B7736ECE33C0DBFDF4474143 /* [CP] Embed Pods Frameworks */,
+				2482A98618AF87E476CFC2F8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -427,6 +454,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2482A98618AF87E476CFC2F8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-花菜微博/Pods-花菜微博-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7736ECE33C0DBFDF4474143 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-花菜微博/Pods-花菜微博-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC914C370EF4DFE530E9D3A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		83F6C6BD1DEF233900ACF9E5 /* Sources */ = {
@@ -578,6 +653,7 @@
 		};
 		83F6C6D41DEF233900ACF9E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7709EFA69B9A836654A05F7B /* Pods-花菜微博.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -595,6 +671,7 @@
 		};
 		83F6C6D51DEF233900ACF9E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 377D626C853BF8E79468C1DD /* Pods-花菜微博.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
