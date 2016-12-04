@@ -11,6 +11,8 @@ import UIKit
 class CFBaseViewController: UIViewController {
     /// 用户登录状态
     var userIsLogin: Bool = false
+    /// 访客视图信息
+    var visitorInfo: [String: String]?
     /// 自定义的导航栏
     lazy var navigationBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.cf_screenWidth, height:CFNavigationBarHeight))
     /// 自定义的导航栏的内容类目
@@ -109,6 +111,7 @@ extension CFBaseViewController {
     /// 添加访客视图
     private func setupVisitorView () {
         let visitorView = CFVisitorView(frame: view.bounds)
+        visitorView.visitorInfo = visitorInfo
         view.insertSubview(visitorView, belowSubview: navigationBar)
     }
     /// 添加上架刷新控件

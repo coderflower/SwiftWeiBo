@@ -56,30 +56,36 @@ extension CFMainViewController {
     }
     
     fileprivate func setupChildViewControllers() {
-        let tmp = [
-            ["clsName" : "CFHomeViewController", "title" : "首页", "imageName" : "home"],
-            ["clsName" : "CFMessageViewController", "title" : "消息", "imageName" : "message_center"],
-            ["clsName" : "UIViewController"],
-            ["clsName" : "CFDiscoverViewController", "title" : "发现", "imageName" : "discover"],
-            ["clsName" : "CFPofileViewController", "title" : "我的", "imageName" : "profile"],
-        ]
         
-        for i in 0..<tmp.count {
-            addChildViewController(controller(dict: tmp[i]))
+        
+        guard let path = Bundle.main.path(forResource: "main", ofType: "json") else {
+            return
+        }
+        
+        let data = NSData(contentsOfFile: path)
+        
+        guard let tmp = try? JSONSerialization.jsonObject(with: data as! Data, options: []) as! [[String : AnyObject]] else {
+            return
+        }
+        for dict in tmp {
+            addChildViewController(controller(dict: dict))
         }
     }
 
-    private func controller(dict : [String : String]) -> UIViewController {
-        guard let clsName = dict["clsName"],
-            let title = dict["title"],
-            let imageName = dict["imageName"],
-            let cls = NSClassFromString(Bundle.main.nameSpace + clsName) as? UIViewController.Type
+    private func controller(dict : [String : AnyObject]) -> UIViewController {
+        guard let clsName = dict["clsName"] as? String,
+            let title = dict["title"] as? String,
+            let imageName = dict["imageName"] as? String,
+            let cls = NSClassFromString(Bundle.main.nameSpace + clsName) as? CFBaseViewController.Type,
+            let visitorInfo = dict["visitorInfo"] as? [String : String]
             else {
                 return UIViewController()
         }
         let vc = cls.init()
         // 设置标题
         vc.title = title
+        // 设置游客视图信息
+        vc.visitorInfo = visitorInfo
         // 设置高亮状态标题文字颜色
         vc.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.orange], for: .selected)
         // 设置图片

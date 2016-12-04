@@ -17,12 +17,12 @@ class CFVisitorView: UIView {
             if let imageName = visitorInfo?["imageName"],
                 let message = visitorInfo?["message"] {
                 tipLabel.text = message
-                
                 if imageName != "" {
                     iconView.image = UIImage(named: imageName)
+                    hoseIconView.isHidden = true
+                    coverView.isHidden = true
                 }
             }
- 
         }
     }
     
