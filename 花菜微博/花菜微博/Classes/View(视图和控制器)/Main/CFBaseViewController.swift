@@ -9,6 +9,8 @@
 import UIKit
 
 class CFBaseViewController: UIViewController {
+    /// 用户登录状态
+    var userIsLogin = false
     /// 自定义的导航栏
     lazy var navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.cf_screenWidth, height:CFNavigationBarHeight))
     /// 自定义的导航栏的内容类目
@@ -53,7 +55,8 @@ class CFBaseViewController: UIViewController {
 extension CFBaseViewController {
     /// 请求新数据
     func requestData() {
-        
+        // 如果子类不实现任何方法,默认关闭刷新控件
+        refreshControl?.endRefreshing()
     }
 }
 
@@ -66,10 +69,9 @@ extension CFBaseViewController {
         automaticallyAdjustsScrollViewInsets = false
         // 添加导航条
         setupNavgationBar()
-        // 添加表格控件
-        setupTableView()
-        // 添加下拉刷新控件
-        setupRefreshControl()
+        // 根据登录状态判断是添加表格控件还是访客视图
+        userIsLogin ? setupTableView() : setupVisitorView()
+        
     }
     
     // 添加自定义的导航条
@@ -99,7 +101,15 @@ extension CFBaseViewController {
                                                         bottom: tabBarController?.tabBar.bounds.height ?? CFTabBarHeight,
                                                         right: 0)
         // 将tableView放在最底下
-        view.insertSubview(tableView!, at: 0)
+        view.insertSubview(tableView!, belowSubview: navigationBar)
+        // 添加下拉刷新控件
+        setupRefreshControl()
+    }
+    /// 添加访客视图
+    private func setupVisitorView () {
+        let visitorView = UIView(frame: view.bounds)
+        visitorView.backgroundColor = UIColor.cf_randomColor()
+        view.insertSubview(visitorView, belowSubview: navigationBar)
     }
     /// 添加上架刷新控件
     private func setupRefreshControl() {
