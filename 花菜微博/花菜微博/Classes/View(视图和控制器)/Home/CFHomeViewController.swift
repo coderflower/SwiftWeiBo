@@ -48,10 +48,23 @@ extension CFHomeViewController {
 
 // MARK: - 加载数据
 extension CFHomeViewController {
-    override func requestNewData() {
+    override func requestData() {
         for i in 0..<15 {
-            statusList.insert(i.description, at: 0)
+            // 判断是上拉加载还是下拉刷新
+            if isPullUp {
+                // 页码加1
+                statusList.append("上拉加载第 +\(pageCount)页 + \(i.description)")
+            }
+            else {
+                // 重置页码
+                pageCount = 0
+                statusList.insert(i.description, at: 0)
+            }
         }
+        if isPullUp {
+            pageCount += 1
+        }
+        isPullUp = false
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
             self.tableView?.reloadData()
             if self.refreshControl?.isRefreshing == true {

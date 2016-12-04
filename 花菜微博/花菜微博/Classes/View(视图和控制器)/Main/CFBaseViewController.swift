@@ -15,8 +15,12 @@ class CFBaseViewController: UIViewController {
     lazy var navItem = UINavigationItem()
     /// 表格控件
     var tableView: UITableView?
+    /// 上拉刷新控件
     var refreshControl: UIRefreshControl?
-    
+    /// 是否是上拉刷新
+    var isPullUp = false
+    /// 页码
+    var pageCount: Int = 0
     // MARK: - 入口
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +28,7 @@ class CFBaseViewController: UIViewController {
         // 添加子控制器
         configSubviews()
         // 请求数据
-        requestNewData()
+        requestData()
     }
     /// 重写title的set方法
     override var title: String? {
@@ -48,11 +52,7 @@ class CFBaseViewController: UIViewController {
 // MARK: - 供子类重写的方法
 extension CFBaseViewController {
     /// 请求新数据
-    func requestNewData() {
-        
-    }
-    /// 请求下一页数据
-    func requestNextPageData() {
+    func requestData() {
         
     }
 }
@@ -104,7 +104,7 @@ extension CFBaseViewController {
     /// 添加上架刷新控件
     private func setupRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(requestNewData), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(requestData), for: .valueChanged)
         tableView?.addSubview(refreshControl!)
     }
 }
@@ -120,4 +120,24 @@ extension CFBaseViewController: UITableViewDelegate,UITableViewDataSource {
         // 只是保证没有语法错误
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // 1. 判断indexPath是否是最后一行
+        let row = indexPath.row
+        let section = tableView.numberOfSections - 1;
+        if row < 0 && section < 0 {
+            return
+        }
+        // 取出最后一组的行数
+        let count = tableView.numberOfRows(inSection: section)
+        // 判断,如果是最后一行,同时没有在上拉刷新,就执行上拉刷新
+        if row == count - 1 {
+            print("上拉刷新")
+            isPullUp = true
+            // 执行刷新
+            requestData()
+        }
+        
+    }
+    
 }
