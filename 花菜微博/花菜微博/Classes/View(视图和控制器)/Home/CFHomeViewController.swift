@@ -11,8 +11,7 @@ import UIKit
 private let homeCellId = "CFHomeCellId"
 
 class CFHomeViewController: CFBaseViewController {
-
-    fileprivate lazy var statusList = [String]()
+    // MARK: - 公开属性
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +24,8 @@ class CFHomeViewController: CFBaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    // MARK: - 私有属性
+    fileprivate lazy var statusList = [String]()
     @objc fileprivate func showFriends() {
         navigationController?.pushViewController(CFBaseViewController(), animated: true)
     }

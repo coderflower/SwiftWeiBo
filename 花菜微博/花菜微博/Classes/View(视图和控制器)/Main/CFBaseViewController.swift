@@ -10,17 +10,17 @@ import UIKit
 
 class CFBaseViewController: UIViewController {
     /// 用户登录状态
-    var userIsLogin = false
+    var userIsLogin: Bool = false
     /// 自定义的导航栏
-    lazy var navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.cf_screenWidth, height:CFNavigationBarHeight))
+    lazy var navigationBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.cf_screenWidth, height:CFNavigationBarHeight))
     /// 自定义的导航栏的内容类目
-    lazy var navItem = UINavigationItem()
+    lazy var navItem: UINavigationItem = UINavigationItem()
     /// 表格控件
     var tableView: UITableView?
     /// 上拉刷新控件
     var refreshControl: UIRefreshControl?
     /// 是否是上拉刷新
-    var isPullUp = false
+    var isPullUp: Bool = false
     /// 页码
     var pageCount: Int = 0
     // MARK: - 入口
