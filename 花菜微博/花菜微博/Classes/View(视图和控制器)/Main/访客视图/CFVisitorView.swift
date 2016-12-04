@@ -23,7 +23,7 @@ class CFVisitorView: UIView {
     fileprivate lazy var iconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_smallicon"))
     /// 房子视图
     fileprivate lazy var hoseIconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
-    fileprivate lazy var tipLabel: UILabel = UILabel(text: "关注一些人,回这里看看有什么惊喜")
+    fileprivate lazy var tipLabel: UILabel = UILabel(text: "关注一些人,回这里看看有什么惊喜关注一些人,回这里看看有什么惊喜")
     fileprivate lazy var registerButton: UIButton = UIButton(title: "注册",
                                                              fontSize: 14,
                                                              color: UIColor.orange,
@@ -69,7 +69,7 @@ extension CFVisitorView {
                                          toItem: self,
                                          attribute: .centerY,
                                          multiplier: 1.0,
-                                         constant: 0))
+                                         constant: -30))
         // 设置hoseIconView约束
         addConstraint(NSLayoutConstraint(item: hoseIconView,
                                          attribute: .centerX,
@@ -85,6 +85,74 @@ extension CFVisitorView {
                                          attribute: .centerY,
                                          multiplier: 1.0,
                                          constant: 0))
-
+        // 提示标签
+        addConstraint(NSLayoutConstraint(item: tipLabel,
+                                         attribute: .centerX,
+                                         relatedBy: .equal,
+                                         toItem: iconView,
+                                         attribute: .centerX,
+                                         multiplier: 1.0,
+                                         constant: 0))
+        addConstraint(NSLayoutConstraint(item: tipLabel,
+                                         attribute: .top,
+                                         relatedBy: .equal,
+                                         toItem: iconView,
+                                         attribute: .bottom,
+                                         multiplier: 1.0,
+                                         constant: 20))
+        // 限制宽度
+        addConstraint(NSLayoutConstraint(item: tipLabel,
+                                         attribute: .width,
+                                         relatedBy: .equal,
+                                         toItem: nil,
+                                         attribute: NSLayoutAttribute.notAnAttribute,
+                                         multiplier: 1.0,
+                                         constant: 230))
+        // 注册按钮
+        addConstraint(NSLayoutConstraint(item: registerButton,
+                                         attribute: .left,
+                                         relatedBy: .equal,
+                                         toItem: tipLabel,
+                                         attribute: .left,
+                                         multiplier: 1.0,
+                                         constant: 0))
+        addConstraint(NSLayoutConstraint(item: registerButton,
+                                         attribute: .top,
+                                         relatedBy: .equal,
+                                         toItem: tipLabel,
+                                         attribute: .bottom,
+                                         multiplier: 1.0,
+                                         constant: 20))
+        // 限制宽度
+        addConstraint(NSLayoutConstraint(item: registerButton,
+                                         attribute: .width,
+                                         relatedBy: .equal,
+                                         toItem: nil,
+                                         attribute: NSLayoutAttribute.notAnAttribute,
+                                         multiplier: 1.0,
+                                         constant: 100))
+        // 登录按钮
+        addConstraint(NSLayoutConstraint(item: loginButton,
+                                         attribute: .right,
+                                         relatedBy: .equal,
+                                         toItem: tipLabel,
+                                         attribute: .right,
+                                         multiplier: 1.0,
+                                         constant: 0))
+        addConstraint(NSLayoutConstraint(item: loginButton,
+                                         attribute: .top,
+                                         relatedBy: .equal,
+                                         toItem: tipLabel,
+                                         attribute: .bottom,
+                                         multiplier: 1.0,
+                                         constant: 20))
+        // 限制宽度
+        addConstraint(NSLayoutConstraint(item: loginButton,
+                                         attribute: .width,
+                                         relatedBy: .equal,
+                                         toItem: nil,
+                                         attribute: NSLayoutAttribute.notAnAttribute,
+                                         multiplier: 1.0,
+                                         constant: 100))
     }
 }
