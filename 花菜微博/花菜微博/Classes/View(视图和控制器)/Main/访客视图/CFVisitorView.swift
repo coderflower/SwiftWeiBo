@@ -18,11 +18,73 @@ class CFVisitorView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    // MARK: - 私有控件
+    /// 圆形视图
+    fileprivate lazy var iconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_smallicon"))
+    /// 房子视图
+    fileprivate lazy var hoseIconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
+    fileprivate lazy var tipLabel: UILabel = UILabel(text: "关注一些人,回这里看看有什么惊喜")
+    fileprivate lazy var registerButton: UIButton = UIButton(title: "注册",
+                                                             fontSize: 14,
+                                                             color: UIColor.orange,
+                                                             highlighterColor: UIColor.black,
+                                                             backgroundImageName: "common_button_white_disable")
+    fileprivate lazy var loginButton: UIButton = UIButton(title: "登录",
+                                                          fontSize: 14,
+                                                          color: UIColor.darkGray,
+                                                          highlighterColor: UIColor.darkGray,
+                                                          backgroundImageName: "common_button_white_disable")
 }
 
 
 extension CFVisitorView {
-    func  setupSubviews() {
+    fileprivate func  setupSubviews() {
         backgroundColor = UIColor.white
+        
+        addSubview(iconView)
+        addSubview(hoseIconView)
+        addSubview(tipLabel)
+        addSubview(registerButton)
+        addSubview(loginButton)
+        // 使用苹果原生的自动布局,必须先关闭Autoresizing
+        for view in subviews {
+            view.translatesAutoresizingMaskIntoConstraints = false
+        }
+        setupConstraints()
+    }
+    
+    /// 添加约束
+    fileprivate func setupConstraints() {
+        // 设置iconView 约束
+        addConstraint(NSLayoutConstraint(item: iconView,
+                                         attribute: .centerX,
+                                         relatedBy: .equal,
+                                         toItem: self,
+                                         attribute: .centerX,
+                                         multiplier: 1.0,
+                                         constant: 0))
+        addConstraint(NSLayoutConstraint(item: iconView,
+                                         attribute: .centerY,
+                                         relatedBy: .equal,
+                                         toItem: self,
+                                         attribute: .centerY,
+                                         multiplier: 1.0,
+                                         constant: 0))
+        // 设置hoseIconView约束
+        addConstraint(NSLayoutConstraint(item: hoseIconView,
+                                         attribute: .centerX,
+                                         relatedBy: .equal,
+                                         toItem: iconView,
+                                         attribute: .centerX,
+                                         multiplier: 1.0,
+                                         constant: 0))
+        addConstraint(NSLayoutConstraint(item: hoseIconView,
+                                         attribute: .centerY,
+                                         relatedBy: .equal,
+                                         toItem: iconView,
+                                         attribute: .centerY,
+                                         multiplier: 1.0,
+                                         constant: 0))
+
     }
 }
