@@ -27,8 +27,8 @@ class CFBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        // 添加子控制器
-        configSubviews()
+        // 初始化UI界面
+        setupUI()
         // 请求数据
         requestData()
     }
@@ -62,7 +62,8 @@ extension CFBaseViewController {
 
 // MARK: - 设置UI界面
 extension CFBaseViewController {
-    func configSubviews() {
+    /// 初始化UI界面
+    func setupUI() {
         // 设置随机背景色
         view.backgroundColor = UIColor.cf_randomColor()
         // 取消自动缩进 - 如果隐藏了导航栏,会缩进20个点
@@ -107,8 +108,7 @@ extension CFBaseViewController {
     }
     /// 添加访客视图
     private func setupVisitorView () {
-        let visitorView = UIView(frame: view.bounds)
-        visitorView.backgroundColor = UIColor.cf_randomColor()
+        let visitorView = CFVisitorView(frame: view.bounds)
         view.insertSubview(visitorView, belowSubview: navigationBar)
     }
     /// 添加上架刷新控件

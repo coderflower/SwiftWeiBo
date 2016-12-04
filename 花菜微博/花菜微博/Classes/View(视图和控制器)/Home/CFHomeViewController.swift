@@ -33,8 +33,8 @@ class CFHomeViewController: CFBaseViewController {
 
 // MARK: - 设置UI
 extension CFHomeViewController {
-    override func configSubviews() {
-        super.configSubviews()
+    override func setupUI() {
+        super.setupUI()
         
         setupNav()
         
