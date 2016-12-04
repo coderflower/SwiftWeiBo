@@ -23,17 +23,23 @@ class CFVisitorView: UIView {
     fileprivate lazy var iconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_smallicon"))
     /// 房子视图
     fileprivate lazy var hoseIconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
+    /// 提示标签
     fileprivate lazy var tipLabel: UILabel = UILabel(text: "关注一些人,回这里看看有什么惊喜关注一些人,回这里看看有什么惊喜")
+    /// 注册按钮
     fileprivate lazy var registerButton: UIButton = UIButton(title: "注册",
                                                              fontSize: 14,
                                                              color: UIColor.orange,
                                                              highlighterColor: UIColor.black,
                                                              backgroundImageName: "common_button_white_disable")
+    /// 登录按钮
     fileprivate lazy var loginButton: UIButton = UIButton(title: "登录",
                                                           fontSize: 14,
                                                           color: UIColor.darkGray,
                                                           highlighterColor: UIColor.darkGray,
                                                           backgroundImageName: "common_button_white_disable")
+    /// 遮罩
+    fileprivate lazy var coverView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
+    
 }
 
 
@@ -42,6 +48,7 @@ extension CFVisitorView {
         backgroundColor = UIColor.white
         
         addSubview(iconView)
+        addSubview(coverView)
         addSubview(hoseIconView)
         addSubview(tipLabel)
         addSubview(registerButton)
@@ -154,5 +161,19 @@ extension CFVisitorView {
                                          attribute: NSLayoutAttribute.notAnAttribute,
                                          multiplier: 1.0,
                                          constant: 100))
+        // 遮罩
+        /*
+        options: oc中使用0,swift使用[], 如果使用多个[.alignAllBottom |.alignAllCenterX]
+        */
+        let metrics = ["margin": -35]
+        let views = ["coverView": coverView, "registerButton": registerButton] as [String : Any]
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[coverView]-0-|",
+                                                      options: [],
+                                                      metrics: nil,
+                                                      views: ["coverView": coverView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[coverView]-margin-[registerButton]",
+                                                      options: [],
+                                                      metrics: metrics,
+                                                      views: views))
     }
 }
