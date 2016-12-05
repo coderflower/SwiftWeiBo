@@ -13,8 +13,8 @@
 		8322C3901DF4165D006C7EB7 /* UIButton-Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C38F1DF4165D006C7EB7 /* UIButton-Addition.swift */; };
 		8322C3921DF43D43006C7EB7 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = 8322C3911DF43D43006C7EB7 /* main.json */; };
 		8322C3941DF444F7006C7EB7 /* String-Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C3931DF444F7006C7EB7 /* String-Addition.swift */; };
+		8322C3AC1DF4F0C8006C7EB7 /* Array-Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C3AB1DF4F0C8006C7EB7 /* Array-Addition.swift */; };
 		83D71CFA1DF02DD5008A8CEA /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF31DF02DD5008A8CEA /* Foundation+Log.m */; };
-		83D71CFB1DF02DD5008A8CEA /* NSArray+CFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF51DF02DD5008A8CEA /* NSArray+CFExtension.m */; };
 		83D71CFC1DF02DD5008A8CEA /* NSObject+CFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF71DF02DD5008A8CEA /* NSObject+CFExtension.m */; };
 		83D71CFD1DF02DD5008A8CEA /* NSString+CFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF91DF02DD5008A8CEA /* NSString+CFExtension.m */; };
 		83D71D161DF02E12008A8CEA /* UIButton+CFCountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CFF1DF02E12008A8CEA /* UIButton+CFCountDown.m */; };
@@ -47,7 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		119527516A4900777DB1D7F2 /* Pods_____.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_____.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		119527516A4900777DB1D7F2 /* Pods_____.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_____.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		377D626C853BF8E79468C1DD /* Pods-花菜微博.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-花菜微博.release.xcconfig"; path = "Pods/Target Support Files/Pods-花菜微博/Pods-花菜微博.release.xcconfig"; sourceTree = "<group>"; };
 		7709EFA69B9A836654A05F7B /* Pods-花菜微博.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-花菜微博.debug.xcconfig"; path = "Pods/Target Support Files/Pods-花菜微博/Pods-花菜微博.debug.xcconfig"; sourceTree = "<group>"; };
 		8322C38B1DF40CD4006C7EB7 /* CFVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFVisitorView.swift; sourceTree = "<group>"; };
@@ -55,9 +55,8 @@
 		8322C38F1DF4165D006C7EB7 /* UIButton-Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton-Addition.swift"; sourceTree = "<group>"; };
 		8322C3911DF43D43006C7EB7 /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		8322C3931DF444F7006C7EB7 /* String-Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Addition.swift"; sourceTree = "<group>"; };
+		8322C3AB1DF4F0C8006C7EB7 /* Array-Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array-Addition.swift"; sourceTree = "<group>"; };
 		83D71CF31DF02DD5008A8CEA /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
-		83D71CF41DF02DD5008A8CEA /* NSArray+CFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CFExtension.h"; sourceTree = "<group>"; };
-		83D71CF51DF02DD5008A8CEA /* NSArray+CFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CFExtension.m"; sourceTree = "<group>"; };
 		83D71CF61DF02DD5008A8CEA /* NSObject+CFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CFExtension.h"; sourceTree = "<group>"; };
 		83D71CF71DF02DD5008A8CEA /* NSObject+CFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CFExtension.m"; sourceTree = "<group>"; };
 		83D71CF81DF02DD5008A8CEA /* NSString+CFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CFExtension.h"; sourceTree = "<group>"; };
@@ -158,8 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				83D71CF31DF02DD5008A8CEA /* Foundation+Log.m */,
-				83D71CF41DF02DD5008A8CEA /* NSArray+CFExtension.h */,
-				83D71CF51DF02DD5008A8CEA /* NSArray+CFExtension.m */,
 				83D71CF61DF02DD5008A8CEA /* NSObject+CFExtension.h */,
 				83D71CF71DF02DD5008A8CEA /* NSObject+CFExtension.m */,
 				83D71D261DF03C2C008A8CEA /* NSObject+CFRuntime.h */,
@@ -211,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				8322C3931DF444F7006C7EB7 /* String-Addition.swift */,
+				8322C3AB1DF4F0C8006C7EB7 /* Array-Addition.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -515,11 +513,11 @@
 				83D71D1A1DF02E12008A8CEA /* UIResponder+CFExtension.m in Sources */,
 				8322C3901DF4165D006C7EB7 /* UIButton-Addition.swift in Sources */,
 				83D71D1D1DF02E12008A8CEA /* UIView+CFExtension.m in Sources */,
+				8322C3AC1DF4F0C8006C7EB7 /* Array-Addition.swift in Sources */,
 				83D71D1E1DF02E12008A8CEA /* UIView+CFFrame.m in Sources */,
 				83D71D1C1DF02E12008A8CEA /* UIView+CFAnimation.m in Sources */,
 				8322C38E1DF414D7006C7EB7 /* UILabel-Addition.swift in Sources */,
 				83D71D3E1DF1937B008A8CEA /* UIColor-Addition.swift in Sources */,
-				83D71CFB1DF02DD5008A8CEA /* NSArray+CFExtension.m in Sources */,
 				83D71D191DF02E12008A8CEA /* UIImage+CFExtension.m in Sources */,
 				83F6C6E91DEF262D00ACF9E5 /* CFMessageViewController.swift in Sources */,
 				83F6C6EB1DEF263B00ACF9E5 /* CFDiscoverViewController.swift in Sources */,
