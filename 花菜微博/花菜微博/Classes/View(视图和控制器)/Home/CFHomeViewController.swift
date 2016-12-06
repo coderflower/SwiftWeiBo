@@ -62,8 +62,10 @@ extension CFHomeViewController {
         if isPullUp {
             pageCount += 1
         }
+        // 取消下拉刷新
         isPullUp = false
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+        
+        DispatchQueue.main.asyncAfter(deadline: 2, execute: {
             self.tableView?.reloadData()
             if self.refreshControl?.isRefreshing == true {
                 self.refreshControl?.endRefreshing()

@@ -10,7 +10,7 @@ import UIKit
 
 class CFBaseViewController: UIViewController {
     /// 用户登录状态
-    var userIsLogin: Bool = false
+    var userIsLogin: Bool = true
     /// 访客视图信息
     var visitorInfo: [String: String]?
     /// 自定义的导航栏
