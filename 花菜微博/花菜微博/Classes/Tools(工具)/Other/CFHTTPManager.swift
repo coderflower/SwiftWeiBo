@@ -27,12 +27,34 @@ class CFHTTPManager: AFHTTPSessionManager {
         return instance
     }()
     
-    func request(method: HTTPMethod = .GET, URLString: String, parameters: [String : AnyObject] ,completion: @escaping (_ json: Any?, _ isSuccess: Bool) -> ()) {
+    var accessToken: String? = "2.005PaBhFZEUjBBf29908d0240coBmt"
+    
+    
+    func tokenRequest(method: HTTPMethod = .GET, URLString: String, parameters: [String : AnyObject]? ,completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) -> () {
+        // 处理token
+        guard let token = accessToken else {
+            print("token 为 nil!, 请重新登录")
+            completion(nil, false)
+            return
+        }
+        // 判断parameters是否有值
+        var parameters = parameters
+        if parameters == nil {
+            parameters = [String : AnyObject]()
+        }
+        // 此处parameters一定有值
+        parameters!["access_token"] = token as AnyObject?
+        
+        request(method: method, URLString: URLString, parameters: parameters, completion: completion)
+    }
+    
+    
+    func request(method: HTTPMethod = .GET, URLString: String, parameters: [String : AnyObject]? ,completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) -> (){
         // 成功回调
         let success = { (task: URLSessionDataTask, json: Any?)->() in            
-            completion(json, true)
+            completion(json as AnyObject, true)
         }
-
+        // 失败回调
         let failure = { (task: URLSessionDataTask?, error: Error) -> () in
             completion(nil, false)
         }
