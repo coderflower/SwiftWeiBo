@@ -16,6 +16,8 @@
 		8322C3AC1DF4F0C8006C7EB7 /* Array-Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C3AB1DF4F0C8006C7EB7 /* Array-Addition.swift */; };
 		83B361F61DFEC01A0094ACCF /* CFHTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F51DFEC01A0094ACCF /* CFHTTPManager.swift */; };
 		83B361F91DFECD850094ACCF /* CFHTTPManager + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F81DFECD850094ACCF /* CFHTTPManager + Extension.swift */; };
+		83B361FE1DFEECF30094ACCF /* CFStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361FD1DFEECF30094ACCF /* CFStatus.swift */; };
+		83B362001DFEEED40094ACCF /* CFStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361FF1DFEEED40094ACCF /* CFStatusListViewModel.swift */; };
 		83D71CFA1DF02DD5008A8CEA /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF31DF02DD5008A8CEA /* Foundation+Log.m */; };
 		83D71CFC1DF02DD5008A8CEA /* NSObject+CFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF71DF02DD5008A8CEA /* NSObject+CFExtension.m */; };
 		83D71CFD1DF02DD5008A8CEA /* NSString+CFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF91DF02DD5008A8CEA /* NSString+CFExtension.m */; };
@@ -61,6 +63,8 @@
 		8322C3AB1DF4F0C8006C7EB7 /* Array-Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array-Addition.swift"; sourceTree = "<group>"; };
 		83B361F51DFEC01A0094ACCF /* CFHTTPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFHTTPManager.swift; sourceTree = "<group>"; };
 		83B361F81DFECD850094ACCF /* CFHTTPManager + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFHTTPManager + Extension.swift"; sourceTree = "<group>"; };
+		83B361FD1DFEECF30094ACCF /* CFStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatus.swift; sourceTree = "<group>"; };
+		83B361FF1DFEEED40094ACCF /* CFStatusListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatusListViewModel.swift; sourceTree = "<group>"; };
 		83D71CF31DF02DD5008A8CEA /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		83D71CF61DF02DD5008A8CEA /* NSObject+CFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CFExtension.h"; sourceTree = "<group>"; };
 		83D71CF71DF02DD5008A8CEA /* NSObject+CFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CFExtension.m"; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 		83F6C6D71DEF250500ACF9E5 /* Model(模型) */ = {
 			isa = PBXGroup;
 			children = (
+				83B361FD1DFEECF30094ACCF /* CFStatus.swift */,
 			);
 			path = "Model(模型)";
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 		83F6C6DF1DEF250500ACF9E5 /* ViewModel(视图模型) */ = {
 			isa = PBXGroup;
 			children = (
+				83B361FF1DFEEED40094ACCF /* CFStatusListViewModel.swift */,
 			);
 			path = "ViewModel(视图模型)";
 			sourceTree = "<group>";
@@ -530,6 +536,7 @@
 				83E071051DF6F9AF0087BEC2 /* DispatchTime-Addition.swift in Sources */,
 				83D71D1A1DF02E12008A8CEA /* UIResponder+CFExtension.m in Sources */,
 				8322C3901DF4165D006C7EB7 /* UIButton-Addition.swift in Sources */,
+				83B361FE1DFEECF30094ACCF /* CFStatus.swift in Sources */,
 				83D71D1D1DF02E12008A8CEA /* UIView+CFExtension.m in Sources */,
 				8322C3AC1DF4F0C8006C7EB7 /* Array-Addition.swift in Sources */,
 				83D71D1E1DF02E12008A8CEA /* UIView+CFFrame.m in Sources */,
@@ -545,6 +552,7 @@
 				83D71D211DF02E12008A8CEA /* UIImageView+CFExtension.m in Sources */,
 				83D71CFD1DF02DD5008A8CEA /* NSString+CFExtension.m in Sources */,
 				83F6C6E31DEF256D00ACF9E5 /* CFNavigationController.swift in Sources */,
+				83B362001DFEEED40094ACCF /* CFStatusListViewModel.swift in Sources */,
 				83D71D161DF02E12008A8CEA /* UIButton+CFCountDown.m in Sources */,
 				83F6C6E11DEF255600ACF9E5 /* CFMainViewController.swift in Sources */,
 				83B361F61DFEC01A0094ACCF /* CFHTTPManager.swift in Sources */,
