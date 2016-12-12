@@ -13,15 +13,10 @@ private let homeCellId = "CFHomeCellId"
 class CFHomeViewController: CFBaseViewController {
     // MARK: - 公开属性
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        CFHTTPManager.shared.statusList { (list, isSuccess) in
-            if isSuccess {
-                print(list!)
-            }
-        }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,7 +24,8 @@ class CFHomeViewController: CFBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     // MARK: - 私有属性
-    fileprivate lazy var statusList = [String]()
+    fileprivate lazy var listViewModel = CFStatusListViewModel()
+    
     @objc fileprivate func showFriends() {
         navigationController?.pushViewController(CFBaseViewController(), animated: true)
     }
@@ -53,41 +49,27 @@ extension CFHomeViewController {
 // MARK: - 加载数据
 extension CFHomeViewController {
     override func requestData() {
-        for i in 0..<15 {
-            // 判断是上拉加载还是下拉刷新
-            if isPullUp {
-                // 页码加1
-                statusList.append("上拉加载第 +\(pageCount)页 + \(i.description)")
-            }
-            else {
-                // 重置页码
-                pageCount = 0
-                statusList.insert(i.description, at: 0)
-            }
-        }
-        if isPullUp {
-            pageCount += 1
-        }
-        // 取消下拉刷新
-        isPullUp = false
         
-        DispatchQueue.main.asyncAfter(deadline: 2, execute: {
+        listViewModel.loadStatus { (isSuccess) in
+            print("加载数据完成")
+            // 恢复上拉刷新标记
+            self.isPullUp = false
+            // 结束刷新控件
+            self.refreshControl?.endRefreshing()
+            // 刷新表格
             self.tableView?.reloadData()
-            if self.refreshControl?.isRefreshing == true {
-                self.refreshControl?.endRefreshing()
-            }
-        })
+        }
     }
 }
 // MARK: - tableViewDataSource和tableViewDelegate具体实现
 extension CFHomeViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statusList.count
+        return listViewModel.statusList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: homeCellId, for: indexPath)
-        cell.textLabel?.text = statusList[indexPath.row]
+        cell.textLabel?.text = listViewModel.statusList[indexPath.row].text
         return cell
     }
     
