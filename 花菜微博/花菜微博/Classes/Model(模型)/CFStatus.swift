@@ -9,7 +9,7 @@
 import UIKit
 import YYModel
 class CFStatus: NSObject {
-    var id: Int = 0
+    var id: Int64 = 0
     var text: String?
     override var description: String {
         return yy_modelDescription()

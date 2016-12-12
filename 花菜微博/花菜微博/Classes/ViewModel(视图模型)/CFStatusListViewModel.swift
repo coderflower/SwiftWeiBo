@@ -20,15 +20,17 @@ class CFStatusListViewModel {
     lazy var statusList = [CFStatus]()
     
     func loadStatus(completion: @escaping (_ isSuccess: Bool) -> ()) {
-        CFHTTPManager.shared.statusList { (list, isSuccess) in
+        // since_id,取出数组中第一条微博的id
+        let since_id = statusList.first?.id ?? 0
+        CFHTTPManager.shared.statusList(since_id: since_id, max_id: 0) { (list, isSuccess) in
             // 字典转模型
             guard let array = NSArray.yy_modelArray(with: CFStatus.self, json: list ?? []) as? [CFStatus] else {
                 completion(isSuccess)
                 return
             }
-            
-            // 拼接数据
-            self.statusList += array
+            print("新增 \(array.count)条数据")
+            // FIXME: 拼接数据
+            self.statusList = array + self.statusList
             
             // 完成回调
             completion(isSuccess)
