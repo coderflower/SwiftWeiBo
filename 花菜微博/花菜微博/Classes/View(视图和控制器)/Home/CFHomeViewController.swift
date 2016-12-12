@@ -16,6 +16,12 @@ class CFHomeViewController: CFBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        CFHTTPManager.shared.statusList { (list, isSuccess) in
+            if isSuccess {
+                print(list!)
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
