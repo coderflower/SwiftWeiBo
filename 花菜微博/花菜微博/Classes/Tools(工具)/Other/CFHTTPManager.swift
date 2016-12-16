@@ -27,7 +27,7 @@ class CFHTTPManager: AFHTTPSessionManager {
         return instance
     }()
     
-    var accessToken: String? = "2.005PaBhFZEUjBBf29908d0240coBmt"
+    var accessToken: String? = "2.005PaBhF2ylxHC6865a6e00cA8lMbC"
     
     
     func tokenRequest(method: HTTPMethod = .GET, URLString: String, parameters: [String : AnyObject]? ,completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) -> () {

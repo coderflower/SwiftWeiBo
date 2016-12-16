@@ -52,14 +52,19 @@ extension CFHomeViewController {
 extension CFHomeViewController {
     override func requestData() {
         
-        listViewModel.loadStatus(isPullup: self.isPullUp) { (isSuccess) in
+        listViewModel.loadStatus(isPullup: self.isPullUp) { (isSuccess, shouldRefresh) in
             print("加载数据完成")
             // 恢复上拉刷新标记
             self.isPullUp = false
             // 结束刷新控件
             self.refreshControl?.endRefreshing()
-            // 刷新表格
-            self.tableView?.reloadData()
+            if shouldRefresh {
+                // 刷新表格
+                self.tableView?.reloadData()
+            }
+            else {
+                print("没有更多数据")
+            }
         }
     }
 }
