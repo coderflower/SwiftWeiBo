@@ -57,6 +57,7 @@ class CFHTTPManager: AFHTTPSessionManager {
         }
         // 失败回调
         let failure = { (task: URLSessionDataTask?, error: Error) -> () in
+            // 针对403处理用户token过期
             if (task?.response as? HTTPURLResponse)?.statusCode == 403 {
                 print("token 已过期")
                 // FIXME: 发送通知,提示用户重新登录(本方法不知道谁被调用,谁接手通知,谁处理)

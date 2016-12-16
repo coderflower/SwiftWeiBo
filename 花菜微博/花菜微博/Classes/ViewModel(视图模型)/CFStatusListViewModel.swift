@@ -17,12 +17,20 @@ import Foundation
  */
 /// 负责微博的数据处理
 class CFStatusListViewModel {
+    /// 微博模型数组
     lazy var statusList = [CFStatus]()
     
-    func loadStatus(completion: @escaping (_ isSuccess: Bool) -> ()) {
+    
+    /// 加载微博数据
+    ///
+    /// - Parameter completion: 加载完毕回调
+    func loadStatus(isPullup: Bool, completion: @escaping (_ isSuccess: Bool) -> ()) {
         // since_id,取出数组中第一条微博的id
-        let since_id = statusList.first?.id ?? 0
-        CFHTTPManager.shared.statusList(since_id: since_id, max_id: 0) { (list, isSuccess) in
+        let since_id = isPullup ? 0 : (statusList.first?.id ?? 0)
+        // 上拉刷新,最后一条数据的id
+        let max_id = !isPullup ? 0 : (statusList.last?.id ?? 0)
+        
+        CFHTTPManager.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
             // 字典转模型
             guard let array = NSArray.yy_modelArray(with: CFStatus.self, json: list ?? []) as? [CFStatus] else {
                 completion(isSuccess)
@@ -30,7 +38,12 @@ class CFStatusListViewModel {
             }
             print("新增 \(array.count)条数据")
             // FIXME: 拼接数据
-            self.statusList = array + self.statusList
+            if isPullup {
+                self.statusList += array
+            }
+            else {
+                self.statusList = array + self.statusList
+            }
             
             // 完成回调
             completion(isSuccess)

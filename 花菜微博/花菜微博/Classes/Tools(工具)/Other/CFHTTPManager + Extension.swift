@@ -21,8 +21,8 @@ extension CFHTTPManager {
         
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
         // Swift中Int类型可以直接转换成AnyObject 但是Int64不行
-        let parameters = ["since_id": "\(since_id)", "max_id": "\(max_id)"]
-        
+        let parameters = ["since_id": "\(since_id)", "max_id": "\(max_id > 0 ? max_id - 1 : 0)"]
+        // 请求数据
         CFHTTPManager.shared.tokenRequest(URLString: urlString, parameters: parameters as [String : AnyObject]?){(json: Any? , isSuccess: Bool) in
             let response = json as AnyObject?
             let result = response?["statuses"] as? [[String : AnyObject]]

@@ -24,6 +24,8 @@ class CFHomeViewController: CFBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     // MARK: - 私有属性
+    
+    /// 列表视图模型
     fileprivate lazy var listViewModel = CFStatusListViewModel()
     
     @objc fileprivate func showFriends() {
@@ -50,7 +52,7 @@ extension CFHomeViewController {
 extension CFHomeViewController {
     override func requestData() {
         
-        listViewModel.loadStatus { (isSuccess) in
+        listViewModel.loadStatus(isPullup: self.isPullUp) { (isSuccess) in
             print("加载数据完成")
             // 恢复上拉刷新标记
             self.isPullUp = false
