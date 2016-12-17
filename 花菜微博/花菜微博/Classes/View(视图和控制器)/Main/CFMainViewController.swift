@@ -14,6 +14,8 @@ class CFMainViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 设置代理
+        delegate = self
         // 添加子控制器
         setupChildViewControllers()
         // 初始化子控件
@@ -58,7 +60,7 @@ extension CFMainViewController {
     fileprivate func setupComposeButton() {
         tabBar.backgroundImage = UIImage(named: "tabbar_background")
         // 计算每个按钮的宽度 减1是为了容差
-        let width = tabBar.bounds.width / CGFloat(childViewControllers.count) - 1
+        let width = tabBar.bounds.width / CGFloat(childViewControllers.count)
         composeButton.frame = tabBar.bounds.insetBy(dx: 2 * width, dy: 0)
         tabBar.addSubview(composeButton)
     }
@@ -127,3 +129,30 @@ extension CFMainViewController {
     }
 }
 
+// MARK: - UITabBarControllerDelegate
+extension CFMainViewController: UITabBarControllerDelegate {
+    
+    /// 将要选择tabbarItem
+    ///
+    /// - Parameters:
+    ///   - tabBarController: tabBarController
+    ///   - viewController: 目标控制器
+    /// - Returns: 是否切换到目标控制器
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        // 判断当前页面是否是被选中的控制器
+        if selectedViewController == viewController {
+            // FIXME: 滚动到最顶部,刷新数据
+            print("滚动到最顶部,刷新数据")
+            let nav = viewController as? UINavigationController
+            let vc =  nav?.viewControllers.first as? CFBaseViewController
+            vc?.tableView?.setContentOffset(CGPoint(x: 0, y: -CFNavigationBarHeight), animated: true)
+            DispatchQueue.main.asyncAfter(deadline: 1, execute: { 
+                vc?.requestData()
+            })
+            
+        } else {
+            // 啥也不干
+        }
+        return !(viewController.isMember(of: UIViewController.self))
+    }
+}
