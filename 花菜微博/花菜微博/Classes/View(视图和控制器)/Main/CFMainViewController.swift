@@ -9,7 +9,8 @@
 import UIKit
 
 class CFMainViewController: UITabBarController {
-    
+    // 定时器
+    fileprivate var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,12 +18,17 @@ class CFMainViewController: UITabBarController {
         setupChildViewControllers()
         // 初始化子控件
         setupComposeButton()
+        // 初始化定时器
+        setupTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 保证composeButton在最顶部
         tabBar.bringSubview(toFront: composeButton)
+    }
+    deinit {
+        timer?.invalidate()
     }
     /**
      portrait  : 竖屏
@@ -46,6 +52,8 @@ class CFMainViewController: UITabBarController {
         backgroundImageName: "tabbar_compose_button")
     }
 
+
+// MARK: - 加载子控制器
 extension CFMainViewController {
     fileprivate func setupComposeButton() {
         tabBar.backgroundImage = UIImage(named: "tabbar_background")
@@ -99,6 +107,23 @@ extension CFMainViewController {
         // 文字上移
         vc.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -3)
         return CFNavigationController(rootViewController: vc)
+    }
+}
+
+// MARK: - 定时器相关
+extension CFMainViewController {
+    fileprivate func setupTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    @objc fileprivate func updateTimer() {
+        print("触发定时器")
+        CFHTTPManager.shared.unreadCount { (count) in
+            print("检测到\(count)条新数据")
+            // 设置首页tbabarItem未读微博数
+            self.tabBar.items?.first?.badgeValue = count > 0 ? "\(count)" : nil
+            // 设置appIcon上的数字,iOS8之后需要先获取用户授权
+            UIApplication.shared.applicationIconBadgeNumber = count
+        }
     }
 }
 
