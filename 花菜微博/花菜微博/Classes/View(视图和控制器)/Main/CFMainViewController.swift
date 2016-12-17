@@ -115,10 +115,13 @@ extension CFMainViewController {
 // MARK: - 定时器相关
 extension CFMainViewController {
     fileprivate func setupTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     @objc fileprivate func updateTimer() {
         print("触发定时器")
+        if !CFHTTPManager.shared.userLogon {
+            return
+        }
         CFHTTPManager.shared.unreadCount { (count) in
             print("检测到\(count)条新数据")
             // 设置首页tbabarItem未读微博数
@@ -148,10 +151,7 @@ extension CFMainViewController: UITabBarControllerDelegate {
             vc?.tableView?.setContentOffset(CGPoint(x: 0, y: -CFNavigationBarHeight), animated: true)
             DispatchQueue.main.asyncAfter(deadline: 1, execute: { 
                 vc?.requestData()
-            })
-            
-        } else {
-            // 啥也不干
+            })  
         }
         return !(viewController.isMember(of: UIViewController.self))
     }

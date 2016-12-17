@@ -9,8 +9,6 @@
 import UIKit
 
 class CFBaseViewController: UIViewController {
-    /// 用户登录状态
-    var userIsLogin: Bool = true
     /// 访客视图信息
     var visitorInfo: [String: String]?
     /// 自定义的导航栏
@@ -32,7 +30,7 @@ class CFBaseViewController: UIViewController {
         // 初始化UI界面
         setupUI()
         // 请求数据
-        requestData()
+        CFHTTPManager.shared.userLogon ? requestData() : ()
     }
     /// 重写title的set方法
     override var title: String? {
@@ -102,7 +100,7 @@ extension CFBaseViewController {
         // 添加导航条
         setupNavgationBar()
         // 根据登录状态判断是添加表格控件还是访客视图
-        userIsLogin ? setupTableView() : setupVisitorView()
+        CFHTTPManager.shared.userLogon ? setupTableView() : setupVisitorView()
         
     }
     
