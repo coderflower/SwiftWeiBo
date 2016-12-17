@@ -30,7 +30,7 @@ class CFBaseViewController: UIViewController {
         // 初始化UI界面
         setupUI()
         // 请求数据
-        CFHTTPManager.shared.userLogon ? requestData() : ()
+        CFNetworker.shared.userLogon ? requestData() : ()
     }
     /// 重写title的set方法
     override var title: String? {
@@ -52,7 +52,8 @@ class CFBaseViewController: UIViewController {
     }
     
     @objc fileprivate func loginClick() {
-        print("点击了登录")
+        // 发送用户希望登录通知
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUserShoudLoginNotification), object: nil)
     }
     
     @objc fileprivate func registerClick() {
@@ -100,7 +101,7 @@ extension CFBaseViewController {
         // 添加导航条
         setupNavgationBar()
         // 根据登录状态判断是添加表格控件还是访客视图
-        CFHTTPManager.shared.userLogon ? setupTableView() : setupVisitorView()
+        CFNetworker.shared.userLogon ? setupTableView() : setupVisitorView()
         
     }
     

@@ -1,5 +1,5 @@
 //
-//  CFHTTPManager.swift
+//  CFNetworker.swift
 //  花菜微博
 //
 //  Created by 花菜ChrisCai on 2016/12/12.
@@ -14,11 +14,11 @@ enum HTTPMethod {
     case POST
 }
 
-class CFHTTPManager: AFHTTPSessionManager {
+class CFNetworker: AFHTTPSessionManager {
     
-    static let shared : CFHTTPManager = {
+    static let shared : CFNetworker = {
         // 实例化对象
-        let instance = CFHTTPManager()
+        let instance = CFNetworker()
         
         // 设置响应反序列化支持的数据类型
         instance.responseSerializer.acceptableContentTypes?.insert("text/plain")

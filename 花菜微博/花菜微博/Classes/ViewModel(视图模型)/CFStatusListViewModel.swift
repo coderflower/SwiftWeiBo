@@ -38,7 +38,7 @@ class CFStatusListViewModel {
         let since_id = isPullup ? 0 : (statusList.first?.id ?? 0)
         // 上拉刷新,最后一条数据的id
         let max_id = !isPullup ? 0 : (statusList.last?.id ?? 0)
-        CFHTTPManager.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
+        CFNetworker.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
             // 字典转模型
             guard let array = NSArray.yy_modelArray(with: CFStatus.self, json: list ?? []) as? [CFStatus] else {
                 completion(isSuccess,false)

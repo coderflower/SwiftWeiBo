@@ -22,6 +22,10 @@ class CFMainViewController: UITabBarController {
         setupComposeButton()
         // 初始化定时器
         setupTimer()
+        // 注册登陆通知
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kUserShoudLoginNotification), object: nil, queue: nil) { (notify) in
+            print("用户点击了登录")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,10 +123,10 @@ extension CFMainViewController {
     }
     @objc fileprivate func updateTimer() {
         print("触发定时器")
-        if !CFHTTPManager.shared.userLogon {
+        if !CFNetworker.shared.userLogon {
             return
         }
-        CFHTTPManager.shared.unreadCount { (count) in
+        CFNetworker.shared.unreadCount { (count) in
             print("检测到\(count)条新数据")
             // 设置首页tbabarItem未读微博数
             self.tabBar.items?.first?.badgeValue = count > 0 ? "\(count)" : nil
