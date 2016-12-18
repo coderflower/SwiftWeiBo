@@ -76,14 +76,14 @@ extension CFOAuthViewController: UIWebViewDelegate {
             print(code)
             CFNetworker.shared.requestToken(code:code) { (isSuccess) in
                 if isSuccess {
-                    SVProgressHUD.showError(withStatus: "网络加载失败,请稍后重试")
-                } else {
                     SVProgressHUD.showInfo(withStatus: "登录成功")
                     // 发送登录成功通知
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUserLoginSuccessNotification), object: nil)
                     
                     // 关闭页面
                     self.closeAction()
+                } else {
+                    SVProgressHUD.showError(withStatus: "网络加载失败,请稍后重试")
                 }
             }
             return false

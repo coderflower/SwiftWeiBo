@@ -31,6 +31,12 @@ class CFBaseViewController: UIViewController {
         setupUI()
         // 请求数据
         CFNetworker.shared.userLogon ? requestData() : ()
+        // 注册通知
+        setupNotify()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     /// 重写title的set方法
     override var title: String? {
@@ -167,4 +173,17 @@ extension CFBaseViewController: UITableViewDelegate,UITableViewDataSource {
         
     }
     
+}
+
+
+// MARK: - 通知相关
+extension CFBaseViewController {
+    fileprivate func setupNotify() {
+        // 监听用户登录成功通知
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kUserLoginSuccessNotification), object: nil, queue: nil) { (_) in
+            print("用户登录成功,可以开始刷新页面")
+            // view = nil时,懒加载会重新调用LoadView重新加载视图,再执行viewDidLoad
+            self.view = nil
+        }
+    }
 }

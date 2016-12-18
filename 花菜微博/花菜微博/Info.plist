@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <!-- 相册 -->
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>App需要您的同意,才能访问相册</string>
+    <!-- 媒体资料库 -->
+    <key>NSAppleMusicUsageDescription</key>
+    <string>App需要您的同意,才能访问媒体资料库</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
