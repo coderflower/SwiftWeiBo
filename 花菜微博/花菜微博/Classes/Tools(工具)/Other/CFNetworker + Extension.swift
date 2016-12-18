@@ -48,7 +48,7 @@ extension CFNetworker {
 // MARK: - OAuth相关方法
 extension CFNetworker {
     /// 请求AccessToken
-    func requestToken(code: String, completion:() ->()) {
+    func requestToken(code: String, completion:@escaping (_ isSuccess: Bool) ->()) {
         let urlString = "https://api.weibo.com/oauth2/access_token"
         let parameters = [
             "client_id": SinaAppKey,
@@ -62,6 +62,7 @@ extension CFNetworker {
             self.userAccount.yy_modelSet(with: json as? [String : AnyObject] ?? [:])
             // 保存用户信息
             self.userAccount .saveAccount()
+            completion(isSuccess)
         }
     }
 }

@@ -74,8 +74,12 @@ extension CFOAuthViewController: UIWebViewDelegate {
             let code = query?.substring(from: "code=".endIndex) ?? ""
             
             print(code)
-            CFNetworker.shared.requestToken(code:code) {
-                
+            CFNetworker.shared.requestToken(code:code) { (isSuccess) in
+                if isSuccess {
+                    SVProgressHUD.showError(withStatus: "网络加载失败,请稍后重试")
+                } else {
+                    SVProgressHUD.showInfo(withStatus: "登录成功")
+                }
             }
             // 关闭页面
             closeAction()
