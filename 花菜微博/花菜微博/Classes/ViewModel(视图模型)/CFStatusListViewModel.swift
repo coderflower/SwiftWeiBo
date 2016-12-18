@@ -34,9 +34,9 @@ class CFStatusListViewModel {
             // 请求错误,不刷新
             completion(false, false)
         }
-        // since_id,取出数组中第一条微博的id
+        // 如果是上拉刷新那么since_id = 0,否则为就是数组第一条微博的id
         let since_id = isPullup ? 0 : (statusList.first?.id ?? 0)
-        // 上拉刷新,最后一条数据的id
+        // 上拉刷新,最后一条数据的id否则为0
         let max_id = !isPullup ? 0 : (statusList.last?.id ?? 0)
         CFNetworker.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
             // 字典转模型

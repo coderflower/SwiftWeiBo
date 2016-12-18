@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		29AAD6FC3BD434403FD769A4 /* Pods_____.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119527516A4900777DB1D7F2 /* Pods_____.framework */; };
 		8317B0BD1E059DF8007F0138 /* CFCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8317B0BC1E059DF8007F0138 /* CFCommon.swift */; };
+		8317B0C01E05A003007F0138 /* CFOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8317B0BF1E05A003007F0138 /* CFOAuthViewController.swift */; };
 		8322C38C1DF40CD4006C7EB7 /* CFVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C38B1DF40CD4006C7EB7 /* CFVisitorView.swift */; };
 		8322C38E1DF414D7006C7EB7 /* UILabel-Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C38D1DF414D7006C7EB7 /* UILabel-Addition.swift */; };
 		8322C3901DF4165D006C7EB7 /* UIButton-Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C38F1DF4165D006C7EB7 /* UIButton-Addition.swift */; };
@@ -57,6 +58,7 @@
 		377D626C853BF8E79468C1DD /* Pods-花菜微博.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-花菜微博.release.xcconfig"; path = "Pods/Target Support Files/Pods-花菜微博/Pods-花菜微博.release.xcconfig"; sourceTree = "<group>"; };
 		7709EFA69B9A836654A05F7B /* Pods-花菜微博.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-花菜微博.debug.xcconfig"; path = "Pods/Target Support Files/Pods-花菜微博/Pods-花菜微博.debug.xcconfig"; sourceTree = "<group>"; };
 		8317B0BC1E059DF8007F0138 /* CFCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCommon.swift; sourceTree = "<group>"; };
+		8317B0BF1E05A003007F0138 /* CFOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFOAuthViewController.swift; sourceTree = "<group>"; };
 		8322C38B1DF40CD4006C7EB7 /* CFVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFVisitorView.swift; sourceTree = "<group>"; };
 		8322C38D1DF414D7006C7EB7 /* UILabel-Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel-Addition.swift"; sourceTree = "<group>"; };
 		8322C38F1DF4165D006C7EB7 /* UIButton-Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton-Addition.swift"; sourceTree = "<group>"; };
@@ -137,6 +139,14 @@
 				377D626C853BF8E79468C1DD /* Pods-花菜微博.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8317B0BE1E059FDB007F0138 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				8317B0BF1E05A003007F0138 /* CFOAuthViewController.swift */,
+			);
+			path = OAuth;
 			sourceTree = "<group>";
 		};
 		8322C3881DF324E1006C7EB7 /* 主控制器 */ = {
@@ -348,6 +358,7 @@
 		83F6C6DC1DEF250500ACF9E5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				8317B0BE1E059FDB007F0138 /* OAuth */,
 				8322C3881DF324E1006C7EB7 /* 主控制器 */,
 				8322C3891DF324F3006C7EB7 /* 基类控制器 */,
 				8322C38A1DF40C52006C7EB7 /* 访客视图 */,
@@ -547,6 +558,7 @@
 				83B361F91DFECD850094ACCF /* CFNetworker + Extension.swift in Sources */,
 				83D71D1C1DF02E12008A8CEA /* UIView+CFAnimation.m in Sources */,
 				8322C38E1DF414D7006C7EB7 /* UILabel-Addition.swift in Sources */,
+				8317B0C01E05A003007F0138 /* CFOAuthViewController.swift in Sources */,
 				83D71D3E1DF1937B008A8CEA /* UIColor-Addition.swift in Sources */,
 				83D71D191DF02E12008A8CEA /* UIImage+CFExtension.m in Sources */,
 				83F6C6E91DEF262D00ACF9E5 /* CFMessageViewController.swift in Sources */,

@@ -25,6 +25,8 @@ class CFMainViewController: UITabBarController {
         // 注册登陆通知
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kUserShoudLoginNotification), object: nil, queue: nil) { (notify) in
             print("用户点击了登录")
+            let nav = UINavigationController(rootViewController: CFOAuthViewController())
+            self.present(nav, animated: true, completion: nil)
         }
     }
     
