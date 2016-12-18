@@ -19,5 +19,4 @@ let SinaAppKey = "941749531"
 let SinaAppSecret = "96e15facd4e5d81626e66dd4a41bb5b7"
 /// 回到地址 - 登录成功完成跳转的URL
 let SinaRedirectURI = "http://caiflower.com"
-/// 存储用户账号信息的文件名
-let userAccountPath = "useraccount.json".document
+

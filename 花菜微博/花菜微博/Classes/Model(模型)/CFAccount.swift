@@ -7,6 +7,8 @@
 //
 
 import UIKit
+/// 存储用户账号信息的文件名
+private let userAccountPath = "useraccount.json".document
 
 class CFAccount: NSObject {
     /// 访问令牌
@@ -24,6 +26,18 @@ class CFAccount: NSObject {
     
     override var description: String {
         return yy_modelDescription()
+    }
+    
+    override init() {
+        super.init()
+        // 从沙盒加载用户信息
+        guard let data = NSData(contentsOfFile: userAccountPath),
+            let dict = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? [String : AnyObject]
+            else {
+             return
+        }
+        // 字典转模型
+        yy_modelSet(with: dict ?? [:])
     }
     
     /*
@@ -44,21 +58,5 @@ class CFAccount: NSObject {
         }
         // 保存用户信息
         (data as NSData).write(toFile: userAccountPath, atomically: true)
-    }
-    
-    /// 从沙盒中读取本地用户信息
-    ///
-    /// - Returns: 本地用户信息
-    class func loadAccount() -> CFAccount {
-        // 从沙盒中读取用户信息(二进制文件)
-        guard let data = NSData(contentsOfFile: userAccountPath) else {
-            return CFAccount()
-        }
-        // 转换成json字符串
-        let json = try? JSONSerialization.jsonObject(with: data as Data, options: [])
-        let account = CFAccount()
-        // 字典转模型
-        account.yy_modelSet(with: json as? [String : AnyObject] ?? [:])
-        return account
     }
 }
