@@ -42,7 +42,7 @@ class CFOAuthViewController: UIViewController {
 
     @objc fileprivate func autoInputUser() {
         // 准备Js脚本
-        let script = "document.getElementById('userId').value = '17687929918'; document.getElementById('passwd').value = '4593679.a';"
+        let script = "document.getElementById('userId').value = 'caiflower20@163.com'; document.getElementById('passwd').value = '4593679.a';"
         // 注入js
         self.webview.stringByEvaluatingJavaScript(from: script)
     }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class CFMainViewController: UITabBarController {
     // 定时器
     fileprivate var timer: Timer?
@@ -25,8 +25,18 @@ class CFMainViewController: UITabBarController {
         // 注册登陆通知
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kUserShoudLoginNotification), object: nil, queue: nil) { (notify) in
             print("用户点击了登录")
-            let nav = UINavigationController(rootViewController: CFOAuthViewController())
-            self.present(nav, animated: true, completion: nil)
+            var time: DispatchTime = 0
+            if notify.object != nil {
+                time = 2
+                // 设置遮罩为渐变色
+                SVProgressHUD.setDefaultMaskType(.gradient)
+                // 显示蒙版
+                SVProgressHUD.showInfo(withStatus: "登录超时,请重新登录")
+            }
+            DispatchQueue.main.asyncAfter(deadline: time, execute: { 
+                let nav = UINavigationController(rootViewController: CFOAuthViewController())
+                self.present(nav, animated: true, completion: nil)
+            })
         }
     }
     

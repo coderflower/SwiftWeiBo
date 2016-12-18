@@ -13,7 +13,8 @@ import Foundation
 let kUserShoudLoginNotification = "userShoudLoginNotification"
 /// 用户登录成功通知
 let kUserLoginSuccessNotification = "kUserLoginSuccessNotification"
-
+/// 用户token过期通知
+let kUserTokenDidExpireNotification = "kUserTokenDidExpireNotification"
 
 // MARK: - 应用程序信息
 

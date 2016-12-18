@@ -14,6 +14,7 @@ class CFDiscoverViewController: CFBaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        CFNetworker.shared.userAccount.access_token = nil
     }
 
     override func didReceiveMemoryWarning() {
