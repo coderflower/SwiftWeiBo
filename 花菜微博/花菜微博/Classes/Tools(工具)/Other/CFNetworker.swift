@@ -16,7 +16,10 @@ enum HTTPMethod {
 
 class CFNetworker: AFHTTPSessionManager {
     // 用户信息
-    lazy var userAccount = CFAccount()
+    lazy var userAccount: CFAccount = {
+        let account = CFAccount.loadAccount()
+        return account
+    }()
     
     static let shared : CFNetworker = {
         // 实例化对象

@@ -60,7 +60,8 @@ extension CFNetworker {
         request(method: .POST, URLString: urlString, parameters: parameters as [String : AnyObject]?) { (json, isSuccess) in
             print(json ?? "")
             self.userAccount.yy_modelSet(with: json as? [String : AnyObject] ?? [:])
-            print(self.userAccount)
+            // 保存用户信息
+            self.userAccount .saveAccount()
         }
     }
 }
