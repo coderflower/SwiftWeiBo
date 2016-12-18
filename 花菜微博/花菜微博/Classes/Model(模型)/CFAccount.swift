@@ -38,6 +38,15 @@ class CFAccount: NSObject {
         }
         // 字典转模型
         yy_modelSet(with: dict ?? [:])
+        // 判断token是否过期
+        if expiresDate?.compare(Date()) != .orderedDescending {
+            print("提醒用户token过期")
+            // 清空token,uid,删除用户信息文件
+            access_token = nil
+            uid = nil
+            try? FileManager.default.removeItem(atPath: userAccountPath)
+        }
+        print("账户正常")
     }
     
     /*
