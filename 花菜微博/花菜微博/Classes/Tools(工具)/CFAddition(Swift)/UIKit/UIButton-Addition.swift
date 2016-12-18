@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ContentType {
+    case Horizontal
+    case Vertical
+}
+
 extension UIButton {
     
     
@@ -45,4 +50,27 @@ extension UIButton {
         self.sizeToFit()
     }
     
+    
+    func adjustContent(contentType: ContentType = .Horizontal, margin: CGFloat) {
+        guard let imageSize = self.image(for: .normal)?.size,
+        let title = self.currentTitle
+            else {
+                return
+        }
+        // 计算文字尺寸
+        let titleSize = (title as NSString).cf_size(with: self.titleLabel!.font)
+        var tmpRect = self.frame
+        if contentType == .Horizontal {
+            // 文字左边,图片右边
+            self.imageEdgeInsets = UIEdgeInsets(top: 0, left: titleSize.width + margin, bottom: 0, right: -titleSize.width)
+            self.titleEdgeInsets = UIEdgeInsets(top: 0, left: -imageSize.width, bottom: -0, right: imageSize.width + margin)
+            tmpRect.size.width += margin;
+        } else {
+            // 图片上面啊,文字下面
+            self.imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + margin), left: 0, bottom: 0, right: titleSize.width)
+            self.titleEdgeInsets = UIEdgeInsets(top: 0, left: -imageSize.width, bottom:  -(imageSize.height + margin), right: 0)
+            tmpRect.size.width = max(imageSize.width, titleSize.width);
+        }
+        self.frame = tmpRect
+    }
 }

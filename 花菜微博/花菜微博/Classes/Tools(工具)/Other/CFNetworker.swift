@@ -40,7 +40,7 @@ class CFNetworker: AFHTTPSessionManager {
         // 处理token
         guard let token = userAccount.access_token else {
             print("token 为 nil!, 请重新登录")
-            // FIXME: 发送通知,提示用户登录
+            // 发送通知,提示用户登录
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUserShoudLoginNotification), object: "bad token")
             completion(nil, false)
             return
@@ -71,7 +71,7 @@ class CFNetworker: AFHTTPSessionManager {
             // 针对403处理用户token过期
             if (task?.response as? HTTPURLResponse)?.statusCode == 403 {
                 print("token 已过期")
-                // FIXME: 发送通知,提示用户重新登录(本方法不知道谁被调用,谁接手通知,谁处理)
+                // 发送通知,提示用户重新登录(本方法不知道谁被调用,谁接手通知,谁处理)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUserShoudLoginNotification), object: "bad token")
             }
             SVProgressHUD.dismiss()
