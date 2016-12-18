@@ -7,16 +7,17 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class CFOAuthViewController: UIViewController {
 
     fileprivate lazy var webview = UIWebView()
     override func loadView() {
         view = webview
         webview.delegate = self
+        webview.scrollView.isScrollEnabled = false
         // 设置导航栏
         title = "登录新浪微博"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", target: self, action: #selector(backAction))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", target: self, action: #selector(closeAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "自动填充", target: self, action: #selector(autoInputUser))
     }
     override func viewDidLoad() {
@@ -34,7 +35,8 @@ class CFOAuthViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc fileprivate func backAction() {
+    @objc fileprivate func closeAction() {
+        SVProgressHUD.dismiss()
         dismiss(animated: true, completion: nil)
     }
 
@@ -58,23 +60,35 @@ extension CFOAuthViewController: UIWebViewDelegate {
     /// - Returns: 是否加载 request
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
-        if request.url?.absoluteString.hasSuffix(SinaRedirectURI) == true {
-            return true
-        }
-        // query 参数(查询)字符串
-        let query = request.url?.query
-        
-        if query?.hasPrefix("code=") == false {
-            // 用户取消授权
-            backAction()
+        if request.url?.absoluteString.hasPrefix(SinaRedirectURI) == true {
+           
+            // query 参数(查询)字符串
+            let query = request.url?.query
+            
+            if query?.hasPrefix("code=") == false {
+                // 用户取消授权
+                closeAction()
+                return false
+            }
+            // 获取授权码
+            let code = query?.substring(from: "code=".endIndex) ?? ""
+            
+            print(code)
+            CFNetworker.shared.requestToken(code:code) {
+                
+            }
+            // 关闭页面
+            closeAction()
             return false
         }
-        // 获取授权码
-        let code = query?.substring(from: "code=".endIndex) ?? ""
-        
-        print(code)
-        
-        
-        return false
+        return true
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        SVProgressHUD.show()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        SVProgressHUD.dismiss()
     }
 }

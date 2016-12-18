@@ -43,3 +43,23 @@ extension CFNetworker {
         }
     }
 }
+
+
+// MARK: - OAuth相关方法
+extension CFNetworker {
+    /// 请求AccessToken
+    func requestToken(code: String, completion:() ->()) {
+        let urlString = "https://api.weibo.com/oauth2/access_token"
+        let parameters = [
+            "client_id": SinaAppKey,
+            "client_secret": SinaAppSecret,
+            "grant_type": "authorization_code",
+            "code": code,
+            "redirect_uri": SinaRedirectURI
+                        ]
+        request(method: .POST, URLString: urlString, parameters: parameters as [String : AnyObject]?) { (json, isSuccess) in
+            print(json)
+            
+        }
+    }
+}
