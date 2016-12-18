@@ -13,9 +13,9 @@ class CFOAuthViewController: UIViewController {
     fileprivate lazy var webview = UIWebView()
     override func loadView() {
         view = webview
+        webview.delegate = self
         // 设置导航栏
         title = "登录新浪微博"
-        webview.scalesPageToFit = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", target: self, action: #selector(backAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "自动填充", target: self, action: #selector(autoInputUser))
     }
@@ -44,14 +44,39 @@ class CFOAuthViewController: UIViewController {
         // 注入js
         self.webview.stringByEvaluatingJavaScript(from: script)
     }
-    /*
-    // MARK: - Navigation
+    
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension CFOAuthViewController: UIWebViewDelegate {
+    
+    /// webView将要加载请求
+    ///
+    /// - Parameters:
+    ///   - webView: webView
+    ///   - request: 要加载的请求
+    ///   - navigationType: 导航类型
+    /// - Returns: 是否加载 request
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        
+        let host = request.url?.host
+        if host?.contains("caiflower") == true {
+            let urlString = request.url?.absoluteString
+            if urlString?.contains("code") == true {
+                // 授权成功
+                guard let range = urlString?.range(of: "code=") else {
+                    return false
+                }
+                let code = urlString?.substring(from: range.upperBound)
+                print(code ?? "")
+            }
+            else {
+                // 授权失败
+            }
+            return false
+        }
+        else {
+            return true
+        }
+        
     }
-    */
-
 }
