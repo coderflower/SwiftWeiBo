@@ -29,13 +29,9 @@ class CFNetworker: AFHTTPSessionManager {
     
     var accessToken: String? //= "2.005PaBhF2ylxHC6865a6e00cA8lMbC"
     var uid: String? = "5365823342"
-    /// appKey
-    let client_id = "941749531"
-    /// 重定向地址
-    let redirect_url = "http://www.caiflower.com"
-    //App Secret 96e15facd4e5d81626e66dd4a41bb5b7
+    
     var authorizeUrlString: String {
-        return "https://api.weibo.com/oauth2/authorize" + "?" + "client_id=\(client_id)" + "&" + "redirect_url=\(redirect_url)"
+        return "https://api.weibo.com/oauth2/authorize" + "?" + "client_id=\(SinaAppKey)" + "&" + "redirect_uri=\(SinaRedirectURI)"
     }
     
     var userLogon: Bool {

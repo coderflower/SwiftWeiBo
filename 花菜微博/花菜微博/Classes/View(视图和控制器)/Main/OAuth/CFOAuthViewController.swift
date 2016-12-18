@@ -20,8 +20,6 @@ class CFOAuthViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         guard let url = URL.init(string: CFNetworker.shared.authorizeUrlString) else {
             fatalError()
         }
