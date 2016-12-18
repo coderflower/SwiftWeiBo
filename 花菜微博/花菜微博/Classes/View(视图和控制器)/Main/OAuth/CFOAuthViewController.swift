@@ -58,25 +58,23 @@ extension CFOAuthViewController: UIWebViewDelegate {
     /// - Returns: 是否加载 request
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
-        let host = request.url?.host
-        if host?.contains("caiflower") == true {
-            let urlString = request.url?.absoluteString
-            if urlString?.contains("code") == true {
-                // 授权成功
-                guard let range = urlString?.range(of: "code=") else {
-                    return false
-                }
-                let code = urlString?.substring(from: range.upperBound)
-                print(code ?? "")
-            }
-            else {
-                // 授权失败
-            }
-            return false
-        }
-        else {
+        if request.url?.absoluteString.hasSuffix(SinaRedirectURI) == true {
             return true
         }
+        // query 参数(查询)字符串
+        let query = request.url?.query
         
+        if query?.hasPrefix("code=") == false {
+            // 用户取消授权
+            backAction()
+            return false
+        }
+        // 获取授权码
+        let code = query?.substring(from: "code=".endIndex) ?? ""
+        
+        print(code)
+        
+        
+        return false
     }
 }
