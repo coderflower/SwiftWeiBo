@@ -9,7 +9,11 @@
 import Foundation
 
 // MARK: - 全局通知
+/// 用户是否登录通知
 let kUserShoudLoginNotification = "userShoudLoginNotification"
+/// 用户登录成功通知
+let kUserLoginSuccessNotification = "kUserLoginSuccessNotification"
+
 
 // MARK: - 应用程序信息
 
