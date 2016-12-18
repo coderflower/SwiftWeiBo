@@ -84,11 +84,9 @@ extension CFBaseViewController {
                                                left: 0,
                                                bottom: tabBarController?.tabBar.bounds.height ?? CFTabBarHeight,
                                                right: 0)
-        // 设置滚动条内边距
-        tableView?.scrollIndicatorInsets = UIEdgeInsets(top: navigationBar.bounds.height,
-                                                        left: 0,
-                                                        bottom: tabBarController?.tabBar.bounds.height ?? CFTabBarHeight,
-                                                        right: 0)
+        // 设置滚动条内边距,
+        // 代码到这里tableView一定有值
+        tableView?.scrollIndicatorInsets = tableView!.contentInset
         // 将tableView放在最底下
         view.insertSubview(tableView!, belowSubview: navigationBar)
         // 添加下拉刷新控件
@@ -170,9 +168,7 @@ extension CFBaseViewController: UITableViewDelegate,UITableViewDataSource {
             // 执行刷新
             requestData()
         }
-        
     }
-    
 }
 
 
@@ -181,9 +177,13 @@ extension CFBaseViewController {
     fileprivate func setupNotify() {
         // 监听用户登录成功通知
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kUserLoginSuccessNotification), object: nil, queue: nil) { (_) in
-            print("用户登录成功,可以开始刷新页面")
+            // 清除导航栏左右按钮
+            self.navItem.leftBarButtonItem = nil
+            self.navItem.rightBarButtonItem = nil
             // view = nil时,懒加载会重新调用LoadView重新加载视图,再执行viewDidLoad
             self.view = nil
+            // 避免通知重复注册
+            NotificationCenter.default.removeObserver(self)
         }
     }
 }

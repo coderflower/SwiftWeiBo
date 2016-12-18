@@ -76,10 +76,8 @@ extension CFOAuthViewController: UIWebViewDelegate {
             print(code)
             CFNetworker.shared.requestToken(code:code) { (isSuccess) in
                 if isSuccess {
-                    SVProgressHUD.showInfo(withStatus: "登录成功")
                     // 发送登录成功通知
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUserLoginSuccessNotification), object: nil)
-                    
                     // 关闭页面
                     self.closeAction()
                 } else {

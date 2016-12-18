@@ -8,6 +8,8 @@
 
 import UIKit
 import UserNotifications
+import SVProgressHUD
+import AFNetworking
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,19 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        if #available(iOS 10.0, *) {
-            // iOS10,注册推送通知
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay]) { (isSuccess, error) in
-                print("授权" + (isSuccess ? "成功" : "失败"))
-            }
-        }
-        else {
-            let settings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
-        
+        // 加载额外信心
+        setupAddition()
+        // 请求app信息
         loadAppInfo()
+        // 添加窗口,设置根控制器
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = CFMainViewController()
         window?.makeKeyAndVisible()
@@ -61,6 +55,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: - 设置应用程序额外信息
+extension AppDelegate {
+    /// 设置应用程序额外信息
+    fileprivate func setupAddition() {
+        // 注册推送通知
+        registerNotify()
+        // 设置指示器显示时间
+        SVProgressHUD.setMinimumDismissTimeInterval(1)
+        // 设置AFN加载数据菊花
+        AFNetworkActivityIndicatorManager.shared().isEnabled = true
+    }
+   fileprivate func registerNotify()  {
+        if #available(iOS 10.0, *) {
+            // iOS10,注册推送通知
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay]) { (isSuccess, error) in
+                print("授权" + (isSuccess ? "成功" : "失败"))
+            }
+        }
+        else {
+            let settings = UIUserNotificationSettings(types: [.alert,.badge,.sound], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(settings)
+        }
+
+    }
+}
+
+// MARK: - 从服务器加载应用程序信息
 extension AppDelegate {
     /// 从服务器加载应用程序信息
     fileprivate func loadAppInfo() {
