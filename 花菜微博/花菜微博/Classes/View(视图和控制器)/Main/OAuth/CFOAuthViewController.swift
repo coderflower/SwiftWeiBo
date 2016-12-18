@@ -17,6 +17,7 @@ class CFOAuthViewController: UIViewController {
         title = "登录新浪微博"
         webview.scalesPageToFit = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", target: self, action: #selector(backAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "自动填充", target: self, action: #selector(autoInputUser))
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,12 @@ class CFOAuthViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @objc fileprivate func autoInputUser() {
+        // 准备Js脚本
+        let script = "document.getElementById('userId').value = '17687929918'; document.getElementById('passwd').value = '4593679.a';"
+        // 注入js
+        self.webview.stringByEvaluatingJavaScript(from: script)
+    }
     /*
     // MARK: - Navigation
 

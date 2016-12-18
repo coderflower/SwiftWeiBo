@@ -18,5 +18,5 @@ let SinaAppKey = "941749531"
 /// 应用程序加密信息
 let SinaAppSecret = "96e15facd4e5d81626e66dd4a41bb5b7"
 /// 回到地址 - 登录成功完成跳转的URL
-let SinaRedirectURI = "http://baidu.com"
+let SinaRedirectURI = "http://caiflower.com"
 		
