@@ -15,6 +15,8 @@ enum HTTPMethod {
 }
 
 class CFNetworker: AFHTTPSessionManager {
+    // 用户信息
+    lazy var userAccount = CFAccount()
     
     static let shared : CFNetworker = {
         // 实例化对象
@@ -27,19 +29,16 @@ class CFNetworker: AFHTTPSessionManager {
         return instance
     }()
     
-    var accessToken: String? //= "2.005PaBhF2ylxHC6865a6e00cA8lMbC"
-    var uid: String? = "5365823342"
-    
     var authorizeUrlString: String {
         return "https://api.weibo.com/oauth2/authorize" + "?" + "client_id=\(SinaAppKey)" + "&" + "redirect_uri=\(SinaRedirectURI)"
     }
     
     var userLogon: Bool {
-        return accessToken != nil
+        return userAccount.access_token != nil
     }
     func tokenRequest(method: HTTPMethod = .GET, URLString: String, parameters: [String : AnyObject]? ,completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) -> () {
         // 处理token
-        guard let token = accessToken else {
+        guard let token = userAccount.access_token else {
             print("token 为 nil!, 请重新登录")
             // FIXME: 发送通知,提示用户登录
             completion(nil, false)

@@ -9,8 +9,19 @@
 import UIKit
 
 class CFAccount: NSObject {
+    /// 访问令牌
     var access_token: String?
-    var expires_in: String?
+    /// token过期时间
+    var expires_in: TimeInterval = 0 {
+        didSet {
+            expiresDate = Date(timeIntervalSinceNow: expires_in)
+        }
+    }
+    /// 用户uid
     var uid: String?
+    var expiresDate: Date?
     
+    override var description: String {
+        return yy_modelDescription()
+    }
 }

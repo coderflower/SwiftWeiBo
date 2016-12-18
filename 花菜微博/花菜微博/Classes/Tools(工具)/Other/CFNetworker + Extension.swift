@@ -31,7 +31,7 @@ extension CFNetworker {
     }
     
     func unreadCount(completion: @escaping (_ count: Int) -> ()) {
-        guard let uid = uid else {
+        guard let uid = userAccount.uid else {
             return
         }
         let urlString = "https://rm.api.weibo.com/2/remind/unread_count.json"
@@ -58,8 +58,9 @@ extension CFNetworker {
             "redirect_uri": SinaRedirectURI
                         ]
         request(method: .POST, URLString: urlString, parameters: parameters as [String : AnyObject]?) { (json, isSuccess) in
-            print(json)
-            
+            print(json ?? "")
+            self.userAccount.yy_modelSet(with: json as? [String : AnyObject] ?? [:])
+            print(self.userAccount)
         }
     }
 }
