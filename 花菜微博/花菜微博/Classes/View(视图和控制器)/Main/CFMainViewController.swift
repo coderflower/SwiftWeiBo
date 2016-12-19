@@ -110,11 +110,9 @@ extension CFMainViewController {
         let currentVersion = Bundle.main.targetVersion
         // 1. 取之前保存的版本号
         let oldVersion = UserDefaults.standard.object(forKey: CFBoundelVersionKey) as? String
-        // 2. 比较版本号
-        if currentVersion != oldVersion {
-            print("新版本")
-            UserDefaults.standard.set(currentVersion, forKey: CFBoundelVersionKey)
-        }
+        // 2. 保存当前版本号
+        UserDefaults.standard.set(currentVersion, forKey: CFBoundelVersionKey)
+        // 比较版本号
         return currentVersion != oldVersion
     }
 }
