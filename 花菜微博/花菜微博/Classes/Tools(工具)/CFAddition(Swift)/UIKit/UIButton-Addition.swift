@@ -19,7 +19,7 @@ extension UIButton {
     ///   - color: 按钮普通状态颜色,默认为黑色
     ///   - highlighterColor: 按钮高亮状态颜色,默认为白色
     ///   - backgroundImage: 按钮背景图片
-    convenience init(title: String, fontSize: CGFloat = 14,color: UIColor = UIColor.black, highlighterColor: UIColor = UIColor.white, backgroundImageName: String = "") {
+    convenience init(title: String?, fontSize: CGFloat = 14,color: UIColor = UIColor.black, highlighterColor: UIColor = UIColor.black, backgroundImageName: String = "", imageName: String = "") {
         self.init()
         
         self.setTitle(title, for: .normal)
@@ -27,6 +27,9 @@ extension UIButton {
         self.setTitleColor(color, for: .normal)
         self.setTitleColor(highlighterColor, for: .highlighted)
         self.setTitleColor(highlighterColor, for: .selected)
+        self.setImage(UIImage(named:imageName), for: .normal)
+        self.setImage(UIImage(named:imageName + "_highlighted"), for: .highlighted)
+        self.setImage(UIImage(named:imageName + "_selected"), for: .selected)
         self.setBackgroundImage(UIImage(named:backgroundImageName), for: .normal)
         self.sizeToFit()
     }

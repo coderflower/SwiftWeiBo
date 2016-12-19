@@ -58,13 +58,9 @@ class CFNetworker: AFHTTPSessionManager {
     
     
     func request(method: HTTPMethod = .GET, URLString: String, parameters: [String : AnyObject]? ,completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) -> (){
-        SVProgressHUD.setDefaultMaskType(.gradient)
-        SVProgressHUD.show(withStatus: "正在加载请稍后")
         // 成功回调
         let success = { (task: URLSessionDataTask, json: Any?)->() in            
             completion(json as AnyObject, true)
-            SVProgressHUD.dismiss()
-            SVProgressHUD.setDefaultMaskType(.clear)
         }
         // 失败回调
         let failure = { (task: URLSessionDataTask?, error: Error) -> () in
@@ -74,9 +70,6 @@ class CFNetworker: AFHTTPSessionManager {
                 // 发送通知,提示用户重新登录(本方法不知道谁被调用,谁接手通知,谁处理)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUserShoudLoginNotification), object: "bad token")
             }
-            SVProgressHUD.dismiss()
-            SVProgressHUD.setDefaultMaskType(.clear)
-            SVProgressHUD.showError(withStatus: "网络加载失败,请稍后重试")
             completion(nil, false)
         }
         

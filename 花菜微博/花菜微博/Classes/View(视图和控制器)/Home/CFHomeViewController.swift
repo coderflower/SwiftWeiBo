@@ -51,13 +51,17 @@ extension CFHomeViewController {
     private func setupNav() {
         // 设置左边按钮
         navItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
-        // 设置右边按钮
-        let btn = UIButton(title: CFNetworker.shared.userAccount.screen_name ?? "首页", fontSize: 17, color: UIColor.orange, highlighterColor: UIColor.orange)
+        // 设置titleView
+        let btn = UIButton(title: CFNetworker.shared.userAccount.screen_name ?? "首页", fontSize: 17)
         btn.setImage(UIImage(named:"navigationbar_arrow_down"), for: .normal)
         btn.setImage(UIImage(named:"navigationbar_arrow_up"), for: .selected)
+        // 取消高亮改变图片颜色
         btn.adjustsImageWhenHighlighted = false
+        // 自适应按钮
         btn.sizeToFit()
+        // 调整排版
         btn.adjustContent(margin: 10)
+        // 添加监听
         btn.addTarget(self, action: #selector(titleClick(btn:)), for: .touchUpInside)
         navItem.titleView = btn
     }
