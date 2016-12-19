@@ -91,15 +91,22 @@ extension CFMainViewController {
     }
     /// 初始化欢迎页
     private func setupNewFeatureView() {
+        // 如果更新,显示新特性,否则显示欢迎页
        let newView = isNewVersion ? CFNewFeatureView() : CFWelcomeView()
         newView.frame = view.bounds
+        
+        // 判断用户是否登录,如果用户没有登录,就不显示欢迎页
+        if !CFNetworker.shared.userLogon && newView.isKind(of: CFWelcomeView.self) {
+            print("用户没登录,且需要显示欢迎页")
+            return;
+        }
         view.addSubview(newView)
     }
     
     // extensions中可以有计算属性,不会占用存储空间
     /// 是否显示新特性
     fileprivate var isNewVersion: Bool {
-        return false
+        return true
     }
 }
 
