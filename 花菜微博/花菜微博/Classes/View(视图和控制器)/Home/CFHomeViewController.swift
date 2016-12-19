@@ -28,8 +28,13 @@ class CFHomeViewController: CFBaseViewController {
     /// 列表视图模型
     fileprivate lazy var listViewModel = CFStatusListViewModel()
     
+    /// 导航栏左边按钮点击
     @objc fileprivate func showFriends() {
         navigationController?.pushViewController(CFBaseViewController(), animated: true)
+    }
+    /// 标题点击事件
+    @objc fileprivate func titleClick(btn:UIButton) {
+        btn.isSelected = !btn.isSelected
     }
 }
 
@@ -37,14 +42,24 @@ class CFHomeViewController: CFBaseViewController {
 extension CFHomeViewController {
     override func setupTableView() {
         super.setupTableView()
-        
+        // 设置导航栏
         setupNav()
-        
+        // 注册cell
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: homeCellId)
     }
     // MARK: - 设置导航条
     private func setupNav() {
+        // 设置左边按钮
         navItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
+        // 设置右边按钮
+        let btn = UIButton(title: CFNetworker.shared.userAccount.screen_name ?? "首页", fontSize: 17, color: UIColor.orange, highlighterColor: UIColor.orange)
+        btn.setImage(UIImage(named:"navigationbar_arrow_down"), for: .normal)
+        btn.setImage(UIImage(named:"navigationbar_arrow_up"), for: .selected)
+        btn.adjustsImageWhenHighlighted = false
+        btn.sizeToFit()
+        btn.adjustContent(margin: 10)
+        btn.addTarget(self, action: #selector(titleClick(btn:)), for: .touchUpInside)
+        navItem.titleView = btn
     }
 }
 
@@ -79,5 +94,6 @@ extension CFHomeViewController {
         cell.textLabel?.text = listViewModel.statusList[indexPath.row].text
         return cell
     }
-    
 }
+
+
