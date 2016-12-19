@@ -18,8 +18,9 @@ class CFMainViewController: UITabBarController {
         delegate = self
         // 添加子控制器
         setupChildViewControllers()
-        // 初始化子控件
-        setupComposeButton()
+        // 初始子UI界面
+        setupUI()
+        
         // 初始化定时器
         setupTimer()
         // 注册登陆通知
@@ -68,19 +69,43 @@ class CFMainViewController: UITabBarController {
     fileprivate lazy var composeButton: UIButton = UIButton.cf_imageButton(
         "tabbar_compose_icon_add",
         backgroundImageName: "tabbar_compose_button")
-    }
+    
+}
 
-
-// MARK: - 加载子控制器
+// MARK: - UI界面相关
 extension CFMainViewController {
-    fileprivate func setupComposeButton() {
+    /// 初始化UI界面
+    fileprivate func setupUI() {
+        // 初始化发布按钮
+        setupComposeButton()
+        // 初始化欢迎页
+        setupNewFeatureView()
+    }
+    /// 初始化发布按钮
+    private func setupComposeButton() {
         tabBar.backgroundImage = UIImage(named: "tabbar_background")
         // 计算每个按钮的宽度 减1是为了容差
         let width = tabBar.bounds.width / CGFloat(childViewControllers.count)
         composeButton.frame = tabBar.bounds.insetBy(dx: 2 * width, dy: 0)
         tabBar.addSubview(composeButton)
     }
+    /// 初始化欢迎页
+    private func setupNewFeatureView() {
+       let newView = isNewVersion ? CFNewFeatureView() : CFWelcomeView()
+        newView.frame = view.bounds
+        view.addSubview(newView)
+    }
     
+    // extensions中可以有计算属性,不会占用存储空间
+    /// 是否显示新特性
+    fileprivate var isNewVersion: Bool {
+        return false
+    }
+}
+
+
+// MARK: - 加载子控制器
+extension CFMainViewController {
     fileprivate func setupChildViewControllers() {
     
         let jsonPath = "main.json".caches
