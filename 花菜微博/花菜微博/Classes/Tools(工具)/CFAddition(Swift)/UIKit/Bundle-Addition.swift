@@ -13,4 +13,8 @@ extension Bundle {
        return (infoDictionary?["CFBundleName"] as? String ?? "") + "."
     }
     
+    public var targetVersion: String {
+        return (infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
+    }
+
 }

@@ -106,7 +106,16 @@ extension CFMainViewController {
     // extensions中可以有计算属性,不会占用存储空间
     /// 是否显示新特性
     fileprivate var isNewVersion: Bool {
-        return true
+        // 0. 获取当前版本号
+        let currentVersion = Bundle.main.targetVersion
+        // 1. 取之前保存的版本号
+        let oldVersion = UserDefaults.standard.object(forKey: CFBoundelVersionKey) as? String
+        // 2. 比较版本号
+        if currentVersion != oldVersion {
+            print("新版本")
+            UserDefaults.standard.set(currentVersion, forKey: CFBoundelVersionKey)
+        }
+        return currentVersion != oldVersion
     }
 }
 

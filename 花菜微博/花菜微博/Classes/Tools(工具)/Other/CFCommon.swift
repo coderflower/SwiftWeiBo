@@ -25,3 +25,6 @@ let SinaAppSecret = "96e15facd4e5d81626e66dd4a41bb5b7"
 /// 回到地址 - 登录成功完成跳转的URL
 let SinaRedirectURI = "http://caiflower.com"
 
+
+// MARK: - 各种key
+let CFBoundelVersionKey = "CFBoundelVersionKey"
