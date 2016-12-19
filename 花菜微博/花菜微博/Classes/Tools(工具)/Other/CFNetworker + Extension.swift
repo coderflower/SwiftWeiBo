@@ -44,6 +44,24 @@ extension CFNetworker {
     }
 }
 
+// MARK: - 加载用户信息
+extension CFNetworker {
+    /// 加载当前用户信息,用户登录成功后立即执行
+    func loadUserInfo(completion: @escaping (_ dict: [String: AnyObject]) -> ()) {
+        guard let uid = userAccount.uid else {
+            NotificationCenter.default.post(name:  NSNotification.Name(rawValue: kUserShoudLoginNotification), object: "bad token")
+            return
+        }
+        let urlString = "https://api.weibo.com/2/users/show.json"
+        let parameters = ["uid": uid]
+        tokenRequest(URLString: urlString, parameters: parameters as [String : AnyObject]?) { (json, isSuccess) in
+            print(json ?? "登录失败")
+            completion(json as? [String: AnyObject] ?? [:])
+        }
+        
+    }
+}
+
 
 // MARK: - OAuth相关方法
 extension CFNetworker {
@@ -59,10 +77,18 @@ extension CFNetworker {
                         ]
         request(method: .POST, URLString: urlString, parameters: parameters as [String : AnyObject]?) { (json, isSuccess) in
             print(json ?? "")
+            // 字典转模型
             self.userAccount.yy_modelSet(with: json as? [String : AnyObject] ?? [:])
-            // 保存用户信息
-            self.userAccount .saveAccount()
-            completion(isSuccess)
+            // 加载当前用户信息
+            self.loadUserInfo(completion: { (dict) in
+                // 设置昵称,头像地址
+                self.userAccount.yy_modelSet(with: dict)
+                // 保存用户信息
+                self.userAccount.saveAccount()
+                print(self.userAccount)
+                // 用户信息加载完毕再请求
+                completion(isSuccess)
+            })
         }
     }
 }
