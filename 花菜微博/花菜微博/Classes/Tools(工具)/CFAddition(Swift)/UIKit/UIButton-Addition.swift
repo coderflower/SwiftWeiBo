@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum ContentType {
-    case Horizontal
-    case Vertical
-}
-
 extension UIButton {
     
     
@@ -51,24 +46,41 @@ extension UIButton {
     }
     
     
-    func adjustContent(contentType: ContentType = .Horizontal, margin: CGFloat) {
+    /// 快速排版并重新计算尺寸
+    ///
+    /// - Parameters:
+    ///   - isHorizontal: 是否是水平排版,默认为水平即文字在左边,图片在右边
+    ///   - margin: 图片与文字之间的间距
+    func adjustContent(isHorizontal: Bool = true, margin: CGFloat) {
         guard let imageSize = self.image(for: .normal)?.size,
-        let title = self.currentTitle
+            let title = self.currentTitle
             else {
                 return
         }
         // 计算文字尺寸
-        let titleSize = (title as NSString).cf_size(with: self.titleLabel!.font)
+        let titleSize = title.cf_size(font: self.titleLabel!.font)
         var tmpRect = self.frame
-        if contentType == .Horizontal {
+        if isHorizontal {
             // 文字左边,图片右边
-            self.imageEdgeInsets = UIEdgeInsets(top: 0, left: titleSize.width + margin, bottom: 0, right: -titleSize.width)
-            self.titleEdgeInsets = UIEdgeInsets(top: 0, left: -imageSize.width, bottom: -0, right: imageSize.width + margin)
+            self.imageEdgeInsets = UIEdgeInsets(top: 0,
+                                                left: titleSize.width + margin,
+                                                bottom: 0,
+                                                right: -titleSize.width)
+            self.titleEdgeInsets = UIEdgeInsets(top: 0,
+                                                left: -imageSize.width,
+                                                bottom: -0,
+                                                right: imageSize.width + margin)
             tmpRect.size.width += margin;
         } else {
             // 图片上面啊,文字下面
-            self.imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + margin), left: 0, bottom: 0, right: titleSize.width)
-            self.titleEdgeInsets = UIEdgeInsets(top: 0, left: -imageSize.width, bottom:  -(imageSize.height + margin), right: 0)
+            self.imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + margin),
+                                                left: 0,
+                                                bottom: 0,
+                                                right: -titleSize.width)
+            self.titleEdgeInsets = UIEdgeInsets(top: 0,
+                                                left: -imageSize.width,
+                                                bottom:  -(imageSize.height + margin),
+                                                right: 0)
             tmpRect.size.width = max(imageSize.width, titleSize.width);
         }
         self.frame = tmpRect

@@ -17,6 +17,7 @@
 		8322C3921DF43D43006C7EB7 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = 8322C3911DF43D43006C7EB7 /* main.json */; };
 		8322C3941DF444F7006C7EB7 /* String-Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C3931DF444F7006C7EB7 /* String-Addition.swift */; };
 		8322C3AC1DF4F0C8006C7EB7 /* Array-Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C3AB1DF4F0C8006C7EB7 /* Array-Addition.swift */; };
+		835348781E08104B00E3B715 /* String-Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835348771E08104B00E3B715 /* String-Addition.swift */; };
 		83B361F61DFEC01A0094ACCF /* CFNetworker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F51DFEC01A0094ACCF /* CFNetworker.swift */; };
 		83B361F91DFECD850094ACCF /* CFNetworker + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */; };
 		83B361FE1DFEECF30094ACCF /* CFStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361FD1DFEECF30094ACCF /* CFStatus.swift */; };
@@ -67,6 +68,7 @@
 		8322C3911DF43D43006C7EB7 /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		8322C3931DF444F7006C7EB7 /* String-Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Addition.swift"; sourceTree = "<group>"; };
 		8322C3AB1DF4F0C8006C7EB7 /* Array-Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array-Addition.swift"; sourceTree = "<group>"; };
+		835348771E08104B00E3B715 /* String-Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Addition.swift"; sourceTree = "<group>"; };
 		83B361F51DFEC01A0094ACCF /* CFNetworker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFNetworker.swift; sourceTree = "<group>"; };
 		83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFNetworker + Extension.swift"; sourceTree = "<group>"; };
 		83B361FD1DFEECF30094ACCF /* CFStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatus.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				83D71D3C1DF1937B008A8CEA /* Bundle-Addition.swift */,
 				8322C38D1DF414D7006C7EB7 /* UILabel-Addition.swift */,
 				8322C38F1DF4165D006C7EB7 /* UIButton-Addition.swift */,
+				835348771E08104B00E3B715 /* String-Addition.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				83D71D3D1DF1937B008A8CEA /* UIBarButtonItem-Addition.swift in Sources */,
 				83F6C6ED1DEF264A00ACF9E5 /* CFPofileViewController.swift in Sources */,
 				83F6C6C51DEF233900ACF9E5 /* AppDelegate.swift in Sources */,
+				835348781E08104B00E3B715 /* String-Addition.swift in Sources */,
 				83D71D281DF03C2C008A8CEA /* NSObject+CFRuntime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
