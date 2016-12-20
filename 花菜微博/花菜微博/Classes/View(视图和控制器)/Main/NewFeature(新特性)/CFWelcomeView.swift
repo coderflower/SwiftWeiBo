@@ -70,6 +70,7 @@ extension CFWelcomeView {
 
 // MARK: - 动画相关
 extension CFWelcomeView {
+    // 视图添加到window上,标识视图已经显示
     override func didMoveToWindow() {
         super.didMoveToWindow()
         // 强制更新约束
@@ -87,6 +88,7 @@ extension CFWelcomeView {
             UIView.animate(withDuration: 1, animations: { 
                 self.label.alpha = 1
             }, completion: { (_) in
+                // 动画完成后移除欢迎页
                 self.removeFromSuperview()
             })
         }
