@@ -12,4 +12,5 @@ pod 'YYModel'
 pod 'SVProgressHUD'
 pod 'FMDB'
 pod 'pop'
+pod 'SnapKit'
 end
