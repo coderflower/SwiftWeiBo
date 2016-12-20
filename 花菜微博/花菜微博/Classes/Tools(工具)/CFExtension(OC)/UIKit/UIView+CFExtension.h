@@ -10,15 +10,6 @@
 //#import "UIView+XXFrame.h"
 //IB_DESIGNABLE
 @interface UIView (CFExtension)
-/// 边线颜色
-@property (nonatomic, strong) IBInspectable UIColor *borderColor;
-
-/// 边线宽度
-@property (nonatomic, assign) IBInspectable CGFloat borderWidth;
-
-/// 圆角半径
-@property (nonatomic, assign) IBInspectable CGFloat cornerRadius;
-
 /// 从XIB加载控件
 + (UIView *)cf_loadFromXib;
 /**

@@ -19,6 +19,7 @@
 		8322C3AC1DF4F0C8006C7EB7 /* Array-Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322C3AB1DF4F0C8006C7EB7 /* Array-Addition.swift */; };
 		8353487B1E08202900E3B715 /* CFWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353487A1E08202900E3B715 /* CFWelcomeView.swift */; };
 		8353487D1E08203B00E3B715 /* CFNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353487C1E08203B00E3B715 /* CFNewFeatureView.swift */; };
+		8353489F1E0930D800E3B715 /* UIView-Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353489E1E0930D800E3B715 /* UIView-Layer.swift */; };
 		83B361F61DFEC01A0094ACCF /* CFNetworker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F51DFEC01A0094ACCF /* CFNetworker.swift */; };
 		83B361F91DFECD850094ACCF /* CFNetworker + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */; };
 		83B361FE1DFEECF30094ACCF /* CFStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361FD1DFEECF30094ACCF /* CFStatus.swift */; };
@@ -71,6 +72,7 @@
 		8322C3AB1DF4F0C8006C7EB7 /* Array-Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array-Addition.swift"; sourceTree = "<group>"; };
 		8353487A1E08202900E3B715 /* CFWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFWelcomeView.swift; sourceTree = "<group>"; };
 		8353487C1E08203B00E3B715 /* CFNewFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFNewFeatureView.swift; sourceTree = "<group>"; };
+		8353489E1E0930D800E3B715 /* UIView-Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Layer.swift"; sourceTree = "<group>"; };
 		83B361F51DFEC01A0094ACCF /* CFNetworker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFNetworker.swift; sourceTree = "<group>"; };
 		83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFNetworker + Extension.swift"; sourceTree = "<group>"; };
 		83B361FD1DFEECF30094ACCF /* CFStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatus.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				83D71D3C1DF1937B008A8CEA /* Bundle-Addition.swift */,
 				8322C38D1DF414D7006C7EB7 /* UILabel-Addition.swift */,
 				8322C38F1DF4165D006C7EB7 /* UIButton-Addition.swift */,
+				8353489E1E0930D800E3B715 /* UIView-Layer.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				83D71D2F1DF06072008A8CEA /* CFUntilConst.swift in Sources */,
 				83D71D3F1DF1937B008A8CEA /* UIScreen-Addition.swift in Sources */,
 				83D71CFC1DF02DD5008A8CEA /* NSObject+CFExtension.m in Sources */,
+				8353489F1E0930D800E3B715 /* UIView-Layer.swift in Sources */,
 				83D71D1B1DF02E12008A8CEA /* UITextField+Placeholder.m in Sources */,
 				8353487D1E08203B00E3B715 /* CFNewFeatureView.swift in Sources */,
 				83D71D171DF02E12008A8CEA /* UIButton+CFExtension.m in Sources */,
