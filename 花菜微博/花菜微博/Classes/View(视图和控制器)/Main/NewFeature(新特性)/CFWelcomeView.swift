@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 class CFWelcomeView: UIView {
     fileprivate lazy var iconView =  UIImageView(image: UIImage(named: "avatar_default_big"))
     fileprivate lazy var label: UILabel = UILabel(text: "欢迎回来", fontSize: 16)
@@ -38,6 +39,14 @@ extension CFWelcomeView {
         // 文字
         addSubview(label)
         label.alpha = 0
+        // 设置图片
+        guard let urlString = CFNetworker.shared.userAccount.avatar_large,
+            let url = URL(string: urlString) else {
+            return
+        }
+        iconView.sd_setImage(with: url, placeholderImage: UIImage(named: "avatar_default_big"))
+        // 设置圆角半径
+        iconView.cornerRadius = 85 * 0.5
     }
     
     
