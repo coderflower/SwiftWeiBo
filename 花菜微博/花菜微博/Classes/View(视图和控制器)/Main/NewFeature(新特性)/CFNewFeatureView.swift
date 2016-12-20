@@ -12,11 +12,14 @@ fileprivate let maxImageCount = 4
 class CFNewFeatureView: UIView {
     /// 进入微博按钮
     fileprivate lazy var enterButton: UIButton = UIButton(title: "进入微博", fontSize: 17, color: UIColor.white, highlightedColor: UIColor.white, imageName: nil, backgroundImageName: "new_feature_finish_button")
+    /// 分页控件
     fileprivate lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.numberOfPages = maxImageCount
         pageControl.pageIndicatorTintColor = UIColor.black
         pageControl.currentPageIndicatorTintColor = UIColor.orange
+        // 禁用交互
+        pageControl.isUserInteractionEnabled = false
         pageControl.sizeToFit()
         return pageControl
     }()
