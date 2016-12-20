@@ -200,13 +200,18 @@ extension CFMainViewController: UITabBarControllerDelegate {
         // 判断当前页面是否是被选中的控制器
         if selectedViewController == viewController {
             // FIXME: 滚动到最顶部,刷新数据
-            print("滚动到最顶部,刷新数据")
             let nav = viewController as? UINavigationController
             let vc =  nav?.viewControllers.first as? CFBaseViewController
+            // 滚动到顶部
             vc?.tableView?.setContentOffset(CGPoint(x: 0, y: -CFNavigationBarHeight), animated: true)
+            // 刷新数据
             DispatchQueue.main.asyncAfter(deadline: 1, execute: { 
                 vc?.requestData()
-            })  
+            })
+            // 清空角标
+            vc?.tabBarItem.badgeValue = nil
+            UIApplication.shared.applicationIconBadgeNumber = 0
+            
         }
         return !(viewController.isMember(of: UIViewController.self))
     }

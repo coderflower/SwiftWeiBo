@@ -149,11 +149,12 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		8317B0BE1E059FDB007F0138 /* OAuth */ = {
+		8317B0BE1E059FDB007F0138 /* OAuth(授权) */ = {
 			isa = PBXGroup;
 			children = (
 				8317B0BF1E05A003007F0138 /* CFOAuthViewController.swift */,
 			);
+			name = "OAuth(授权)";
 			path = OAuth;
 			sourceTree = "<group>";
 		};
@@ -319,10 +320,10 @@
 		83F6C6D61DEF250500ACF9E5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				83F6C6D81DEF250500ACF9E5 /* Tools(工具) */,
 				83F6C6D71DEF250500ACF9E5 /* Model(模型) */,
 				83F6C6D91DEF250500ACF9E5 /* View(视图和控制器) */,
 				83F6C6DF1DEF250500ACF9E5 /* ViewModel(视图模型) */,
+				83F6C6D81DEF250500ACF9E5 /* Tools(工具) */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -377,11 +378,11 @@
 		83F6C6DC1DEF250500ACF9E5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				835348791E08200B00E3B715 /* NewFeature(新特性) */,
-				8317B0BE1E059FDB007F0138 /* OAuth */,
 				8322C3881DF324E1006C7EB7 /* 主控制器 */,
-				8322C3891DF324F3006C7EB7 /* 基类控制器 */,
+				835348791E08200B00E3B715 /* NewFeature(新特性) */,
+				8317B0BE1E059FDB007F0138 /* OAuth(授权) */,
 				8322C38A1DF40C52006C7EB7 /* 访客视图 */,
+				8322C3891DF324F3006C7EB7 /* 基类控制器 */,
 			);
 			path = Main;
 			sourceTree = "<group>";
