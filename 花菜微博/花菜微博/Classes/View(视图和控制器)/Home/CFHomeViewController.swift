@@ -52,7 +52,7 @@ extension CFHomeViewController {
         // 设置左边按钮
         navItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
         // 设置titleView
-        let btn = UIButton(title: CFNetworker.shared.userAccount.screen_name ?? "首页", fontSize: 17)
+        let btn = UIButton(title: CFNetworker.shared.userAccount.screen_name ?? "首页", fontSize: 17, imageName: nil, backgroundImageName: nil)
         btn.setImage(UIImage(named:"navigationbar_arrow_down"), for: .normal)
         btn.setImage(UIImage(named:"navigationbar_arrow_up"), for: .selected)
         // 取消高亮改变图片颜色
