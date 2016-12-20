@@ -33,14 +33,14 @@ class CFVisitorView: UIView {
     lazy var registerButton: UIButton = UIButton(title: "注册",
                                                              fontSize: 14,
                                                              color: UIColor.orange,
-                                                             highlighterColor: UIColor.black,
+                                                             highlightedColor: UIColor.black,
                                                              imageName: nil,
                                                              backgroundImageName: "common_button_white_disable")
     /// 登录按钮
     lazy var loginButton: UIButton = UIButton(title: "登录",
                                                           fontSize: 14,
                                                           color: UIColor.darkGray,
-                                                          highlighterColor: UIColor.darkGray,
+                                                          highlightedColor: UIColor.darkGray,
                                                           imageName: nil,
                                                           backgroundImageName: "common_button_white_disable")
 

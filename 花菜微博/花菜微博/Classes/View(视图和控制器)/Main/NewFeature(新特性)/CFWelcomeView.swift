@@ -80,7 +80,7 @@ extension CFWelcomeView {
             make.bottom.equalToSuperview().offset(-(UIScreen.main.bounds.height - 200))
         }
         // 执行动画
-        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
             // 更新约束
             self.layoutIfNeeded()
         }) { (_) in

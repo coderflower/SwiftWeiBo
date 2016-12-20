@@ -13,8 +13,6 @@ class CFNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-
         // Do any additional setup after loading the view.
         // 隐藏系统的导航条
         navigationBar.isHidden = true

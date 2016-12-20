@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+// MARK: - layer相关属性
 extension UIView {
     
     var borderColor: UIColor {
@@ -25,6 +27,7 @@ extension UIView {
         }
         set {
             self.layer.masksToBounds = true;
+            // 栅格化优化性能
             self.layer.rasterizationScale = UIScreen.main.scale;
             self.layer.shouldRasterize = true;
             self.layer.cornerRadius = newValue
@@ -39,5 +42,9 @@ extension UIView {
             self.layer.borderWidth = newValue
         }
     }
+}
 
+
+extension UIView {
+    
 }

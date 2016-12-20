@@ -19,14 +19,14 @@ extension UIButton {
     ///   - color: 按钮普通状态颜色,默认为黑色
     ///   - highlighterColor: 按钮高亮状态颜色,默认为白色
     ///   - backgroundImage: 按钮背景图片
-    convenience init(title: String?, fontSize: CGFloat = 14,color: UIColor = UIColor.black, highlighterColor: UIColor = UIColor.black, imageName: String?, backgroundImageName: String?) {
+    convenience init(title: String?, fontSize: CGFloat = 14,color: UIColor = UIColor.black, highlightedColor: UIColor = UIColor.black, imageName: String?, backgroundImageName: String?) {
         self.init()
         
         self.setTitle(title, for: .normal)
         self.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
         self.setTitleColor(color, for: .normal)
-        self.setTitleColor(highlighterColor, for: .highlighted)
-        self.setTitleColor(highlighterColor, for: .selected)
+        self.setTitleColor(highlightedColor, for: .highlighted)
+        self.setTitleColor(highlightedColor, for: .selected)
         if let imageName = imageName {
             self.setImage(UIImage(named:imageName), for: .normal)
             self.setImage(UIImage(named:imageName + "_highlighted"), for: .highlighted)
@@ -53,6 +53,11 @@ extension UIButton {
     }
     
     
+}
+
+
+// MARK: - 按钮排版
+extension UIButton {
     /// 快速排版并重新计算尺寸
     ///
     /// - Parameters:
@@ -92,4 +97,5 @@ extension UIButton {
         }
         self.frame = tmpRect
     }
+
 }
