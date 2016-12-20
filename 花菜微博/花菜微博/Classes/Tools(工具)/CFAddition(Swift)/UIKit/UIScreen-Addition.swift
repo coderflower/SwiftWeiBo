@@ -16,7 +16,4 @@ extension UIScreen {
     public var cf_screenHeight: CGFloat {
         return bounds.size.height
     }
-    public var cf_scale: CGFloat {
-        return scale
-    }
 }

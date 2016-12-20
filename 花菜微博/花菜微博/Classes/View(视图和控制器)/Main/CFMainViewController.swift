@@ -113,7 +113,7 @@ extension CFMainViewController {
         // 2. 保存当前版本号
         UserDefaults.standard.set(currentVersion, forKey: CFBoundelVersionKey)
         // 比较版本号
-        return currentVersion == oldVersion
+        return currentVersion != oldVersion
     }
 }
 

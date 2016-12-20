@@ -41,11 +41,17 @@ extension CFNewFeatureView {
         setupContentView()
         // 添加进入微博按钮
         addSubview(enterButton)
-        enterButton.isHidden = true
         // 添加分页控件
         addSubview(pageControl)
+        // 配置子控件
+        configSubviews()
     }
     
+    private func configSubviews() {
+        // 隐藏进入按钮
+        enterButton.isHidden = true
+        enterButton.addTarget(self, action: #selector(enterStatus), for: .touchUpInside)
+    }
     
     private func setupContentView() {
         // 获取主屏幕尺寸
@@ -54,7 +60,7 @@ extension CFNewFeatureView {
         let scrollView = UIScrollView(frame: rect)
         addSubview(scrollView)
         // 设置代理
-        
+        scrollView.delegate = self
         // 取出滚动条
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
@@ -82,5 +88,40 @@ extension CFNewFeatureView {
         enterButton.frame.origin.y = rect.height - enterButton.frame.height - 200
         pageControl.center.x = enterButton.center.x
         pageControl.frame.origin.y = enterButton.frame.maxY + 10
+    }
+}
+
+extension CFNewFeatureView: UIScrollViewDelegate {
+    
+    /// 滚动时调用
+    ///
+    /// - Parameter scrollView: scrollView
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = Int(scrollView.contentOffset.x / scrollView.frame.width + 0.5)
+        pageControl.currentPage = page
+        enterButton.isHidden = true
+        pageControl.isHidden = page == scrollView.subviews.count
+    }
+    
+    /// 减速时调用
+    ///
+    /// - Parameter scrollView: scrollView
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let page = Int(scrollView.contentOffset.x / scrollView.frame.width)
+        // 移除视图
+        if page == scrollView.subviews.count {
+            removeFromSuperview()
+        }
+        // 倒数第二页显示进入微博按钮
+        enterButton.isHidden = page != scrollView.subviews.count - 1
+    }
+}
+
+
+// MARK: - 按钮点击方法处理
+extension CFNewFeatureView {
+
+    @objc fileprivate func enterStatus() {
+        self.removeFromSuperview()
     }
 }
