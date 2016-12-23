@@ -17,8 +17,8 @@ private let maxPullupTryTimes = 3
  */
 /// 负责微博的数据处理
 class CFStatusListViewModel {
-    /// 微博模型数组
-    lazy var statusList = [CFStatus]()
+    /// 微博视图模型数组
+    lazy var statusList = [CFStatusViewModel]()
     /// 上拉刷新错误次数
     fileprivate var pullupErrorTimes = 0
     
@@ -35,25 +35,40 @@ class CFStatusListViewModel {
             completion(false, false)
         }
         // 如果是上拉刷新那么since_id = 0,否则为就是数组第一条微博的id
-        let since_id = isPullup ? 0 : (statusList.first?.id ?? 0)
+        let since_id = isPullup ? 0 : (statusList.first?.status.id ?? 0)
         // 上拉刷新,最后一条数据的id否则为0
-        let max_id = !isPullup ? 0 : (statusList.last?.id ?? 0)
+        let max_id = !isPullup ? 0 : (statusList.last?.status.id ?? 0)
         CFNetworker.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
-            // 字典转模型
-            guard let array = NSArray.yy_modelArray(with: CFStatus.self, json: list ?? []) as? [CFStatus] else {
-                completion(isSuccess,false)
+            // 网络失败处理
+            if !isSuccess {
+                completion(false, false)
                 return
             }
-            print("新增 \(array.count)条数据")
-            // FIXME: 拼接数据
-            if isPullup {
-                self.statusList += array
-            }
-            else {
-                self.statusList = array + self.statusList
+            
+            var tmpArray = [CFStatusViewModel]()
+            
+            for dict in list ?? []{
+                guard let model = CFStatus.yy_model(with: dict) else {
+                    continue
+                }
+                tmpArray.append(CFStatusViewModel(status: model))
             }
             
-            if isPullup && array.count == 0 {
+            // 字典转模型
+//            guard let array = NSArray.yy_modelArray(with: CFStatus.self, json: list ?? []) as? [CFStatus] else {
+//                completion(isSuccess,false)
+//                return
+//            }
+            print("新增 \(tmpArray.count)条数据")
+            // FIXME: 拼接数据
+            if isPullup {
+                self.statusList += tmpArray
+            }
+            else {
+                self.statusList = tmpArray + self.statusList
+            }
+            
+            if isPullup && tmpArray.count == 0 {
                 self.pullupErrorTimes += 1
                 completion(isSuccess,false)
             }

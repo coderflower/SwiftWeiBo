@@ -27,6 +27,8 @@
 		83C9385F1E0D445600D05DA9 /* UIImage+Additon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C9385E1E0D445600D05DA9 /* UIImage+Additon.swift */; };
 		83C938A11E0D66B500D05DA9 /* CFStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C938A01E0D66B500D05DA9 /* CFStatusCell.swift */; };
 		83C938A31E0D66DB00D05DA9 /* CFStatusNomalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C938A21E0D66DB00D05DA9 /* CFStatusNomalCell.xib */; };
+		83C938A51E0D752100D05DA9 /* CFUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C938A41E0D752100D05DA9 /* CFUser.swift */; };
+		83C938A71E0D80B800D05DA9 /* CFStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C938A61E0D80B800D05DA9 /* CFStatusViewModel.swift */; };
 		83D71CFA1DF02DD5008A8CEA /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF31DF02DD5008A8CEA /* Foundation+Log.m */; };
 		83D71CFC1DF02DD5008A8CEA /* NSObject+CFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF71DF02DD5008A8CEA /* NSObject+CFExtension.m */; };
 		83D71CFD1DF02DD5008A8CEA /* NSString+CFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF91DF02DD5008A8CEA /* NSString+CFExtension.m */; };
@@ -83,6 +85,8 @@
 		83C9385E1E0D445600D05DA9 /* UIImage+Additon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Additon.swift"; sourceTree = "<group>"; };
 		83C938A01E0D66B500D05DA9 /* CFStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatusCell.swift; sourceTree = "<group>"; };
 		83C938A21E0D66DB00D05DA9 /* CFStatusNomalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFStatusNomalCell.xib; sourceTree = "<group>"; };
+		83C938A41E0D752100D05DA9 /* CFUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFUser.swift; sourceTree = "<group>"; };
+		83C938A61E0D80B800D05DA9 /* CFStatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatusViewModel.swift; sourceTree = "<group>"; };
 		83D71CF31DF02DD5008A8CEA /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		83D71CF61DF02DD5008A8CEA /* NSObject+CFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CFExtension.h"; sourceTree = "<group>"; };
 		83D71CF71DF02DD5008A8CEA /* NSObject+CFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CFExtension.m"; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@
 			children = (
 				83B361FD1DFEECF30094ACCF /* CFStatus.swift */,
 				8304BB3D1E067D8400F46D98 /* CFAccount.swift */,
+				83C938A41E0D752100D05DA9 /* CFUser.swift */,
 			);
 			path = "Model(模型)";
 			sourceTree = "<group>";
@@ -416,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				83B361FF1DFEEED40094ACCF /* CFStatusListViewModel.swift */,
+				83C938A61E0D80B800D05DA9 /* CFStatusViewModel.swift */,
 			);
 			path = "ViewModel(视图模型)";
 			sourceTree = "<group>";
@@ -601,9 +607,11 @@
 				83D71D211DF02E12008A8CEA /* UIImageView+CFExtension.m in Sources */,
 				83D71CFD1DF02DD5008A8CEA /* NSString+CFExtension.m in Sources */,
 				83F6C6E31DEF256D00ACF9E5 /* CFNavigationController.swift in Sources */,
+				83C938A71E0D80B800D05DA9 /* CFStatusViewModel.swift in Sources */,
 				83B362001DFEEED40094ACCF /* CFStatusListViewModel.swift in Sources */,
 				83D71D161DF02E12008A8CEA /* UIButton+CFCountDown.m in Sources */,
 				83F6C6E11DEF255600ACF9E5 /* CFMainViewController.swift in Sources */,
+				83C938A51E0D752100D05DA9 /* CFUser.swift in Sources */,
 				83B361F61DFEC01A0094ACCF /* CFNetworker.swift in Sources */,
 				8322C3941DF444F7006C7EB7 /* String-Addition.swift in Sources */,
 				8304BB3E1E067D8400F46D98 /* CFAccount.swift in Sources */,
