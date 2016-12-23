@@ -46,8 +46,12 @@ extension CFHomeViewController {
         setupNav()
         // 注册cell
         tableView?.register(UINib(nibName: "CFStatusNomalCell", bundle: nil), forCellReuseIdentifier: homeCellId)
+        // 设置行高自动计算
         tableView?.rowHeight = UITableViewAutomaticDimension
+        // 设置估算行高
         tableView?.estimatedRowHeight = 300
+        // 取消分割线
+        tableView?.separatorStyle = .none
     }
     // MARK: - 设置导航条
     private func setupNav() {
