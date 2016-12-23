@@ -45,7 +45,7 @@ extension CFHomeViewController {
         // 设置导航栏
         setupNav()
         // 注册cell
-        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: homeCellId)
+        tableView?.register(UINib(nibName: "CFStatusNomalCell", bundle: nil), forCellReuseIdentifier: homeCellId)
     }
     // MARK: - 设置导航条
     private func setupNav() {
@@ -94,7 +94,7 @@ extension CFHomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: homeCellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: homeCellId, for: indexPath) as! CFStatusCell
         cell.textLabel?.text = listViewModel.statusList[indexPath.row].text
         return cell
     }
