@@ -24,6 +24,7 @@
 		83B361F91DFECD850094ACCF /* CFNetworker + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */; };
 		83B361FE1DFEECF30094ACCF /* CFStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361FD1DFEECF30094ACCF /* CFStatus.swift */; };
 		83B362001DFEEED40094ACCF /* CFStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361FF1DFEEED40094ACCF /* CFStatusListViewModel.swift */; };
+		83C9385F1E0D445600D05DA9 /* UIImage+Additon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C9385E1E0D445600D05DA9 /* UIImage+Additon.swift */; };
 		83D71CFA1DF02DD5008A8CEA /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF31DF02DD5008A8CEA /* Foundation+Log.m */; };
 		83D71CFC1DF02DD5008A8CEA /* NSObject+CFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF71DF02DD5008A8CEA /* NSObject+CFExtension.m */; };
 		83D71CFD1DF02DD5008A8CEA /* NSString+CFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF91DF02DD5008A8CEA /* NSString+CFExtension.m */; };
@@ -77,6 +78,7 @@
 		83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFNetworker + Extension.swift"; sourceTree = "<group>"; };
 		83B361FD1DFEECF30094ACCF /* CFStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatus.swift; sourceTree = "<group>"; };
 		83B361FF1DFEEED40094ACCF /* CFStatusListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatusListViewModel.swift; sourceTree = "<group>"; };
+		83C9385E1E0D445600D05DA9 /* UIImage+Additon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Additon.swift"; sourceTree = "<group>"; };
 		83D71CF31DF02DD5008A8CEA /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		83D71CF61DF02DD5008A8CEA /* NSObject+CFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CFExtension.h"; sourceTree = "<group>"; };
 		83D71CF71DF02DD5008A8CEA /* NSObject+CFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CFExtension.m"; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				8322C38D1DF414D7006C7EB7 /* UILabel-Addition.swift */,
 				8322C38F1DF4165D006C7EB7 /* UIButton-Addition.swift */,
 				8353489E1E0930D800E3B715 /* UIView-Layer.swift */,
+				83C9385E1E0D445600D05DA9 /* UIImage+Additon.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				83D71D2F1DF06072008A8CEA /* CFUntilConst.swift in Sources */,
 				83D71D3F1DF1937B008A8CEA /* UIScreen-Addition.swift in Sources */,
 				83D71CFC1DF02DD5008A8CEA /* NSObject+CFExtension.m in Sources */,
+				83C9385F1E0D445600D05DA9 /* UIImage+Additon.swift in Sources */,
 				8353489F1E0930D800E3B715 /* UIView-Layer.swift in Sources */,
 				83D71D1B1DF02E12008A8CEA /* UITextField+Placeholder.m in Sources */,
 				8353487D1E08203B00E3B715 /* CFNewFeatureView.swift in Sources */,
