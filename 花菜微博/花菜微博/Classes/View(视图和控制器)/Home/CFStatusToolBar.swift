@@ -11,9 +11,9 @@ import UIKit
 class CFStatusToolBar: UIView {
     var viewModel: CFStatusViewModel? {
         didSet {
-            retweetButton.setTitle("\(viewModel?.status.reposts_count)", for: .normal)
-            commentButton.setTitle("\(viewModel?.status.comments_count)", for: .normal)
-            likeButton.setTitle("\(viewModel?.status.attitudes_count)", for: .normal)
+            retweetButton.setTitle(viewModel?.retweetStr, for: .normal)
+            commentButton.setTitle(viewModel?.commentStr, for: .normal)
+            likeButton.setTitle(viewModel?.likeStr, for: .normal)
         }
     }
     
