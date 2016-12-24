@@ -63,7 +63,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Et4-EI-zJO" userLabel="底部工具栏">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Et4-EI-zJO" userLabel="底部工具栏" customClass="CFStatusToolBar" customModule="花菜微博" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="356" width="428" height="28"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uhu-ep-bu0">
@@ -126,6 +126,11 @@
                             <constraint firstItem="AY7-8h-3Gf" firstAttribute="height" secondItem="Uhu-ep-bu0" secondAttribute="height" id="vO3-tj-uLm"/>
                             <constraint firstAttribute="bottom" secondItem="VgX-oJ-Puc" secondAttribute="bottom" id="vuw-nQ-Amh"/>
                         </constraints>
+                        <connections>
+                            <outlet property="commentButton" destination="VgX-oJ-Puc" id="ksK-TT-Ggf"/>
+                            <outlet property="likeButton" destination="AY7-8h-3Gf" id="Os8-Mx-xao"/>
+                            <outlet property="retweetButton" destination="Uhu-ep-bu0" id="94a-nZ-UC0"/>
+                        </connections>
                     </view>
                 </subviews>
                 <constraints>
@@ -160,6 +165,7 @@
                 <outlet property="nameLabel" destination="QZD-MF-fpS" id="Ecg-tz-Nav"/>
                 <outlet property="sourceLable" destination="OMG-ZR-42v" id="xGi-Cb-YCF"/>
                 <outlet property="timeLabel" destination="vVt-5g-93f" id="x0H-Bw-Wd5"/>
+                <outlet property="toolBar" destination="Et4-EI-zJO" id="H1N-WQ-XFb"/>
                 <outlet property="vipIconView" destination="sdg-DA-q4M" id="cO2-MD-LBT"/>
             </connections>
             <point key="canvasLocation" x="-122" y="96"/>

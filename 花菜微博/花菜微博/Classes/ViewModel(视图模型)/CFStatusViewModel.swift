@@ -22,6 +22,7 @@ class CFStatusViewModel: CustomStringConvertible {
     /// 会员图标
     var memberIcon: UIImage?
     var vipIcon: UIImage?
+
     
     init(model: CFStatus) {
         self.status = model

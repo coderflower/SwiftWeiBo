@@ -22,6 +22,8 @@ class CFStatusCell: UITableViewCell {
             // 认证图标
             vipIconView.image = viewModel?.vipIcon
             iconView.cf_setImage(urlString: viewModel?.status.user?.profile_image_url, placeholderImage: UIImage(named: "avatar_default_big"), isCircle: true)
+            // 底部工具条
+            toolBar.viewModel = viewModel
         }
     }
     
@@ -31,17 +33,16 @@ class CFStatusCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     /// 会员
     @IBOutlet weak var memberIconView: UIImageView!
-    
     /// 认证
     @IBOutlet weak var vipIconView: UIImageView!
-    
     /// 时间
     @IBOutlet weak var timeLabel: UILabel!
     /// 来源
     @IBOutlet weak var sourceLable: UILabel!
-    
     /// 正文
     @IBOutlet weak var contentLabel: UILabel!
+    /// 底部工具条
+    @IBOutlet weak var toolBar: CFStatusToolBar!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

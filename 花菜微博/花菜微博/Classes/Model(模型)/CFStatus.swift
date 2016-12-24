@@ -9,9 +9,19 @@
 import UIKit
 import YYModel
 class CFStatus: NSObject {
+    /// 微博ID
     var id: Int64 = 0
-    var text: String? 
+    /// 微博正文
+    var text: String?
+    /// 用户
     var user: CFUser?
+    /// 转发数
+    var reposts_count: Int = 0
+    /// 评论数
+    var comments_count: Int = 0
+    /// 点赞数
+    var attitudes_count: Int = 0
+    
     override var description: String {
         return yy_modelDescription()
     }
