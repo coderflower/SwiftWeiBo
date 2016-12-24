@@ -15,6 +15,8 @@ class CFStatus: NSObject {
     var text: String?
     /// 用户
     var user: CFUser?
+    /// 配图
+    var pic_urls: [CFStatusPicture]?
     /// 转发数
     var reposts_count: Int = 0
     /// 评论数
@@ -24,5 +26,9 @@ class CFStatus: NSObject {
     
     override var description: String {
         return yy_modelDescription()
+    }
+    
+    class func modelContainerPropertyGenericClass() -> [String: AnyClass] {
+        return ["pic_urls": CFStatusPicture.self]
     }
 }

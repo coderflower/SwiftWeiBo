@@ -21,6 +21,7 @@
 		8353487D1E08203B00E3B715 /* CFNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353487C1E08203B00E3B715 /* CFNewFeatureView.swift */; };
 		8353489F1E0930D800E3B715 /* UIView-Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353489E1E0930D800E3B715 /* UIView-Layer.swift */; };
 		83691E201E0EDD0400578E5E /* CFPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83691E1F1E0EDD0400578E5E /* CFPictureView.swift */; };
+		83691E221E0EE29400578E5E /* CFStatusPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83691E211E0EE29400578E5E /* CFStatusPicture.swift */; };
 		83B361F61DFEC01A0094ACCF /* CFNetworker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F51DFEC01A0094ACCF /* CFNetworker.swift */; };
 		83B361F91DFECD850094ACCF /* CFNetworker + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */; };
 		83B361FE1DFEECF30094ACCF /* CFStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361FD1DFEECF30094ACCF /* CFStatus.swift */; };
@@ -82,6 +83,7 @@
 		8353487C1E08203B00E3B715 /* CFNewFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFNewFeatureView.swift; sourceTree = "<group>"; };
 		8353489E1E0930D800E3B715 /* UIView-Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Layer.swift"; sourceTree = "<group>"; };
 		83691E1F1E0EDD0400578E5E /* CFPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFPictureView.swift; sourceTree = "<group>"; };
+		83691E211E0EE29400578E5E /* CFStatusPicture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatusPicture.swift; sourceTree = "<group>"; };
 		83B361F51DFEC01A0094ACCF /* CFNetworker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFNetworker.swift; sourceTree = "<group>"; };
 		83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFNetworker + Extension.swift"; sourceTree = "<group>"; };
 		83B361FD1DFEECF30094ACCF /* CFStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatus.swift; sourceTree = "<group>"; };
@@ -365,9 +367,10 @@
 		83F6C6D71DEF250500ACF9E5 /* Model(模型) */ = {
 			isa = PBXGroup;
 			children = (
-				83B361FD1DFEECF30094ACCF /* CFStatus.swift */,
 				8304BB3D1E067D8400F46D98 /* CFAccount.swift */,
+				83B361FD1DFEECF30094ACCF /* CFStatus.swift */,
 				83C938A41E0D752100D05DA9 /* CFUser.swift */,
+				83691E211E0EE29400578E5E /* CFStatusPicture.swift */,
 			);
 			path = "Model(模型)";
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				83B361F91DFECD850094ACCF /* CFNetworker + Extension.swift in Sources */,
 				83D71D1C1DF02E12008A8CEA /* UIView+CFAnimation.m in Sources */,
 				8322C38E1DF414D7006C7EB7 /* UILabel-Addition.swift in Sources */,
+				83691E221E0EE29400578E5E /* CFStatusPicture.swift in Sources */,
 				8317B0C01E05A003007F0138 /* CFOAuthViewController.swift in Sources */,
 				83D71D3E1DF1937B008A8CEA /* UIColor-Addition.swift in Sources */,
 				83D71D191DF02E12008A8CEA /* UIImage+CFExtension.m in Sources */,
