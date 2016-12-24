@@ -25,10 +25,10 @@ extension UIImageView {
                 return
         }
         
-        sd_setImage(with: url, placeholderImage: placeholderImage, options: [], progress: nil) { (image, _, _, _) in
+        sd_setImage(with: url, placeholderImage: placeholderImage, options: [], progress: nil) { [weak self] (image, _, _, _) in
             // 判断是否需要切成圆形
             if isCircle {
-                self.image = image?.cf_resizing(size: nil)
+                self?.image = image?.cf_resizing(size: self?.bounds.size)
             }
         }
     }
