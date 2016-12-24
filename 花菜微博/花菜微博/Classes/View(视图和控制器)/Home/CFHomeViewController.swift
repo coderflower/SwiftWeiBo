@@ -101,7 +101,8 @@ extension CFHomeViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: homeCellId, for: indexPath) as! CFStatusCell
-        cell.contentLabel.text = listViewModel.statusList[indexPath.row].status.text
+        let viewModel = listViewModel.statusList[indexPath.row]
+        cell.viewModel = viewModel
         return cell
     }
 }

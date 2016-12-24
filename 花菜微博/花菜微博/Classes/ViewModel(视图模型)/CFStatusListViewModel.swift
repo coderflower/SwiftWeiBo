@@ -44,23 +44,20 @@ class CFStatusListViewModel {
                 completion(false, false)
                 return
             }
-            
+            // 创建视图模型数组
             var tmpArray = [CFStatusViewModel]()
             
             for dict in list ?? []{
+                // 字典转模型
                 guard let model = CFStatus.yy_model(with: dict) else {
                     continue
                 }
-                tmpArray.append(CFStatusViewModel(status: model))
+                // 添加到数组
+                tmpArray.append(CFStatusViewModel(model: model))
             }
             
-            // 字典转模型
-//            guard let array = NSArray.yy_modelArray(with: CFStatus.self, json: list ?? []) as? [CFStatus] else {
-//                completion(isSuccess,false)
-//                return
-//            }
             print("新增 \(tmpArray.count)条数据")
-            // FIXME: 拼接数据
+            // 拼接数据
             if isPullup {
                 self.statusList += tmpArray
             }

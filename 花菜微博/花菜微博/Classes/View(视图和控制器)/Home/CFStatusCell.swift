@@ -10,6 +10,19 @@ import UIKit
 
 class CFStatusCell: UITableViewCell {
 
+    /// 微博视图模型
+    var viewModel: CFStatusViewModel? {
+        didSet {
+            // 昵称
+            nameLabel.text = viewModel?.status.user?.screen_name
+            // 内容
+            contentLabel.text = viewModel?.status.text
+            // 会员图标
+            memberIconView.image = viewModel?.memberIcon
+            // 认证图标
+            vipIconView.image = viewModel?.vipIcon
+        }
+    }
     
     /// 头像
     @IBOutlet weak var iconView: UIImageView!
