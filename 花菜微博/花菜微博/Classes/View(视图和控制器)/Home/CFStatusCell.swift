@@ -21,6 +21,7 @@ class CFStatusCell: UITableViewCell {
             memberIconView.image = viewModel?.memberIcon
             // 认证图标
             vipIconView.image = viewModel?.vipIcon
+            iconView.cf_setImage(urlString: viewModel?.status.user?.profile_image_url, placeholderImage: UIImage(named: "avatar_default_big"), isCircle: true)
         }
     }
     

@@ -29,6 +29,7 @@
 		83C938A31E0D66DB00D05DA9 /* CFStatusNomalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C938A21E0D66DB00D05DA9 /* CFStatusNomalCell.xib */; };
 		83C938A51E0D752100D05DA9 /* CFUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C938A41E0D752100D05DA9 /* CFUser.swift */; };
 		83C938A71E0D80B800D05DA9 /* CFStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C938A61E0D80B800D05DA9 /* CFStatusViewModel.swift */; };
+		83C938AB1E0E4E9200D05DA9 /* UIImageView+WebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C938AA1E0E4E9200D05DA9 /* UIImageView+WebImage.swift */; };
 		83D71CFA1DF02DD5008A8CEA /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF31DF02DD5008A8CEA /* Foundation+Log.m */; };
 		83D71CFC1DF02DD5008A8CEA /* NSObject+CFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF71DF02DD5008A8CEA /* NSObject+CFExtension.m */; };
 		83D71CFD1DF02DD5008A8CEA /* NSString+CFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D71CF91DF02DD5008A8CEA /* NSString+CFExtension.m */; };
@@ -87,6 +88,7 @@
 		83C938A21E0D66DB00D05DA9 /* CFStatusNomalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFStatusNomalCell.xib; sourceTree = "<group>"; };
 		83C938A41E0D752100D05DA9 /* CFUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFUser.swift; sourceTree = "<group>"; };
 		83C938A61E0D80B800D05DA9 /* CFStatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatusViewModel.swift; sourceTree = "<group>"; };
+		83C938AA1E0E4E9200D05DA9 /* UIImageView+WebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+WebImage.swift"; sourceTree = "<group>"; };
 		83D71CF31DF02DD5008A8CEA /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		83D71CF61DF02DD5008A8CEA /* NSObject+CFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CFExtension.h"; sourceTree = "<group>"; };
 		83D71CF71DF02DD5008A8CEA /* NSObject+CFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CFExtension.m"; sourceTree = "<group>"; };
@@ -212,6 +214,23 @@
 			name = Network;
 			sourceTree = "<group>";
 		};
+		83C938A81E0E4E3D00D05DA9 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				83C938A91E0E4E6F00D05DA9 /* WebImage */,
+				83B361F71DFEC4930094ACCF /* Network */,
+			);
+			name = Vender;
+			sourceTree = "<group>";
+		};
+		83C938A91E0E4E6F00D05DA9 /* WebImage */ = {
+			isa = PBXGroup;
+			children = (
+				83C938AA1E0E4E9200D05DA9 /* UIImageView+WebImage.swift */,
+			);
+			name = WebImage;
+			sourceTree = "<group>";
+		};
 		83D71CF11DF02D76008A8CEA /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,7 +277,7 @@
 		83D71D2D1DF0604D008A8CEA /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				83B361F71DFEC4930094ACCF /* Network */,
+				83C938A81E0E4E3D00D05DA9 /* Vender */,
 				83D71D2E1DF06072008A8CEA /* CFUntilConst.swift */,
 				8317B0BC1E059DF8007F0138 /* CFCommon.swift */,
 			);
@@ -616,6 +635,7 @@
 				8322C3941DF444F7006C7EB7 /* String-Addition.swift in Sources */,
 				8304BB3E1E067D8400F46D98 /* CFAccount.swift in Sources */,
 				83D71D251DF03993008A8CEA /* UIScreen+CFExtension.m in Sources */,
+				83C938AB1E0E4E9200D05DA9 /* UIImageView+WebImage.swift in Sources */,
 				83D71D2F1DF06072008A8CEA /* CFUntilConst.swift in Sources */,
 				83D71D3F1DF1937B008A8CEA /* UIScreen-Addition.swift in Sources */,
 				83D71CFC1DF02DD5008A8CEA /* NSObject+CFExtension.m in Sources */,

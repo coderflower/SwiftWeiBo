@@ -44,6 +44,7 @@ extension CFWelcomeView {
             let url = URL(string: urlString) else {
             return
         }
+        
         iconView.sd_setImage(with: url, placeholderImage: UIImage(named: "avatar_default_big"))
         // 设置圆角半径
         iconView.cornerRadius = 85 * 0.5

@@ -17,7 +17,7 @@ extension UIImage {
     ///   - image: 原图片
     ///   - size: 目标大小
     /// - Returns: 新的图片
-    func resizing(size: CGSize?, backColor: UIColor = UIColor.white, borderColor: UIColor = UIColor.lightGray, borderWidth: CGFloat = 1) -> UIImage? {
+    func cf_resizing(size: CGSize?, backColor: UIColor = UIColor.white, borderColor: UIColor = UIColor.lightGray, borderWidth: CGFloat = 1) -> UIImage? {
         // 0. 获取矩形框
         var size = size
         if size == nil {
