@@ -24,6 +24,7 @@ class CFStatusCell: UITableViewCell {
             iconView.cf_setImage(urlString: viewModel?.status.user?.profile_image_url, placeholderImage: UIImage(named: "avatar_default_big"), isCircle: true)
             // 底部工具条
             toolBar.viewModel = viewModel
+            pictureView.heightCons.constant = 0
         }
     }
     
@@ -43,6 +44,8 @@ class CFStatusCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     /// 底部工具条
     @IBOutlet weak var toolBar: CFStatusToolBar!
+    /// 图片视图
+    @IBOutlet weak var pictureView: CFPictureView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

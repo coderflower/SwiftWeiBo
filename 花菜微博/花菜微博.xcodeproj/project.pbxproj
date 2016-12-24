@@ -20,6 +20,7 @@
 		8353487B1E08202900E3B715 /* CFWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353487A1E08202900E3B715 /* CFWelcomeView.swift */; };
 		8353487D1E08203B00E3B715 /* CFNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353487C1E08203B00E3B715 /* CFNewFeatureView.swift */; };
 		8353489F1E0930D800E3B715 /* UIView-Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353489E1E0930D800E3B715 /* UIView-Layer.swift */; };
+		83691E201E0EDD0400578E5E /* CFPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83691E1F1E0EDD0400578E5E /* CFPictureView.swift */; };
 		83B361F61DFEC01A0094ACCF /* CFNetworker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F51DFEC01A0094ACCF /* CFNetworker.swift */; };
 		83B361F91DFECD850094ACCF /* CFNetworker + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */; };
 		83B361FE1DFEECF30094ACCF /* CFStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361FD1DFEECF30094ACCF /* CFStatus.swift */; };
@@ -80,6 +81,7 @@
 		8353487A1E08202900E3B715 /* CFWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFWelcomeView.swift; sourceTree = "<group>"; };
 		8353487C1E08203B00E3B715 /* CFNewFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFNewFeatureView.swift; sourceTree = "<group>"; };
 		8353489E1E0930D800E3B715 /* UIView-Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Layer.swift"; sourceTree = "<group>"; };
+		83691E1F1E0EDD0400578E5E /* CFPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFPictureView.swift; sourceTree = "<group>"; };
 		83B361F51DFEC01A0094ACCF /* CFNetworker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFNetworker.swift; sourceTree = "<group>"; };
 		83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFNetworker + Extension.swift"; sourceTree = "<group>"; };
 		83B361FD1DFEECF30094ACCF /* CFStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatus.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				83F6C6E61DEF262100ACF9E5 /* CFHomeViewController.swift */,
 				83C938A01E0D66B500D05DA9 /* CFStatusCell.swift */,
 				83C938AC1E0E5A2500D05DA9 /* CFStatusToolBar.swift */,
+				83691E1F1E0EDD0400578E5E /* CFPictureView.swift */,
 				83C938A21E0D66DB00D05DA9 /* CFStatusNomalCell.xib */,
 			);
 			path = Home;
@@ -650,6 +653,7 @@
 				83D71D171DF02E12008A8CEA /* UIButton+CFExtension.m in Sources */,
 				83D71D3D1DF1937B008A8CEA /* UIBarButtonItem-Addition.swift in Sources */,
 				83F6C6ED1DEF264A00ACF9E5 /* CFPofileViewController.swift in Sources */,
+				83691E201E0EDD0400578E5E /* CFPictureView.swift in Sources */,
 				83F6C6C51DEF233900ACF9E5 /* AppDelegate.swift in Sources */,
 				83D71D281DF03C2C008A8CEA /* NSObject+CFRuntime.m in Sources */,
 			);
