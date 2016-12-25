@@ -23,15 +23,22 @@ class CFStatusViewModel: CustomStringConvertible {
     var memberIcon: UIImage?
     /// 认证图标
     var vipIcon: UIImage?
+    /// 转发
     var retweetStr: String?
+    /// 评论
     var commentStr: String?
+    /// 点赞
     var likeStr: String?
+    /// 配图视图尺寸
+    var pictureViewSize = CGSize.zero
+    
     
     init(model: CFStatus) {
         self.status = model
         setMemberlevel()
         setVerifiedType()
         setCountStrin()
+        pictureViewSize = calculatePictureViewSize(count: model.pic_urls?.count ?? 0)
     }
     
     
@@ -80,6 +87,23 @@ class CFStatusViewModel: CustomStringConvertible {
             return count.description
         }
         return String(format: "%.2f 万", Double(count) / 10000)
+    }
+    
+    
+    /// 计算微博配图视图的大小
+    ///
+    /// - Parameter count: 图片个数
+    /// - Returns: 配图尺寸
+    fileprivate func calculatePictureViewSize(count: Int) -> CGSize {
+        if count == 0 {
+            return CGSize.zero
+        }
+        // 计算行数
+        let row = (count - 1) / 3 + 1
+        // 计算高度
+        let height = CFStatusPictureViewOutterMargin + CGFloat(row - 1) * CFStatusPictureViewInnerMargin + CGFloat(row) * CFStatusPictureItemWidth
+        print(height,count)
+        return CGSize(width: CFStatusPictureViewWidth, height: height)
     }
     
     var description: String {

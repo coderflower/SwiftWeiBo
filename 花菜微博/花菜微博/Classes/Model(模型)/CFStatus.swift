@@ -28,6 +28,9 @@ class CFStatus: NSObject {
         return yy_modelDescription()
     }
     
+    /// YYModel 属性映射字典
+    ///
+    /// - Returns: 属性映射关系
     class func modelContainerPropertyGenericClass() -> [String: AnyClass] {
         return ["pic_urls": CFStatusPicture.self]
     }

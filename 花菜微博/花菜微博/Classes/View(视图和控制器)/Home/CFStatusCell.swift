@@ -24,7 +24,7 @@ class CFStatusCell: UITableViewCell {
             iconView.cf_setImage(urlString: viewModel?.status.user?.profile_image_url, placeholderImage: UIImage(named: "avatar_default_big"), isCircle: true)
             // 底部工具条
             toolBar.viewModel = viewModel
-            pictureView.heightCons.constant = 0
+            pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
         }
     }
     

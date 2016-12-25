@@ -28,3 +28,17 @@ let SinaRedirectURI = "http://caiflower.com"
 
 // MARK: - 各种key
 let CFBoundelVersionKey = "CFBoundelVersionKey"
+
+
+// MARK: - 微博常数
+/// 微博配图外部间距
+let CFStatusPictureViewOutterMargin: CGFloat = 12
+/// 微博配图内部间距
+let CFStatusPictureViewInnerMargin: CGFloat = 3
+/// 微博配图视图宽度
+let CFStatusPictureViewWidth: CGFloat = UIScreen.main.cf_screenWidth - 2 * CFStatusPictureViewOutterMargin
+/// 微博配图单个配图宽高
+let CFStatusPictureItemWidth: CGFloat = (CFStatusPictureViewWidth - 2 * CFStatusPictureViewInnerMargin) / 3
+
+
+		
