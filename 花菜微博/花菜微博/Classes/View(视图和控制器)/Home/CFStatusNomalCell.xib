@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="428" height="384"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I3L-FN-JRe" id="hxb-rp-Am9">
-                <rect key="frame" x="0.0" y="0.0" width="428" height="383.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="428" height="383"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3o-9H-wr7" userLabel="顶部分割线">
@@ -134,7 +134,6 @@
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJa-X8-GLZ" userLabel="图片视图" customClass="CFPictureView" customModule="花菜微博" customModuleProvider="target">
                         <rect key="frame" x="12" y="81" width="404" height="200"/>
-                        <color key="backgroundColor" red="0.95294117649999999" green="0.24313725489999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="200" id="HLy-om-i5s"/>
                         </constraints>

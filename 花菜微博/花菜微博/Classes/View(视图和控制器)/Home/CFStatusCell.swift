@@ -25,6 +25,7 @@ class CFStatusCell: UITableViewCell {
             // 底部工具条
             toolBar.viewModel = viewModel
             pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
+            pictureView.urls = viewModel?.status.pic_urls
         }
     }
     
