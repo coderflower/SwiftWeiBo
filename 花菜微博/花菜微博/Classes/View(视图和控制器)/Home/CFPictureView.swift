@@ -17,6 +17,10 @@ class CFPictureView: UIView {
             var index = 0
             for pictrue in urls ?? [] {
                 let iv = subviews[index] as! UIImageView
+                // 4张图片处理,跳过第三张不设置
+                if index == 1 && urls?.count == 4 {
+                    index += 1
+                }
                 iv.cf_setImage(urlString: pictrue.thumbnail_pic, placeholderImage: nil)
                 iv.isHidden = false
                 index += 1
@@ -28,6 +32,7 @@ class CFPictureView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        backgroundColor = superview?.backgroundColor
         setupUI()
     }
 }
@@ -46,6 +51,9 @@ extension CFPictureView {
             let offsetX = CGFloat(col) * (CFStatusPictureViewInnerMargin + CFStatusPictureItemWidth)
             let offsetY = CGFloat(row) * (CFStatusPictureViewInnerMargin + CFStatusPictureItemWidth)
             iv.frame = rect.offsetBy(dx: offsetX, dy: offsetY)
+            iv.cf_setTapAction({ 
+                print("点击了图片")
+            })
             addSubview(iv)
         }
         

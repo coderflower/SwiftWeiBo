@@ -22,9 +22,16 @@ class CFStatusCell: UITableViewCell {
             // 认证图标
             vipIconView.image = viewModel?.vipIcon
             iconView.cf_setImage(urlString: viewModel?.status.user?.profile_image_url, placeholderImage: UIImage(named: "avatar_default_big"), isCircle: true)
-            // 底部工具条
+            // 设置底部工具条
             toolBar.viewModel = viewModel
-            pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
+            // 配图视图高度约束
+            if let height = viewModel?.pictureViewSize.height {
+                pictureView.heightCons.constant = height
+            }
+            else {
+                pictureView.heightCons.constant = 0
+            }
+            // 设置视图数据
             pictureView.urls = viewModel?.status.pic_urls
         }
     }
@@ -48,7 +55,7 @@ class CFStatusCell: UITableViewCell {
     /// 图片视图
     @IBOutlet weak var pictureView: CFPictureView!
     override func awakeFromNib() {
-        super.awakeFromNib()
+        // super.awakeFromNib()
         // Initialization code
     }
 

@@ -56,7 +56,7 @@ class CFStatusListViewModel {
                 tmpArray.append(CFStatusViewModel(model: model))
             }
             
-            print("新增 \(tmpArray.count)条数据, \(tmpArray)")
+            print("新增 \(tmpArray.count)条数据")
             // 拼接数据
             if isPullup {
                 self.statusList += tmpArray
