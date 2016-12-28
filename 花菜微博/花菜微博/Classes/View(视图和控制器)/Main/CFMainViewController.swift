@@ -24,7 +24,8 @@ class CFMainViewController: UITabBarController {
         // 初始化定时器
         setupTimer()
         // 注册登陆通知
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kUserShoudLoginNotification), object: nil, queue: nil) { (notify) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kUserShoudLoginNotification),
+                                               object: nil, queue: nil) { (notify) in
             print("用户点击了登录")
             var time: DispatchTime = 0
             if notify.object != nil {
@@ -75,14 +76,16 @@ class CFMainViewController: UITabBarController {
 // MARK: - UI界面相关
 extension CFMainViewController {
     /// 初始化UI界面
-    fileprivate func setupUI() {
+    fileprivate func setupUI()
+    {
         // 初始化发布按钮
         setupComposeButton()
         // 初始化欢迎页
         setupNewFeatureView()
     }
     /// 初始化发布按钮
-    private func setupComposeButton() {
+    private func setupComposeButton()
+    {
         tabBar.backgroundImage = UIImage(named: "tabbar_background")
         // 计算每个按钮的宽度 减1是为了容差
         let width = tabBar.bounds.width / CGFloat(childViewControllers.count)
@@ -90,7 +93,8 @@ extension CFMainViewController {
         tabBar.addSubview(composeButton)
     }
     /// 初始化欢迎页
-    private func setupNewFeatureView() {
+    private func setupNewFeatureView()
+    {
         // 如果更新,显示新特性,否则显示欢迎页
        let newView = isNewVersion ? CFNewFeatureView() : CFWelcomeView()
         newView.frame = view.bounds
@@ -105,7 +109,8 @@ extension CFMainViewController {
     
     // extensions中可以有计算属性,不会占用存储空间
     /// 是否显示新特性
-    fileprivate var isNewVersion: Bool {
+    fileprivate var isNewVersion: Bool
+    {
         // 0. 获取当前版本号
         let currentVersion = Bundle.main.targetVersion
         // 1. 取之前保存的版本号
@@ -120,7 +125,8 @@ extension CFMainViewController {
 
 // MARK: - 加载子控制器
 extension CFMainViewController {
-    fileprivate func setupChildViewControllers() {
+    fileprivate func setupChildViewControllers()
+    {
     
         let jsonPath = "main.json".caches
 
@@ -141,7 +147,8 @@ extension CFMainViewController {
         }
     }
 
-    private func controller(dict : [String : AnyObject]) -> UIViewController {
+    private func controller(dict : [String : AnyObject]) -> UIViewController
+    {
         guard let clsName = dict["clsName"] as? String,
             let title = dict["title"] as? String,
             let imageName = dict["imageName"] as? String,
@@ -169,7 +176,8 @@ extension CFMainViewController {
 
 // MARK: - 定时器相关
 extension CFMainViewController {
-    fileprivate func setupTimer() {
+    fileprivate func setupTimer()
+    {
         timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     @objc fileprivate func updateTimer() {
@@ -196,7 +204,8 @@ extension CFMainViewController: UITabBarControllerDelegate {
     ///   - tabBarController: tabBarController
     ///   - viewController: 目标控制器
     /// - Returns: 是否切换到目标控制器
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool
+    {
         // 判断当前页面是否是被选中的控制器
         if selectedViewController == viewController {
             // FIXME: 滚动到最顶部,刷新数据

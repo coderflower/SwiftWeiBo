@@ -24,7 +24,8 @@ class CFNewFeatureView: UIView {
         return pageControl
     }()
     
-    override init(frame: CGRect) {
+    override init(frame: CGRect)
+    {
         super.init(frame: frame)
         backgroundColor = UIColor.clear
         setupUI()
@@ -39,7 +40,8 @@ class CFNewFeatureView: UIView {
 
 // MARK: - 添加子视图
 extension CFNewFeatureView {
-    fileprivate func setupUI() {
+    fileprivate func setupUI()
+    {
         // 添加图片容器视图
         setupContentView()
         // 添加进入微博按钮
@@ -50,13 +52,15 @@ extension CFNewFeatureView {
         configSubviews()
     }
     
-    private func configSubviews() {
+    private func configSubviews()
+    {
         // 隐藏进入按钮
         enterButton.isHidden = true
         enterButton.addTarget(self, action: #selector(enterStatus), for: .touchUpInside)
     }
     
-    private func setupContentView() {
+    private func setupContentView()
+    {
         // 获取主屏幕尺寸
         let rect = UIScreen.main.bounds
         // 添加内容视图
@@ -84,7 +88,8 @@ extension CFNewFeatureView {
     }
     
     /// 布局子控件
-    override func layoutSubviews() {
+    override func layoutSubviews()
+    {
          super.layoutSubviews()
         let rect = UIScreen.main.bounds
         enterButton.frame.origin.x = (rect.width - enterButton.frame.width) * 0.5
@@ -99,7 +104,8 @@ extension CFNewFeatureView: UIScrollViewDelegate {
     /// 滚动时调用
     ///
     /// - Parameter scrollView: scrollView
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
+    {
         let page = Int(scrollView.contentOffset.x / scrollView.frame.width + 0.5)
         pageControl.currentPage = page
         enterButton.isHidden = true
@@ -109,7 +115,8 @@ extension CFNewFeatureView: UIScrollViewDelegate {
     /// 减速时调用
     ///
     /// - Parameter scrollView: scrollView
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
+    {
         let page = Int(scrollView.contentOffset.x / scrollView.frame.width)
         // 移除视图
         if page == scrollView.subviews.count {
@@ -124,7 +131,8 @@ extension CFNewFeatureView: UIScrollViewDelegate {
 // MARK: - 按钮点击方法处理
 extension CFNewFeatureView {
 
-    @objc fileprivate func enterStatus() {
+    @objc fileprivate func enterStatus()
+    {
         self.removeFromSuperview()
     }
 }

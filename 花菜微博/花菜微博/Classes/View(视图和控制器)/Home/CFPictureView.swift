@@ -38,7 +38,8 @@ class CFPictureView: UIView {
 }
 
 extension CFPictureView {
-    fileprivate func setupUI() {
+    fileprivate func setupUI()
+    {
         clipsToBounds = true
         let count = 3
         let rect = CGRect(x: 0, y: CFStatusPictureViewOutterMargin, width: CFStatusPictureItemWidth, height: CFStatusPictureItemWidth)

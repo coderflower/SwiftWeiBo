@@ -35,12 +35,14 @@ class CFOAuthViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc fileprivate func closeAction() {
+    @objc fileprivate func closeAction()
+    {
         SVProgressHUD.dismiss()
         dismiss(animated: true, completion: nil)
     }
 
-    @objc fileprivate func autoInputUser() {
+    @objc fileprivate func autoInputUser()
+    {
         // 准备Js脚本
         let script = "document.getElementById('userId').value = 'caiflower20@163.com'; document.getElementById('passwd').value = '4593679.a';"
         // 注入js
@@ -58,7 +60,8 @@ extension CFOAuthViewController: UIWebViewDelegate {
     ///   - request: 要加载的请求
     ///   - navigationType: 导航类型
     /// - Returns: 是否加载 request
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool
+    {
         
         if request.url?.absoluteString.hasPrefix(SinaRedirectURI) == true {
            

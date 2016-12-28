@@ -33,18 +33,21 @@ class CFHomeViewController: CFBaseViewController {
     fileprivate lazy var listViewModel = CFStatusListViewModel()
     
     /// 导航栏左边按钮点击
-    @objc fileprivate func showFriends() {
+    @objc fileprivate func showFriends()
+    {
         navigationController?.pushViewController(CFBaseViewController(), animated: true)
     }
     /// 标题点击事件
-    @objc fileprivate func titleClick(btn:UIButton) {
+    @objc fileprivate func titleClick(btn:UIButton)
+    {
         btn.isSelected = !btn.isSelected
     }
 }
 
 // MARK: - 设置UI
 extension CFHomeViewController {
-    override func setupTableView() {
+    override func setupTableView()
+    {
         super.setupTableView()
         // 设置导航栏
         setupNav()
@@ -61,11 +64,17 @@ extension CFHomeViewController {
         tableView?.separatorStyle = .none
     }
     // MARK: - 设置导航条
-    private func setupNav() {
+    private func setupNav()
+    {
         // 设置左边按钮
-        navItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
+        navItem.leftBarButtonItem = UIBarButtonItem(title: "好友",
+                                                    target: self,
+                                                    action: #selector(showFriends))
         // 设置titleView
-        let btn = UIButton(title: CFNetworker.shared.userAccount.screen_name ?? "首页", fontSize: 17, imageName: nil, backgroundImageName: nil)
+        let btn = UIButton(title: CFNetworker.shared.userAccount.screen_name ?? "首页",
+                           fontSize: 17,
+                           imageName: nil,
+                           backgroundImageName: nil)
         btn.setImage(UIImage(named:"navigationbar_arrow_down"), for: .normal)
         btn.setImage(UIImage(named:"navigationbar_arrow_up"), for: .selected)
         // 取消高亮改变图片颜色
@@ -82,7 +91,8 @@ extension CFHomeViewController {
 
 // MARK: - 加载数据
 extension CFHomeViewController {
-    override func requestData() {
+    override func requestData()
+    {
         
         listViewModel.loadStatus(isPullup: self.isPullUp) { (isSuccess, shouldRefresh) in
             print("加载数据完成")
@@ -102,12 +112,16 @@ extension CFHomeViewController {
 }
 // MARK: - tableViewDataSource和tableViewDelegate具体实现
 extension CFHomeViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        
         return listViewModel.statusList.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CFRetweetedCellId, for: indexPath) as! CFStatusCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CFRetweetedCellId,
+                                                 for: indexPath) as! CFStatusCell
         let viewModel = listViewModel.statusList[indexPath.row]
         cell.viewModel = viewModel
         return cell
