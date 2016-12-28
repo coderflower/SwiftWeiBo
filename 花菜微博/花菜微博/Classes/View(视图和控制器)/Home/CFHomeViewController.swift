@@ -8,7 +8,11 @@
 
 import UIKit
 
-private let homeCellId = "CFHomeCellId"
+/// 原创微博重用标识符
+private let CFOriginalCellId = "CFOriginalCellId"
+
+/// 转发微博重用标识符
+private let CFRetweetedCellId = "CFRetweetedCellId"
 
 class CFHomeViewController: CFBaseViewController {
     // MARK: - 公开属性
@@ -45,7 +49,10 @@ extension CFHomeViewController {
         // 设置导航栏
         setupNav()
         // 注册cell
-        tableView?.register(UINib(nibName: "CFStatusNomalCell", bundle: nil), forCellReuseIdentifier: homeCellId)
+        tableView?.register(UINib(nibName: "CFStatusNormalCell", bundle: nil),
+                            forCellReuseIdentifier: CFOriginalCellId)
+        tableView?.register(UINib(nibName: "CFStatusRetweetedCell", bundle: nil),
+                            forCellReuseIdentifier: CFRetweetedCellId)
         // 设置行高自动计算
         tableView?.rowHeight = UITableViewAutomaticDimension
         // 设置估算行高
@@ -100,7 +107,7 @@ extension CFHomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: homeCellId, for: indexPath) as! CFStatusCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CFRetweetedCellId, for: indexPath) as! CFStatusCell
         let viewModel = listViewModel.statusList[indexPath.row]
         cell.viewModel = viewModel
         return cell

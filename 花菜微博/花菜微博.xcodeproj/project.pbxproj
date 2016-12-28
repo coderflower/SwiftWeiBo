@@ -22,13 +22,14 @@
 		8353489F1E0930D800E3B715 /* UIView-Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8353489E1E0930D800E3B715 /* UIView-Layer.swift */; };
 		83691E201E0EDD0400578E5E /* CFPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83691E1F1E0EDD0400578E5E /* CFPictureView.swift */; };
 		83691E221E0EE29400578E5E /* CFStatusPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83691E211E0EE29400578E5E /* CFStatusPicture.swift */; };
+		838A70891E1411CD00168A05 /* CFStatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 838A70881E1411CD00168A05 /* CFStatusRetweetedCell.xib */; };
+		838A708B1E14121500168A05 /* CFStatusNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 838A708A1E14121500168A05 /* CFStatusNormalCell.xib */; };
 		83B361F61DFEC01A0094ACCF /* CFNetworker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F51DFEC01A0094ACCF /* CFNetworker.swift */; };
 		83B361F91DFECD850094ACCF /* CFNetworker + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */; };
 		83B361FE1DFEECF30094ACCF /* CFStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361FD1DFEECF30094ACCF /* CFStatus.swift */; };
 		83B362001DFEEED40094ACCF /* CFStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B361FF1DFEEED40094ACCF /* CFStatusListViewModel.swift */; };
 		83C9385F1E0D445600D05DA9 /* UIImage+Additon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C9385E1E0D445600D05DA9 /* UIImage+Additon.swift */; };
 		83C938A11E0D66B500D05DA9 /* CFStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C938A01E0D66B500D05DA9 /* CFStatusCell.swift */; };
-		83C938A31E0D66DB00D05DA9 /* CFStatusNomalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C938A21E0D66DB00D05DA9 /* CFStatusNomalCell.xib */; };
 		83C938A51E0D752100D05DA9 /* CFUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C938A41E0D752100D05DA9 /* CFUser.swift */; };
 		83C938A71E0D80B800D05DA9 /* CFStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C938A61E0D80B800D05DA9 /* CFStatusViewModel.swift */; };
 		83C938AB1E0E4E9200D05DA9 /* UIImageView+WebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C938AA1E0E4E9200D05DA9 /* UIImageView+WebImage.swift */; };
@@ -84,13 +85,14 @@
 		8353489E1E0930D800E3B715 /* UIView-Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Layer.swift"; sourceTree = "<group>"; };
 		83691E1F1E0EDD0400578E5E /* CFPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFPictureView.swift; sourceTree = "<group>"; };
 		83691E211E0EE29400578E5E /* CFStatusPicture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatusPicture.swift; sourceTree = "<group>"; };
+		838A70881E1411CD00168A05 /* CFStatusRetweetedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFStatusRetweetedCell.xib; sourceTree = "<group>"; };
+		838A708A1E14121500168A05 /* CFStatusNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFStatusNormalCell.xib; sourceTree = "<group>"; };
 		83B361F51DFEC01A0094ACCF /* CFNetworker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFNetworker.swift; sourceTree = "<group>"; };
 		83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFNetworker + Extension.swift"; sourceTree = "<group>"; };
 		83B361FD1DFEECF30094ACCF /* CFStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatus.swift; sourceTree = "<group>"; };
 		83B361FF1DFEEED40094ACCF /* CFStatusListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatusListViewModel.swift; sourceTree = "<group>"; };
 		83C9385E1E0D445600D05DA9 /* UIImage+Additon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Additon.swift"; sourceTree = "<group>"; };
 		83C938A01E0D66B500D05DA9 /* CFStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatusCell.swift; sourceTree = "<group>"; };
-		83C938A21E0D66DB00D05DA9 /* CFStatusNomalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFStatusNomalCell.xib; sourceTree = "<group>"; };
 		83C938A41E0D752100D05DA9 /* CFUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFUser.swift; sourceTree = "<group>"; };
 		83C938A61E0D80B800D05DA9 /* CFStatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFStatusViewModel.swift; sourceTree = "<group>"; };
 		83C938AA1E0E4E9200D05DA9 /* UIImageView+WebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+WebImage.swift"; sourceTree = "<group>"; };
@@ -412,7 +414,8 @@
 				83C938A01E0D66B500D05DA9 /* CFStatusCell.swift */,
 				83C938AC1E0E5A2500D05DA9 /* CFStatusToolBar.swift */,
 				83691E1F1E0EDD0400578E5E /* CFPictureView.swift */,
-				83C938A21E0D66DB00D05DA9 /* CFStatusNomalCell.xib */,
+				838A708A1E14121500168A05 /* CFStatusNormalCell.xib */,
+				838A70881E1411CD00168A05 /* CFStatusRetweetedCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -548,7 +551,8 @@
 			files = (
 				8322C3921DF43D43006C7EB7 /* main.json in Resources */,
 				83F6C6CF1DEF233900ACF9E5 /* LaunchScreen.storyboard in Resources */,
-				83C938A31E0D66DB00D05DA9 /* CFStatusNomalCell.xib in Resources */,
+				838A70891E1411CD00168A05 /* CFStatusRetweetedCell.xib in Resources */,
+				838A708B1E14121500168A05 /* CFStatusNormalCell.xib in Resources */,
 				83F6C6CC1DEF233900ACF9E5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
