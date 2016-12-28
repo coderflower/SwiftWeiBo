@@ -25,12 +25,7 @@ class CFStatusCell: UITableViewCell {
             // 设置底部工具条
             toolBar.viewModel = viewModel
             // 配图视图高度约束
-            if let height = viewModel?.pictureViewSize.height {
-                pictureView.heightCons.constant = height
-            }
-            else {
-                pictureView.heightCons.constant = 0
-            }
+            pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
             // 设置视图数据
             pictureView.urls = viewModel?.status.pic_urls
         }
