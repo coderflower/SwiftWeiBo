@@ -31,14 +31,19 @@ class CFStatusViewModel: CustomStringConvertible {
     var likeStr: String?
     /// 配图视图尺寸
     var pictureViewSize = CGSize.zero
-    
+    /// 图片模型数组
+    /// 如果是被转发的微博,原创的一定没有配图
+    var picUrls: [CFStatusPicture]? {
+        return status.retweeted_status?.pic_urls ?? status.pic_urls
+    }
     
     init(model: CFStatus) {
         self.status = model
         setMemberlevel()
         setVerifiedType()
         setCountStrin()
-        pictureViewSize = calculatePictureViewSize(count: model.pic_urls?.count ?? 0)
+        // 有原创的计算原创的,有转发的计算转发的
+        pictureViewSize = calculatePictureViewSize(count: picUrls?.count ?? 0)
     }
     
     

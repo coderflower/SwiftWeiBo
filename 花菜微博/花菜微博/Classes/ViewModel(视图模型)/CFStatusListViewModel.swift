@@ -52,6 +52,7 @@ class CFStatusListViewModel {
                 guard let model = CFStatus.yy_model(with: dict) else {
                     continue
                 }
+                print(model.retweeted_status ?? "")
                 // 添加到数组
                 tmpArray.append(CFStatusViewModel(model: model))
             }

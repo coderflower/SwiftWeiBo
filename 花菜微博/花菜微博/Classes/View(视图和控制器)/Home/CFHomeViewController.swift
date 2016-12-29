@@ -33,21 +33,18 @@ class CFHomeViewController: CFBaseViewController {
     fileprivate lazy var listViewModel = CFStatusListViewModel()
     
     /// 导航栏左边按钮点击
-    @objc fileprivate func showFriends()
-    {
+    @objc fileprivate func showFriends() {
         navigationController?.pushViewController(CFBaseViewController(), animated: true)
     }
     /// 标题点击事件
-    @objc fileprivate func titleClick(btn:UIButton)
-    {
+    @objc fileprivate func titleClick(btn:UIButton) {
         btn.isSelected = !btn.isSelected
     }
 }
 
 // MARK: - 设置UI
 extension CFHomeViewController {
-    override func setupTableView()
-    {
+    override func setupTableView() {
         super.setupTableView()
         // 设置导航栏
         setupNav()
@@ -64,8 +61,7 @@ extension CFHomeViewController {
         tableView?.separatorStyle = .none
     }
     // MARK: - 设置导航条
-    private func setupNav()
-    {
+    private func setupNav() {
         // 设置左边按钮
         navItem.leftBarButtonItem = UIBarButtonItem(title: "好友",
                                                     target: self,
@@ -91,8 +87,7 @@ extension CFHomeViewController {
 
 // MARK: - 加载数据
 extension CFHomeViewController {
-    override func requestData()
-    {
+    override func requestData() {
         
         listViewModel.loadStatus(isPullup: self.isPullUp) { (isSuccess, shouldRefresh) in
             print("加载数据完成")
@@ -112,19 +107,21 @@ extension CFHomeViewController {
 }
 // MARK: - tableViewDataSource和tableViewDelegate具体实现
 extension CFHomeViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return listViewModel.statusList.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CFRetweetedCellId,
-                                                 for: indexPath) as! CFStatusCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel = listViewModel.statusList[indexPath.row]
+        // 获取重用标识符
+        let cellId = (viewModel.status.retweeted_status != nil) ? CFRetweetedCellId : CFOriginalCellId
+        // 获取cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId,
+                                                 for: indexPath) as! CFStatusCell
         cell.viewModel = viewModel
         return cell
+
     }
 }
 

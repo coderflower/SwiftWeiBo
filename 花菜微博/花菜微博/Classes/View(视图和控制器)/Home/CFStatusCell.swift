@@ -27,7 +27,7 @@ class CFStatusCell: UITableViewCell {
             // 配图视图高度约束
             pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
             // 设置视图数据
-            pictureView.urls = viewModel?.status.pic_urls
+            pictureView.urls = viewModel?.picUrls
         }
     }
     
