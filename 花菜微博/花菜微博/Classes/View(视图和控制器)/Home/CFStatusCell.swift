@@ -28,6 +28,7 @@ class CFStatusCell: UITableViewCell {
             pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
             // 设置视图数据
             pictureView.urls = viewModel?.picUrls
+            retweetedTextLabel?.text = viewModel?.retweetedText
         }
     }
     
@@ -49,6 +50,8 @@ class CFStatusCell: UITableViewCell {
     @IBOutlet weak var toolBar: CFStatusToolBar!
     /// 图片视图
     @IBOutlet weak var pictureView: CFPictureView!
+    /// 被转发的微博正文,原创微博没有该label
+    @IBOutlet weak var retweetedTextLabel: UILabel?
     override func awakeFromNib() {
         // super.awakeFromNib()
         // Initialization code

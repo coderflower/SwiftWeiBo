@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="428" height="379"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I3L-FN-JRe" id="hxb-rp-Am9">
-                <rect key="frame" x="0.0" y="0.0" width="428" height="378.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="428" height="378"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3o-9H-wr7" userLabel="顶部分割线">
@@ -194,6 +194,7 @@
                 <outlet property="memberIconView" destination="6Cd-vu-Zbt" id="ODm-Dy-3QZ"/>
                 <outlet property="nameLabel" destination="QZD-MF-fpS" id="Ecg-tz-Nav"/>
                 <outlet property="pictureView" destination="fJa-X8-GLZ" id="6ua-LT-wvI"/>
+                <outlet property="retweetedTextLabel" destination="2Oe-IH-gva" id="bRr-f7-Rft"/>
                 <outlet property="sourceLable" destination="OMG-ZR-42v" id="xGi-Cb-YCF"/>
                 <outlet property="timeLabel" destination="vVt-5g-93f" id="x0H-Bw-Wd5"/>
                 <outlet property="toolBar" destination="Et4-EI-zJO" id="H1N-WQ-XFb"/>

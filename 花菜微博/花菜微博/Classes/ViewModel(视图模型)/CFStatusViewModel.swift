@@ -36,6 +36,10 @@ class CFStatusViewModel: CustomStringConvertible {
     var picUrls: [CFStatusPicture]? {
         return status.retweeted_status?.pic_urls ?? status.pic_urls
     }
+    /// 被转发的微博正文
+    var retweetedText: String? {
+        return "@" + (status.retweeted_status?.user?.screen_name ?? "") + ":" + (status.retweeted_status?.text ?? "")
+    }
     
     init(model: CFStatus) {
         self.status = model
