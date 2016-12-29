@@ -102,7 +102,6 @@ class CFStatusListViewModel {
             // 如果沙盒中已经存在缓存的图像,后续使用SD会通过url加载图像,都会加载本地沙盒的图像
             // 不会发起网络请求,同时,回调方法,同样会调用
             SDWebImageManager.shared().downloadImage(with: url, options: [], progress: nil, completed: { (image, _, _, _, _) in
-                
                 // 将图像转二进制
                 if let image = image,
                     let data = UIImagePNGRepresentation(image) {

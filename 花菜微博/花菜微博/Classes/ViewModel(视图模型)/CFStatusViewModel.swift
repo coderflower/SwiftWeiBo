@@ -117,6 +117,7 @@ class CFStatusViewModel: CustomStringConvertible {
     
     func updatePictureViewSize(image: UIImage) {
         var size = image.size
+        // 添加顶部间距
         size.height += CFStatusPictureViewOutterMargin
         pictureViewSize = size
     }

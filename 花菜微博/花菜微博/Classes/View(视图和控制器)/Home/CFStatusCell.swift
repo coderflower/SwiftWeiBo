@@ -24,10 +24,11 @@ class CFStatusCell: UITableViewCell {
             iconView.cf_setImage(urlString: viewModel?.status.user?.profile_image_url, placeholderImage: UIImage(named: "avatar_default_big"), isCircle: true)
             // 设置底部工具条
             toolBar.viewModel = viewModel
-            // 配图视图高度约束
-            pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
-            // 设置视图数据
-            pictureView.urls = viewModel?.picUrls
+            // 设置配图视图数据
+            pictureView.viewModel = viewModel
+//            pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
+//            // 设置视图数据
+//            pictureView.
             retweetedTextLabel?.text = viewModel?.retweetedText
         }
     }

@@ -9,6 +9,14 @@
 import UIKit
 
 class CFPictureView: UIView {
+    var viewModel: CFStatusViewModel? {
+        didSet {
+            self.urls = viewModel?.picUrls
+            calculateViewSize()
+        }
+    }
+    
+    
     var urls: [CFStatusPicture]? {
         didSet {
             for view in subviews {
@@ -41,7 +49,11 @@ extension CFPictureView {
     fileprivate func setupUI() {
         clipsToBounds = true
         let count = 3
-        let rect = CGRect(x: 0, y: CFStatusPictureViewOutterMargin, width: CFStatusPictureItemWidth, height: CFStatusPictureItemWidth)
+        let rect = CGRect(x: 0,
+                          y: CFStatusPictureViewOutterMargin,
+                          width: CFStatusPictureItemWidth,
+                          height: CFStatusPictureItemWidth)
+        
         for i in 0..<count * count {
             let iv = UIImageView()
             iv.contentMode = .scaleAspectFill
@@ -56,6 +68,29 @@ extension CFPictureView {
             })
             addSubview(iv)
         }
-        
+    }
+}
+
+extension CFPictureView {
+    fileprivate func calculateViewSize() {
+        // 宽度处理
+        let v = subviews[0]
+        if viewModel?.picUrls?.count == 1 {
+            // 单图处理,高度需要减去之前添加的间距
+            let viewSize = viewModel?.pictureViewSize ?? CGSize.zero
+            v.frame = CGRect(x: 0,
+                             y: CFStatusPictureViewOutterMargin,
+                             width: viewSize.width,
+                             height: viewSize.height - CFStatusPictureViewOutterMargin)
+        }
+        else {
+            // 多图处理
+            v.frame = CGRect(x: 0,
+                             y: CFStatusPictureViewOutterMargin,
+                             width: CFStatusPictureItemWidth,
+                             height: CFStatusPictureItemWidth)
+        }
+        // 高度处理
+        heightCons.constant = viewModel?.pictureViewSize.height ?? 0
     }
 }
