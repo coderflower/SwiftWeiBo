@@ -115,9 +115,16 @@ class CFStatusViewModel: CustomStringConvertible {
         return CGSize(width: CFStatusPictureViewWidth, height: height)
     }
     
+    func updatePictureViewSize(image: UIImage) {
+        var size = image.size
+        size.height += CFStatusPictureViewOutterMargin
+        pictureViewSize = size
+    }
+    
     var description: String {
         return self.status.description
     }
+    
     
     
     

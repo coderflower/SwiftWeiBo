@@ -107,6 +107,8 @@ class CFStatusListViewModel {
                 if let image = image,
                     let data = UIImagePNGRepresentation(image) {
                     length += data.count
+                    // 图像缓存成功更新配图视图大小
+                    vm.updatePictureViewSize(image: image)
                 }
                 // 退出队列组
                 group.leave()
