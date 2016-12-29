@@ -71,15 +71,14 @@ class CFStatusListViewModel {
                 completion(isSuccess,false)
             }
             else {
-                // 缓存单张图片
-                self.cacheSingleImage(list: self.statusList)
-                completion(isSuccess,true)
+                // 缓存单张图片,在回调
+                self.cacheSingleImage(list: tmpArray, finished: completion)
             }
             
         }
     }
     
-    fileprivate func cacheSingleImage(list: [CFStatusViewModel]) {
+    fileprivate func cacheSingleImage(list: [CFStatusViewModel], finished: @escaping (_ isSuccess: Bool, _ shouldRefresh: Bool) -> ()) {
         // 创建队列组
         let group = DispatchGroup()
         // 记录数据长度
@@ -116,6 +115,7 @@ class CFStatusListViewModel {
         // 监听队列组任务完成,并在主线程回调
         group.notify(queue: DispatchQueue.main) { 
             print("图片缓存完成\(length / 1024)K")
+            finished(true, true)
         }
     }
 }
