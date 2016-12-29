@@ -29,8 +29,7 @@ class CFNavigationController: UINavigationController {
     /// - Parameters:
     ///   - viewController: 压入栈的子控制器
     ///   - animated: 是否需要动画
-    override func pushViewController(_ viewController: UIViewController, animated: Bool)
-    {
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         // 不是栈底控制器才需要隐藏
         if viewControllers.count > 0 {
             // 隐藏导航栏
@@ -51,8 +50,7 @@ class CFNavigationController: UINavigationController {
 }
 // MARK: - 自定义的方法
 extension CFNavigationController {
-    @objc fileprivate func popToParent()
-    {
+    @objc fileprivate func popToParent() {
         popViewController(animated: true)
     }
 }

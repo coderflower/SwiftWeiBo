@@ -72,8 +72,7 @@ extension CFWelcomeView {
 // MARK: - 动画相关
 extension CFWelcomeView {
     // 视图添加到window上,标识视图已经显示
-    override func didMoveToWindow()
-    {
+    override func didMoveToWindow() {
         super.didMoveToWindow()
         // 强制更新约束
         self.layoutIfNeeded()
