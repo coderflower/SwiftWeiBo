@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SDWebImage
 private let maxPullupTryTimes = 3
 /// 尾部数据列表属兔
 /*
@@ -71,9 +71,51 @@ class CFStatusListViewModel {
                 completion(isSuccess,false)
             }
             else {
+                // 缓存单张图片
+                self.cacheSingleImage(list: self.statusList)
                 completion(isSuccess,true)
             }
             
+        }
+    }
+    
+    fileprivate func cacheSingleImage(list: [CFStatusViewModel]) {
+        // 创建队列组
+        let group = DispatchGroup()
+        // 记录数据长度
+        var length = 0
+        
+        for vm in list {
+            if vm.picUrls?.count != 1 {
+                // 非单张跳过
+                continue
+            }
+            // 获取图片链接
+            guard let pic = vm.picUrls?[0].thumbnail_pic,
+                let url = URL(string: pic) else {
+                continue
+            }
+            print("缓存的单张图片连接为\(url)")
+            // 进入队列组
+            group.enter()
+            // 下载图片
+            // 图像下载完成之后会自动保存在沙盒中,文件名是url的md5
+            // 如果沙盒中已经存在缓存的图像,后续使用SD会通过url加载图像,都会加载本地沙盒的图像
+            // 不会发起网络请求,同时,回调方法,同样会调用
+            SDWebImageManager.shared().downloadImage(with: url, options: [], progress: nil, completed: { (image, _, _, _, _) in
+                
+                // 将图像转二进制
+                if let image = image,
+                    let data = UIImagePNGRepresentation(image) {
+                    length += data.count
+                }
+                // 退出队列组
+                group.leave()
+            })
+        }
+        // 监听队列组任务完成,并在主线程回调
+        group.notify(queue: DispatchQueue.main) { 
+            print("图片缓存完成\(length / 1024)K")
         }
     }
 }
