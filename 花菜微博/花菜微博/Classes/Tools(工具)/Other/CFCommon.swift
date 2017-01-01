@@ -31,8 +31,14 @@ let CFBoundelVersionKey = "CFBoundelVersionKey"
 
 
 // MARK: - 微博常数
+/// 头像高度
+let CFStatusIconViewHeight: CGFloat = 34
+/// 底部工具条高度
+let CFStatusToolbarHeight: CGFloat = 36
+/// 通用间距
+let CFCommonMargin: CGFloat = 12
 /// 微博配图外部间距
-let CFStatusPictureViewOutterMargin: CGFloat = 12
+let CFStatusPictureViewOutterMargin: CGFloat = CFCommonMargin
 /// 微博配图内部间距
 let CFStatusPictureViewInnerMargin: CGFloat = 3
 /// 微博配图视图宽度

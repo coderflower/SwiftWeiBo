@@ -54,9 +54,9 @@ extension CFHomeViewController {
         tableView?.register(UINib(nibName: "CFStatusRetweetedCell", bundle: nil),
                             forCellReuseIdentifier: CFRetweetedCellId)
         // 设置行高自动计算
-        tableView?.rowHeight = UITableViewAutomaticDimension
-        // 设置估算行高
-        tableView?.estimatedRowHeight = 300
+//        tableView?.rowHeight = UITableViewAutomaticDimension
+//        // 设置估算行高
+//        tableView?.estimatedRowHeight = 300
         // 取消分割线
         tableView?.separatorStyle = .none
     }
@@ -121,7 +121,11 @@ extension CFHomeViewController {
                                                  for: indexPath) as! CFStatusCell
         cell.viewModel = viewModel
         return cell
-
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let viewModel = listViewModel.statusList[indexPath.row]
+        return viewModel.rowHeight
     }
 }
 

@@ -52,12 +52,12 @@ class CFStatusListViewModel {
                 guard let model = CFStatus.yy_model(with: dict) else {
                     continue
                 }
-                print(model.retweeted_status ?? "")
+                //print(model.retweeted_status ?? "")
                 // 添加到数组
                 tmpArray.append(CFStatusViewModel(model: model))
             }
             
-            print("新增 \(tmpArray.count)条数据")
+           // print("新增 \(tmpArray.count)条数据")
             // 拼接数据
             if isPullup {
                 self.statusList += tmpArray
@@ -115,7 +115,7 @@ class CFStatusListViewModel {
         }
         // 监听队列组任务完成,并在主线程回调
         group.notify(queue: DispatchQueue.main) { 
-            print("图片缓存完成\(length / 1024)K")
+            //print("图片缓存完成\(length / 1024)K")
             finished(true, true)
         }
     }

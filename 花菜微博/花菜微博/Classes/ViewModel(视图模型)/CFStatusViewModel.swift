@@ -36,6 +36,8 @@ class CFStatusViewModel: CustomStringConvertible {
     var picUrls: [CFStatusPicture]? {
         return status.retweeted_status?.pic_urls ?? status.pic_urls
     }
+    /// 缓存高度
+    var rowHeight: CGFloat = 0
     /// 被转发的微博正文
     var retweetedText: String? {
         return "@" + (status.retweeted_status?.user?.screen_name ?? "") + ":" + (status.retweeted_status?.text ?? "")
@@ -48,6 +50,8 @@ class CFStatusViewModel: CustomStringConvertible {
         setCountStrin()
         // 有原创的计算原创的,有转发的计算转发的
         pictureViewSize = calculatePictureViewSize(count: picUrls?.count ?? 0)
+        // 计算高度
+        updateRowHeight()
     }
     
     
@@ -115,12 +119,41 @@ class CFStatusViewModel: CustomStringConvertible {
         return CGSize(width: CFStatusPictureViewWidth, height: height)
     }
     
+    /// 计算单张配图视图的尺寸
+    ///
+    /// - Parameter image: 单张的配图
     func updatePictureViewSize(image: UIImage) {
         var size = image.size
         // 添加顶部间距
         size.height += CFStatusPictureViewOutterMargin
         pictureViewSize = size
     }
+    
+    fileprivate func updateRowHeight() {
+        // 原创微博 顶部分隔(12) + 间距(12) + 头像高度(34) + 间距(12) + 正文(计算) + 配图高度(计算) + 间距(12) + 底部工具视图高度(36)
+        // 转发微博 顶部分隔(12) + 间距(12) + 头像高度(34) + 间距(12) + 正文(计算) + 间距(12) + 间距(12) + 被转发的正文(计算) + 配图高度(计算) + 间距(12) + 底部工具视图高度(36)
+        // 定义行高
+        var rowHeight: CGFloat = 0
+        // label最大宽度
+        let maxWidth: CGFloat = UIScreen.main.cf_screenWidth - 2 * CFCommonMargin
+        // 顶部高度
+        let topHeight: CGFloat = CFCommonMargin * 2 + CFStatusIconViewHeight + CFCommonMargin
+
+        let textHeight: CGFloat = status.text?.calculateSize(font: UIFont.systemFont(ofSize: 15), maxWidth: maxWidth).height ?? 0
+        
+        print("正文高度:\(textHeight)")
+        if status.retweeted_status == nil {
+            // 原创微博
+           rowHeight += topHeight + textHeight + pictureViewSize.height + CFCommonMargin + CFStatusToolbarHeight
+        }
+        else {
+             let retweetHeight: CGFloat = retweetedText?.calculateSize(font: UIFont.systemFont(ofSize: 14), maxWidth: maxWidth).height ?? 0
+            // 被转发的微博
+            rowHeight += topHeight + textHeight + CFCommonMargin * 2 + retweetHeight + pictureViewSize.height + CFStatusToolbarHeight
+        }
+        self.rowHeight = rowHeight
+    }
+    
     
     var description: String {
         return self.status.description

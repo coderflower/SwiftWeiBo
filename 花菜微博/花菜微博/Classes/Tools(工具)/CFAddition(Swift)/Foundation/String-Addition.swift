@@ -43,5 +43,13 @@ extension String {
         size.height = CGFloat(ceilf(Float(size.height)))
         return size
     }
+
+    func calculateSize(font: UIFont,maxWidth: CGFloat = UIScreen.main.cf_screenWidth) -> CGSize {
+        let size = CGSize(width: maxWidth, height: CGFloat(MAXFLOAT))
+        return (self as NSString).boundingRect(with: size, options: [.usesLineFragmentOrigin], attributes: [NSFontAttributeName: font], context: nil).size
+        
+    }
+
+    
 }
 

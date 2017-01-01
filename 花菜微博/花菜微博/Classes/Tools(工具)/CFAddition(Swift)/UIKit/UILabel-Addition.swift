@@ -17,4 +17,18 @@ extension UILabel {
         self.textColor = textColor
         self.numberOfLines = lines
     }
+    
+    
+    func calculateSize(lineSpace: CGFloat = 0) -> CGSize {
+        var attri = [String: AnyObject]()
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineSpacing = lineSpace
+        attri[NSFontAttributeName] = font
+        attri[NSParagraphStyleAttributeName] = paragraph
+        let size = CGSize(width: self.preferredMaxLayoutWidth, height: CGFloat(MAXFLOAT))
+        if let text = text {
+           return (text as NSString).boundingRect(with: size, options: [.usesLineFragmentOrigin], attributes: attri, context: nil).size
+        }
+        return CGSize.zero
+    }
 }
