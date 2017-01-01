@@ -52,8 +52,13 @@ class CFStatusCell: UITableViewCell {
     /// 被转发的微博正文,原创微博没有该label
     @IBOutlet weak var retweetedTextLabel: UILabel?
     override func awakeFromNib() {
-        // super.awakeFromNib()
         // Initialization code
+        // 开启离屏渲染
+        layer.drawsAsynchronously = true
+        // 栅格化
+        layer.shouldRasterize = true
+        // 栅格化必须指定分辨率
+        layer.rasterizationScale = UIScreen.main.scale
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
