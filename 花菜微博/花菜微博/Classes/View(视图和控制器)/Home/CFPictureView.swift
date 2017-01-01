@@ -11,13 +11,13 @@ import UIKit
 class CFPictureView: UIView {
     var viewModel: CFStatusViewModel? {
         didSet {
-            self.urls = viewModel?.picUrls
+            urls = viewModel?.picUrls
             calculateViewSize()
         }
     }
     
     
-    var urls: [CFStatusPicture]? {
+    fileprivate var urls: [CFStatusPicture]? {
         didSet {
             for view in subviews {
                 view.isHidden = true
@@ -36,7 +36,7 @@ class CFPictureView: UIView {
         }
     }
     
-    @IBOutlet weak var heightCons: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var heightCons: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -76,7 +76,7 @@ extension CFPictureView {
         // 宽度处理
         let v = subviews[0]
         if viewModel?.picUrls?.count == 1 {
-            // 单图处理,高度需要减去之前添加的间距
+            // 单图处理,修改subviews[0]的宽高,高度需要减去之前添加的间距
             let viewSize = viewModel?.pictureViewSize ?? CGSize.zero
             v.frame = CGRect(x: 0,
                              y: CFStatusPictureViewOutterMargin,
@@ -84,7 +84,7 @@ extension CFPictureView {
                              height: viewSize.height - CFStatusPictureViewOutterMargin)
         }
         else {
-            // 多图处理
+            // 多图处理恢复subviews[0]的宽高,保证九宫格布局的完整
             v.frame = CGRect(x: 0,
                              y: CFStatusPictureViewOutterMargin,
                              width: CFStatusPictureItemWidth,

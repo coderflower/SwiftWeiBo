@@ -26,9 +26,7 @@ class CFStatusCell: UITableViewCell {
             toolBar.viewModel = viewModel
             // 设置配图视图数据
             pictureView.viewModel = viewModel
-//            pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
-//            // 设置视图数据
-//            pictureView.
+            // 设置被转发微博正文
             retweetedTextLabel?.text = viewModel?.retweetedText
         }
     }
