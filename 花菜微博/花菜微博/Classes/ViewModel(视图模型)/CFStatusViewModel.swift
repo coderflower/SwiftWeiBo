@@ -127,6 +127,8 @@ class CFStatusViewModel: CustomStringConvertible {
         // 添加顶部间距
         size.height += CFStatusPictureViewOutterMargin
         pictureViewSize = size
+        // 重新计算行高
+        updateRowHeight()
     }
     
     fileprivate func updateRowHeight() {
@@ -141,16 +143,15 @@ class CFStatusViewModel: CustomStringConvertible {
 
         let textHeight: CGFloat = status.text?.calculateSize(font: UIFont.systemFont(ofSize: 15), maxWidth: maxWidth).height ?? 0
         
+        rowHeight += topHeight + textHeight
         print("正文高度:\(textHeight)")
-        if status.retweeted_status == nil {
-            // 原创微博
-           rowHeight += topHeight + textHeight + pictureViewSize.height + CFCommonMargin + CFStatusToolbarHeight
+        // 被转发的微博
+        if status.retweeted_status != nil {
+            let retweetHeight: CGFloat = retweetedText?.calculateSize(font: UIFont.systemFont(ofSize: 14), maxWidth: maxWidth).height ?? 0
+            rowHeight += CFCommonMargin * 2 + retweetHeight
         }
-        else {
-             let retweetHeight: CGFloat = retweetedText?.calculateSize(font: UIFont.systemFont(ofSize: 14), maxWidth: maxWidth).height ?? 0
-            // 被转发的微博
-            rowHeight += topHeight + textHeight + CFCommonMargin * 2 + retweetHeight + pictureViewSize.height + CFStatusToolbarHeight
-        }
+        rowHeight += pictureViewSize.height + CFCommonMargin + CFStatusToolbarHeight
+        
         self.rowHeight = rowHeight
     }
     

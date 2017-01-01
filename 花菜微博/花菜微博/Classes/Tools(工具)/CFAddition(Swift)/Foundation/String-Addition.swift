@@ -44,12 +44,25 @@ extension String {
         return size
     }
 
-    func calculateSize(font: UIFont,maxWidth: CGFloat = UIScreen.main.cf_screenWidth) -> CGSize {
+    /// 计算文本宽高
+    ///
+    /// - Parameters:
+    ///   - font: 文本所用的字体
+    ///   - maxWidth: 最大宽度
+    ///   - lineSpace: 行间距
+    /// - Returns: 文本的宽高
+    func calculateSize(font: UIFont,maxWidth: CGFloat = UIScreen.main.cf_screenWidth,lineSpace: CGFloat = 0) -> CGSize {
+        
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineSpacing = lineSpace
+        paragraph.lineBreakMode = .byCharWrapping
+        
         let size = CGSize(width: maxWidth, height: CGFloat(MAXFLOAT))
-        return (self as NSString).boundingRect(with: size, options: [.usesLineFragmentOrigin], attributes: [NSFontAttributeName: font], context: nil).size
+        return (self as NSString).boundingRect(with: size,
+                                               options: [.usesLineFragmentOrigin],
+                                               attributes: [NSFontAttributeName: font,NSParagraphStyleAttributeName: paragraph],
+                                               context: nil).size
         
     }
-
-    
 }
 
