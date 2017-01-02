@@ -83,11 +83,7 @@ class CFRefreshControl: UIControl {
                     // 放手,并且是将要刷新状态才开始刷新,否则恢复会普通状态
                     if refreshView.refreshState == .WillRefreshing {
                         print("开始准备刷新")
-                        // 修改为正在刷新
-                        refreshView.refreshState = .Refreshing
-                    }
-                    else {
-                        refreshView.refreshState = .Normal
+                        beginRefreshing()
                     }
                 }
             }
@@ -97,8 +93,8 @@ class CFRefreshControl: UIControl {
 
 extension CFRefreshControl {
     fileprivate func setupUI() {
-        backgroundColor = UIColor.red
-        clipsToBounds = true
+        backgroundColor = superview?.backgroundColor
+//        clipsToBounds = true
         addSubview(refreshView)
         // 添加约束
         setupConstraints()
@@ -146,6 +142,21 @@ extension CFRefreshControl {
 extension CFRefreshControl {
     func beginRefreshing() {
         print("开始刷新")
+        // 判断俯视图是否存在
+        guard let sv = scrollView else {
+            return
+        }
+        // 判断是否正在刷新,如果正在刷新,直接返回
+        if refreshView.refreshState == .Refreshing {
+            return
+        }
+        // 设置刷新视图的状态
+        refreshView.refreshState = .Refreshing
+        // 调整表格状态
+        var inset = sv.contentInset
+        inset.top += CFRefreshViewHeight
+        sv.contentInset = inset
+        
     }
     func endRefreshing() {
         print("结束刷新")

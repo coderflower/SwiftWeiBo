@@ -89,6 +89,8 @@ extension CFHomeViewController {
 extension CFHomeViewController {
     override func requestData() {
         
+        refreshControl?.beginRefreshing()
+        
         listViewModel.loadStatus(isPullup: self.isPullUp) { (isSuccess, shouldRefresh) in
             print("加载数据完成")
             // 恢复上拉刷新标记
