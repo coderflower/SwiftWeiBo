@@ -30,7 +30,7 @@ class CFBaseViewController: UIViewController {
         // 初始化UI界面
         setupUI()
         // 请求数据
-        CFNetworker.shared.userLogon ? requestData() : ()
+        CFNetworker.shared.userLogon ? refreshControl?.beginRefreshing() : ()
         // 注册通知
         setupNotify()
     }

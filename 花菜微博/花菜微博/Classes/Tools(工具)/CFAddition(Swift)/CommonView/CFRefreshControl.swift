@@ -85,7 +85,7 @@ class CFRefreshControl: UIControl {
                         print("开始准备刷新")
                         beginRefreshing()
                         // 发送刷新事件
-                        sendActions(for: .valueChanged)
+//                        sendActions(for: .valueChanged)
                     }
                 }
             }
@@ -158,7 +158,7 @@ extension CFRefreshControl {
         var inset = sv.contentInset
         inset.top += CFRefreshViewHeight
         sv.contentInset = inset
-        
+        sendActions(for: .valueChanged)
     }
     func endRefreshing() {
         print("结束刷新")

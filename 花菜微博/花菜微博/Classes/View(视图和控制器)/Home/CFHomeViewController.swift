@@ -53,10 +53,6 @@ extension CFHomeViewController {
                             forCellReuseIdentifier: CFOriginalCellId)
         tableView?.register(UINib(nibName: "CFStatusRetweetedCell", bundle: nil),
                             forCellReuseIdentifier: CFRetweetedCellId)
-        // 设置行高自动计算
-//        tableView?.rowHeight = UITableViewAutomaticDimension
-//        // 设置估算行高
-//        tableView?.estimatedRowHeight = 300
         // 取消分割线
         tableView?.separatorStyle = .none
     }
@@ -89,7 +85,7 @@ extension CFHomeViewController {
 extension CFHomeViewController {
     override func requestData() {
         
-        refreshControl?.beginRefreshing()
+//        refreshControl?.beginRefreshing()
         
         listViewModel.loadStatus(isPullup: self.isPullUp) { (isSuccess, shouldRefresh) in
             print("加载数据完成")

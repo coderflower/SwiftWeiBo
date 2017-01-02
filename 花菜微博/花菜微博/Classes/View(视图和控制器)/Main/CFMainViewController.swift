@@ -80,7 +80,8 @@ extension CFMainViewController {
         // 初始化发布按钮
         setupComposeButton()
         // 初始化欢迎页
-        setupNewFeatureView()
+        // FIXME: 暂时隐藏欢迎页面
+//        setupNewFeatureView()
     }
     /// 初始化发布按钮
     private func setupComposeButton() {
