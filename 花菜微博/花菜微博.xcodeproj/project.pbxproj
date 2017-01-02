@@ -66,6 +66,7 @@
 		83F6C6EB1DEF263B00ACF9E5 /* CFDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F6C6EA1DEF263B00ACF9E5 /* CFDiscoverViewController.swift */; };
 		83F6C6ED1DEF264A00ACF9E5 /* CFPofileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F6C6EC1DEF264A00ACF9E5 /* CFPofileViewController.swift */; };
 		B8606FF71E1A4B82000F9ED0 /* CFRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */; };
+		B86070401E1A6991000F9ED0 /* CFRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,6 +149,7 @@
 		83F6C6EC1DEF264A00ACF9E5 /* CFPofileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFPofileViewController.swift; sourceTree = "<group>"; };
 		83F6C6EE1DEF2E1000ACF9E5 /* WeiBo-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeiBo-Bridge.h"; sourceTree = "<group>"; };
 		B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshView.swift; sourceTree = "<group>"; };
+		B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +324,7 @@
 		83D71D411DF193D5008A8CEA /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */,
 				B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */,
 			);
 			path = CommonView;
@@ -639,6 +642,7 @@
 				83C938AD1E0E5A2500D05DA9 /* CFStatusToolBar.swift in Sources */,
 				83F6C6E91DEF262D00ACF9E5 /* CFMessageViewController.swift in Sources */,
 				83F6C6EB1DEF263B00ACF9E5 /* CFDiscoverViewController.swift in Sources */,
+				B86070401E1A6991000F9ED0 /* CFRefreshControl.swift in Sources */,
 				83F6C6E51DEF257900ACF9E5 /* CFBaseViewController.swift in Sources */,
 				8322C38C1DF40CD4006C7EB7 /* CFVisitorView.swift in Sources */,
 				83D71D211DF02E12008A8CEA /* UIImageView+CFExtension.m in Sources */,

@@ -18,7 +18,7 @@ class CFBaseViewController: UIViewController {
     /// 表格控件
     var tableView: UITableView?
     /// 上拉刷新控件
-    var refreshControl: UIRefreshControl?
+    var refreshControl: CFRefreshControl?
     /// 是否是上拉刷新
     var isPullUp: Bool = false
     /// 页码
@@ -134,7 +134,7 @@ extension CFBaseViewController {
     }
     /// 添加上架刷新控件
     fileprivate func setupRefreshControl() {
-        refreshControl = UIRefreshControl()
+        refreshControl = CFRefreshControl()
         refreshControl?.addTarget(self, action: #selector(requestData), for: .valueChanged)
         tableView?.addSubview(refreshControl!)
     }
