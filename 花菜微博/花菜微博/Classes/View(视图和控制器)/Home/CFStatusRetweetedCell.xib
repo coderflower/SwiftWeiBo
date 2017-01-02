@@ -64,7 +64,7 @@
                         <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQx-T6-QZW" userLabel="转发微博背景按钮">
-                        <rect key="frame" x="0.0" y="100" width="428" height="334"/>
+                        <rect key="frame" x="0.0" y="193" width="428" height="241"/>
                         <color key="backgroundColor" white="0.94169456845238086" alpha="1" colorSpace="calibratedWhite"/>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Et4-EI-zJO" userLabel="底部工具栏" customClass="CFStatusToolBar" customModule="花菜微博" customModuleProvider="target">
@@ -137,7 +137,7 @@
                         </connections>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJa-X8-GLZ" userLabel="图片视图" customClass="CFPictureView" customModule="花菜微博" customModuleProvider="target">
-                        <rect key="frame" x="12" y="129" width="404" height="200"/>
+                        <rect key="frame" x="12" y="222" width="404" height="200"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.39607843139999999" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="200" id="HLy-om-i5s"/>
@@ -147,7 +147,7 @@
                         </connections>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Oe-IH-gva" userLabel="被转发微博正文">
-                        <rect key="frame" x="12" y="112" width="36" height="17"/>
+                        <rect key="frame" x="12" y="205" width="36" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -174,11 +174,11 @@
                     <constraint firstItem="QZD-MF-fpS" firstAttribute="leading" secondItem="7L5-iC-oSO" secondAttribute="trailing" constant="11" id="dm9-DT-Msy"/>
                     <constraint firstItem="OMG-ZR-42v" firstAttribute="centerY" secondItem="vVt-5g-93f" secondAttribute="centerY" id="eJq-7e-Fco"/>
                     <constraint firstAttribute="trailing" secondItem="fJa-X8-GLZ" secondAttribute="trailing" constant="12" id="fKy-vg-mI5"/>
-                    <constraint firstItem="Et4-EI-zJO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fJa-X8-GLZ" secondAttribute="bottom" constant="12" id="gB4-3M-eq8"/>
+                    <constraint firstItem="Et4-EI-zJO" firstAttribute="top" secondItem="fJa-X8-GLZ" secondAttribute="bottom" constant="12" id="gB4-3M-eq8"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9cB-JK-iHa" secondAttribute="trailing" constant="12" id="hCj-yN-nDk"/>
                     <constraint firstItem="z3o-9H-wr7" firstAttribute="leading" secondItem="hxb-rp-Am9" secondAttribute="leading" id="kPb-DZ-zp9"/>
                     <constraint firstItem="z3o-9H-wr7" firstAttribute="top" secondItem="hxb-rp-Am9" secondAttribute="top" id="n0b-4k-nTt"/>
-                    <constraint firstItem="gQx-T6-QZW" firstAttribute="top" secondItem="9cB-JK-iHa" secondAttribute="bottom" constant="12" id="nPz-uh-wdN"/>
+                    <constraint firstItem="gQx-T6-QZW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9cB-JK-iHa" secondAttribute="bottom" constant="12" id="nPz-uh-wdN"/>
                     <constraint firstAttribute="trailing" secondItem="Et4-EI-zJO" secondAttribute="trailing" id="oQK-hV-fZv"/>
                     <constraint firstItem="vVt-5g-93f" firstAttribute="leading" secondItem="QZD-MF-fpS" secondAttribute="leading" id="oRV-jn-hcI"/>
                     <constraint firstAttribute="trailing" secondItem="z3o-9H-wr7" secondAttribute="trailing" id="qCn-2f-BLD"/>

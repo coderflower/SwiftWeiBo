@@ -141,13 +141,13 @@ class CFStatusViewModel: CustomStringConvertible {
         // 顶部高度
         let topHeight: CGFloat = CFCommonMargin * 2 + CFStatusIconViewHeight + CFCommonMargin
 
-        let textHeight: CGFloat = status.text?.calculateSize(font: UIFont.systemFont(ofSize: 15), maxWidth: maxWidth).height ?? 0
+        let textHeight: CGFloat = status.text?.calculateSize(font: UIFont.systemFont(ofSize: 15), maxWidth: maxWidth) ?? 0
         
         rowHeight += topHeight + textHeight
-        print("正文高度:\(textHeight)")
+        print("正文高度:\(textHeight) + \(status.text)")
         // 被转发的微博
         if status.retweeted_status != nil {
-            let retweetHeight: CGFloat = retweetedText?.calculateSize(font: UIFont.systemFont(ofSize: 14), maxWidth: maxWidth).height ?? 0
+            let retweetHeight: CGFloat = retweetedText?.calculateSize(font: UIFont.systemFont(ofSize: 14), maxWidth: maxWidth) ?? 0
             rowHeight += CFCommonMargin * 2 + retweetHeight
         }
         rowHeight += pictureViewSize.height + CFCommonMargin + CFStatusToolbarHeight

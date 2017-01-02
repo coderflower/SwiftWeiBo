@@ -51,17 +51,17 @@ extension String {
     ///   - maxWidth: 最大宽度
     ///   - lineSpace: 行间距
     /// - Returns: 文本的宽高
-    func calculateSize(font: UIFont,maxWidth: CGFloat = UIScreen.main.cf_screenWidth,lineSpace: CGFloat = 0) -> CGSize {
+    func calculateSize(font: UIFont,maxWidth: CGFloat = UIScreen.main.cf_screenWidth) -> CGFloat {
         
-        let paragraph = NSMutableParagraphStyle()
-        paragraph.lineSpacing = lineSpace
-        paragraph.lineBreakMode = .byCharWrapping
+        var attributes = [String: AnyObject]();
+        attributes[NSFontAttributeName] = font
         
         let size = CGSize(width: maxWidth, height: CGFloat(MAXFLOAT))
-        return (self as NSString).boundingRect(with: size,
-                                               options: [.usesLineFragmentOrigin],
-                                               attributes: [NSFontAttributeName: font,NSParagraphStyleAttributeName: paragraph],
-                                               context: nil).size
+        
+        return CGFloat(ceilf(Float((self as NSString).boundingRect(with: size,
+                                                                   options: [.usesLineFragmentOrigin],
+                                                                   attributes: attributes,
+                                                                   context: nil).size.height)))
         
     }
 }
