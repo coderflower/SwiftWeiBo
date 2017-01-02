@@ -7,9 +7,13 @@
 //
 
 import UIKit
+/// 正在加载时的文字
 fileprivate let CFRefreshingStateText = "正在加载数据,请稍候..."
+/// 即将刷新时的数据
 fileprivate let CFWillRefreshingStateText = "松开即可刷新..."
+/// 普通状态文字
 fileprivate let CFNormalStateText = "下拉即可刷新..."
+
 /// 负责刷新相关的UI界面
 class CFRefreshView: UIView {
     /// 提示label
@@ -34,10 +38,27 @@ class CFRefreshView: UIView {
         return indicator
     }()
     
+    var refreshState: CFRefreshState = .Normal {
+        didSet {
+            switch refreshState {
+            case .Normal:
+                self.indicator.isHidden = true
+                self.tipLabel.text = CFNormalStateText
+                self.tipIcon.isHidden = false
+            case .Refreshing:
+                self.tipLabel.text = CFRefreshingStateText
+                self.indicator.isHidden = false
+                self.tipIcon.isHidden = true
+            case .WillRefreshing:
+                self.tipLabel.text = CFWillRefreshingStateText
+            }
+        }
+    }
+
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-//        setupConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,21 +68,13 @@ class CFRefreshView: UIView {
 
 extension CFRefreshView {
     
-    /// 添加子控件
+    /// 初始化界面
     fileprivate func setupUI() {
-        backgroundColor = UIColor.yellow
         addSubview(tipLabel)
         addSubview(tipIcon)
         addSubview(indicator)
     }
-    
-    fileprivate func setupConstraints() {
-       
-        
-        
-        
-    }
-    
+ 
     override func layoutSubviews() {
         super.layoutSubviews()
         // label自适应宽度
@@ -75,7 +88,7 @@ extension CFRefreshView {
         tipIcon.frame = CGRect(x: (self.bounds.width - tipLabel.bounds.width - margin - iconSize.width) * 0.5, y: (self.bounds.height - iconSize.height) * 0.5, width: iconSize.width, height: iconSize.height)
         
         tipLabel.frame = CGRect(x: tipIcon.frame.maxX, y: (self.bounds.height - tipLabel.bounds.height) * 0.5, width: tipLabel.bounds.width, height: tipLabel.bounds.height)
-        
+        indicator.center = tipIcon.center
         
     }
 }
