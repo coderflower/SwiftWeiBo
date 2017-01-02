@@ -41,7 +41,7 @@ class CFRefreshView: UIView {
         didSet {
             switch refreshState {
             case .Normal:
-                self.indicator.isHidden = true
+                indicator.stopAnimating()
                 self.tipLabel.text = CFNormalStateText
                 self.tipIcon.isHidden = false
                 UIView.animate(withDuration: 0.25, animations: { 
@@ -52,7 +52,6 @@ class CFRefreshView: UIView {
                 self.indicator.isHidden = false
                 self.tipIcon.isHidden = true
                 self.indicator.startAnimating()
-                print(self.tipLabel.text)
             case .WillRefreshing:
                 self.tipLabel.text = CFWillRefreshingStateText
                 UIView.animate(withDuration: 0.25, animations: {

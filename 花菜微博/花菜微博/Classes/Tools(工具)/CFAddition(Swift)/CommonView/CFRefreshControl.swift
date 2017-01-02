@@ -84,6 +84,8 @@ class CFRefreshControl: UIControl {
                     if refreshView.refreshState == .WillRefreshing {
                         print("开始准备刷新")
                         beginRefreshing()
+                        // 发送刷新事件
+                        sendActions(for: .valueChanged)
                     }
                 }
             }
@@ -152,7 +154,7 @@ extension CFRefreshControl {
         }
         // 设置刷新视图的状态
         refreshView.refreshState = .Refreshing
-        // 调整表格状态
+        // 调整表格内间距
         var inset = sv.contentInset
         inset.top += CFRefreshViewHeight
         sv.contentInset = inset
@@ -160,5 +162,19 @@ extension CFRefreshControl {
     }
     func endRefreshing() {
         print("结束刷新")
+        // 判断俯视图是否存在
+        guard let sv = scrollView else {
+            return
+        }
+        // 判断是否正在刷新,如果不是直接返回
+        if refreshView.refreshState != .Refreshing {
+            return
+        }
+        // 改变刷新控件的状态
+        refreshView.refreshState = .Normal
+        // 还原contentInset
+        var inset = sv.contentInset
+        inset.top -= CFRefreshViewHeight
+        sv.contentInset = inset
     }
 }
