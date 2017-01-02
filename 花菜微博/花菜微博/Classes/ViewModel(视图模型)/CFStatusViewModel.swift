@@ -124,6 +124,24 @@ class CFStatusViewModel: CustomStringConvertible {
     /// - Parameter image: 单张的配图
     func updatePictureViewSize(image: UIImage) {
         var size = image.size
+        // 宽度太宽或者太窄处理
+        let minWidth: CGFloat = 100
+        let maxWidth: CGFloat = 300
+        
+        if size.width > maxWidth {
+            size.width = maxWidth
+            size.height = size.width / image.size.width * image.size.height
+        }
+        
+        if size.width < minWidth {
+            size.width = minWidth
+            size.height = size.width / image.size.width * image.size.height
+            if size.height > maxWidth {
+                size.height = maxWidth
+            }
+        }
+        
+        
         // 添加顶部间距
         size.height += CFStatusPictureViewOutterMargin
         pictureViewSize = size

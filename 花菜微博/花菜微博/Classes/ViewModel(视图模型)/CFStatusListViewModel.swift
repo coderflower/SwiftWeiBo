@@ -78,6 +78,11 @@ class CFStatusListViewModel {
         }
     }
     
+    /// 缓存单张图像
+    ///
+    /// - Parameters:
+    ///   - list: 本次请求的视图数组
+    ///   - finished: 完成回调
     fileprivate func cacheSingleImage(list: [CFStatusViewModel], finished: @escaping (_ isSuccess: Bool, _ shouldRefresh: Bool) -> ()) {
         // 创建队列组
         let group = DispatchGroup()
