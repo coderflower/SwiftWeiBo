@@ -29,7 +29,7 @@ class CFPictureView: UIView {
                 if index == 1 && urls?.count == 4 {
                     index += 1
                 }
-                iv.cf_setImage(urlString: pictrue.thumbnail_pic, placeholderImage: nil)
+                iv.cf_setImage(urlString: pictrue.thumbnail_pic, placeholderImage: UIImage(named: "placeholder"))
                 iv.isHidden = false
                 index += 1
             }

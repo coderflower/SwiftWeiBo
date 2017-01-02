@@ -65,6 +65,7 @@
 		83F6C6E91DEF262D00ACF9E5 /* CFMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F6C6E81DEF262D00ACF9E5 /* CFMessageViewController.swift */; };
 		83F6C6EB1DEF263B00ACF9E5 /* CFDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F6C6EA1DEF263B00ACF9E5 /* CFDiscoverViewController.swift */; };
 		83F6C6ED1DEF264A00ACF9E5 /* CFPofileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F6C6EC1DEF264A00ACF9E5 /* CFPofileViewController.swift */; };
+		B8606FF71E1A4B82000F9ED0 /* CFRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +147,7 @@
 		83F6C6EA1DEF263B00ACF9E5 /* CFDiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFDiscoverViewController.swift; sourceTree = "<group>"; };
 		83F6C6EC1DEF264A00ACF9E5 /* CFPofileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFPofileViewController.swift; sourceTree = "<group>"; };
 		83F6C6EE1DEF2E1000ACF9E5 /* WeiBo-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeiBo-Bridge.h"; sourceTree = "<group>"; };
+		B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +322,7 @@
 		83D71D411DF193D5008A8CEA /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				8322C3941DF444F7006C7EB7 /* String-Addition.swift in Sources */,
 				8304BB3E1E067D8400F46D98 /* CFAccount.swift in Sources */,
 				83D71D251DF03993008A8CEA /* UIScreen+CFExtension.m in Sources */,
+				B8606FF71E1A4B82000F9ED0 /* CFRefreshView.swift in Sources */,
 				83C938AB1E0E4E9200D05DA9 /* UIImageView+WebImage.swift in Sources */,
 				83D71D2F1DF06072008A8CEA /* CFUntilConst.swift in Sources */,
 				83D71D3F1DF1937B008A8CEA /* UIScreen-Addition.swift in Sources */,
