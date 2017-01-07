@@ -67,8 +67,14 @@ class CFComposeView: UIView {
     
     
     @IBAction func returnButtonAction() {
-        
-        
+        // 还原返回按钮和关闭按钮的位置
+        returnButtonCenterXContraint.constant = 0
+        closeButtonCenterXContraint.constant = 0
+        scorllView.setContentOffset(CGPoint.zero, animated: true)
+        UIView.animate(withDuration: 0.25, animations: { 
+            self.layoutIfNeeded()
+            self.returnButton.alpha = 0
+        })
     }
 }
 
@@ -83,7 +89,6 @@ fileprivate extension CFComposeView {
         for i in 0..<2 {
             let v = UIView()
             v.frame = rect.offsetBy(dx: CGFloat(i) * rect.width, dy: 0)
-            v.backgroundColor = UIColor.cf_randomColor()
             addButtons(view: v, index: i * 6)
             scorllView.addSubview(v)
         }
@@ -148,7 +153,15 @@ fileprivate extension CFComposeView {
     }
     
     @objc func clickMore() {
-        print("点击了更多")
+        // 更新scorllView偏移量
         scorllView.setContentOffset(CGPoint(x: scorllView.bounds.width, y: 0), animated: true)
+        // 更新返回按钮和关闭按钮的位置
+        self.returnButtonCenterXContraint.constant -= UIScreen.main.cf_screenWidth / 6
+        self.closeButtonCenterXContraint.constant += UIScreen.main.cf_screenWidth / 6
+        // 添加动画效果显示返回按钮
+        UIView.animate(withDuration: 0.25) { 
+            self.layoutIfNeeded()
+            self.returnButton.alpha = 1
+        }
     }
 }

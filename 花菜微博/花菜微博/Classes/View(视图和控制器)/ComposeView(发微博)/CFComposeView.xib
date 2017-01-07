@@ -31,8 +31,8 @@
                                             <action selector="dismissAction" destination="V5S-Q3-tot" eventType="touchUpInside" id="w1h-wn-wAi"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sP-vQ-JAq" userLabel="返回按钮">
-                                        <rect key="frame" x="74.666666666666686" y="9" width="26" height="26"/>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sP-vQ-JAq" userLabel="返回按钮">
+                                        <rect key="frame" x="174.66666666666666" y="9" width="26" height="26"/>
                                         <state key="normal" image="tabbar_compose_background_icon_return"/>
                                         <connections>
                                             <action selector="returnButtonAction" destination="V5S-Q3-tot" eventType="touchUpInside" id="N76-QM-BMa"/>
@@ -45,7 +45,7 @@
                                     <constraint firstItem="2sP-vQ-JAq" firstAttribute="centerY" secondItem="K5x-DI-gVa" secondAttribute="centerY" id="DLp-aQ-b1h"/>
                                     <constraint firstAttribute="height" constant="44" id="Qhi-dK-dQU"/>
                                     <constraint firstItem="Kse-7F-HAL" firstAttribute="centerX" secondItem="K5x-DI-gVa" secondAttribute="centerX" id="XRU-4f-BTk"/>
-                                    <constraint firstItem="2sP-vQ-JAq" firstAttribute="centerX" secondItem="K5x-DI-gVa" secondAttribute="centerX" constant="-100" id="tgU-uG-rq9"/>
+                                    <constraint firstItem="2sP-vQ-JAq" firstAttribute="centerX" secondItem="K5x-DI-gVa" secondAttribute="centerX" id="tgU-uG-rq9"/>
                                 </constraints>
                             </view>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="compose_slogan" translatesAutoresizingMaskIntoConstraints="NO" id="Eoq-Cr-6DZ">
@@ -53,7 +53,6 @@
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqM-Db-6nJ">
                                 <rect key="frame" x="0.0" y="299" width="375" height="224"/>
-                                <color key="backgroundColor" red="0.74528459820000004" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="224" id="7N2-94-wXN"/>
                                 </constraints>
