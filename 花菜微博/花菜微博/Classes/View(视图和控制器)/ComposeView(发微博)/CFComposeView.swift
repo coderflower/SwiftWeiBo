@@ -64,7 +64,8 @@ class CFComposeView: UIView {
     
     @IBAction func dismissAction() {
         
-        self.removeFromSuperview()
+//        self.removeFromSuperview()
+        hideButtons()
     }
     
     
@@ -80,7 +81,10 @@ class CFComposeView: UIView {
     }
 }
 
+
+// MARK: - 动画相关扩展
 fileprivate extension CFComposeView {
+    // MARK: - 显示动画
     func showCurrentView() {
         // 创建动画
         let anim: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
@@ -94,6 +98,7 @@ fileprivate extension CFComposeView {
         showButtons()
     }
     
+    // MARK: - 显示按钮动画
     func showButtons()  {
         // 获取做动画的按钮
         let v = scorllView.subviews[0]
@@ -101,7 +106,7 @@ fileprivate extension CFComposeView {
         for (i , btn) in v.subviews.enumerated() {
             // 创建弹力动画
             let anim: POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
-            anim.fromValue = btn.center.y + 300
+            anim.fromValue = btn.center.y + 400
             anim.toValue = btn.center.y
             // 弹力速度
             anim.springSpeed = 8
@@ -111,6 +116,25 @@ fileprivate extension CFComposeView {
             anim.beginTime = CACurrentMediaTime() + CFTimeInterval(i) * 0.025
             // 添加动画
             btn.layer.pop_add(anim, forKey: nil)
+        }
+    }
+    // MARK: - 隐藏按钮动画
+    func hideButtons() {
+        // 获取当前显示的子视图
+        let page = Int(scorllView.contentOffset.x / scorllView.bounds.width)
+        if page < scorllView.subviews.count {
+            let v = scorllView.subviews[page]
+            // 倒数遍历
+            for (i, btn) in v.subviews.enumerated().reversed() {
+                // 创建动画
+                let anim: POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
+                anim.fromValue = btn.center.y
+                anim.toValue = btn.center.y + 400
+                anim.springBounciness = 8
+                anim.springSpeed = 8
+                anim.beginTime = CACurrentMediaTime() + CFTimeInterval(v.subviews.count - i) * 0.025
+                btn.layer.pop_add(anim, forKey: nil)
+            }
         }
     }
 }
