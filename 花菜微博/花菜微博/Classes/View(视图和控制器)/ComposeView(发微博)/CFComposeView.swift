@@ -18,6 +18,7 @@ fileprivate let composeButtonRowMargin: CGFloat = (224 - 2 * kComposeTypeButtonS
 
 class CFComposeView: UIView {
 
+    var completion: ((_ className: String?) -> ())?
     @IBOutlet weak var closeButton: UIButton!
     
     @IBOutlet weak var scorllView: UIScrollView!
@@ -56,19 +57,22 @@ class CFComposeView: UIView {
     }
     
     /// 显示发微博视图
-    func show() {
+    func show(completion: @escaping (_ className: String?) -> ()) {
+        self.completion = completion
         CFMainViewController.shared.view .addSubview(self)
         // 添加动画
         showCurrentView()
     }
     
+    
+    /// 关闭按钮点击事件
     @IBAction func dismissAction() {
-        
-//        self.removeFromSuperview()
+        // 隐藏当前显示的所有按钮
         hideButtons()
     }
     
     
+    /// 返回按钮点击事件
     @IBAction func returnButtonAction() {
         // 还原返回按钮和关闭按钮的位置
         returnButtonCenterXContraint.constant = 0
@@ -134,9 +138,30 @@ fileprivate extension CFComposeView {
                 anim.springSpeed = 8
                 anim.beginTime = CACurrentMediaTime() + CFTimeInterval(v.subviews.count - i) * 0.025
                 btn.layer.pop_add(anim, forKey: nil)
+                // 监听第0个动画完成
+                if i == 0 {
+                    anim.completionBlock = { (_ , _) in
+                        // 隐藏当前视图
+                        self.hideCurrentView()
+                    }
+                }
             }
         }
     }
+    // MARK: - 隐藏当前视图
+    func hideCurrentView() {
+        let anim:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        anim.toValue = 0
+        anim.fromValue = 1
+        anim.duration = 0.25
+        pop_add(anim, forKey: nil)
+        // 监听动画完成
+        anim.completionBlock = { (_, _) in
+            // 从父视图移除
+            self.removeFromSuperview()
+        }
+    }
+    
 }
 
 
@@ -187,7 +212,7 @@ fileprivate extension CFComposeView {
                 btn.addTarget(self, action: Selector(actionName), for: .touchUpInside);
             }
             else {
-                btn.addTarget(self, action: #selector(btnClick(btn:)), for: .touchUpInside)
+                btn.addTarget(self, action: #selector(btnClick(selectButton:)), for: .touchUpInside)
             }
         }
         
@@ -207,9 +232,41 @@ fileprivate extension CFComposeView {
     
 }
 
+
+// MARK: - 各个按钮的点击事件
 fileprivate extension CFComposeView {
-    @objc func btnClick(btn:CFComposeTypeButton) {
+    @objc func btnClick(selectButton:CFComposeTypeButton) {
         print("点击了按钮")
+        guard let view = selectButton.superview else {
+            return
+        }
+        
+        // 被选中的放大, 未被选中的缩小
+        for (i, button) in view.subviews.enumerated() {
+            // 创建缩放动画
+            let scaleAnim = POPBasicAnimation(propertyNamed: kPOPViewScaleXY)
+            // 设置缩放系数
+            let scale = (button == selectButton) ? 1.5 : 0.2
+            scaleAnim?.toValue = NSValue(cgPoint: CGPoint(x: scale, y: scale))
+            scaleAnim?.duration = 0.5
+            button.pop_add(scaleAnim, forKey: nil)
+            
+            // 创建透明度动画
+            let alphaAnim = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+            alphaAnim?.toValue = 0.2
+            alphaAnim?.duration = 0.5
+            button.pop_add(alphaAnim, forKey: nil)
+            // 监听动画完成
+            if i == 0 {
+                alphaAnim?.completionBlock = { (_, _) in
+                 print("动画完毕,显示需要展示的控制器")
+                    self.completion?(selectButton.className)
+                }
+            }
+        }
+        
+        
+        
     }
     
     @objc func clickMore() {

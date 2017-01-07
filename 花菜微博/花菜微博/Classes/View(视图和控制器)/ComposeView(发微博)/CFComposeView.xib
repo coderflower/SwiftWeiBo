@@ -51,7 +51,7 @@
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="compose_slogan" translatesAutoresizingMaskIntoConstraints="NO" id="Eoq-Cr-6DZ">
                                 <rect key="frame" x="111" y="100" width="154" height="48"/>
                             </imageView>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqM-Db-6nJ">
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqM-Db-6nJ" userLabel="按钮父视图">
                                 <rect key="frame" x="0.0" y="299" width="375" height="224"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="224" id="7N2-94-wXN"/>

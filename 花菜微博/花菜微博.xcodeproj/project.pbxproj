@@ -497,11 +497,19 @@
 		B814A0171E20FC6700DEFDEB /* ComposeView(发微博) */ = {
 			isa = PBXGroup;
 			children = (
+				B814A01E1E21433F00DEFDEB /* 选择发布微博视图 */,
+			);
+			path = "ComposeView(发微博)";
+			sourceTree = "<group>";
+		};
+		B814A01E1E21433F00DEFDEB /* 选择发布微博视图 */ = {
+			isa = PBXGroup;
+			children = (
 				B814A0181E20FCA900DEFDEB /* CFComposeView.swift */,
 				B814A01A1E21054300DEFDEB /* CFComposeView.xib */,
 				B814A01C1E2117CE00DEFDEB /* CFComposeTypeButton.swift */,
 			);
-			path = "ComposeView(发微博)";
+			name = "选择发布微博视图";
 			sourceTree = "<group>";
 		};
 		CB92F8B939F5FBDDF4011B56 /* Frameworks */ = {

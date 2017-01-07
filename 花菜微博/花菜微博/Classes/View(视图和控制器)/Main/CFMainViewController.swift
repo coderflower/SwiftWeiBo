@@ -81,8 +81,7 @@ extension CFMainViewController {
         // 初始化发布按钮
         setupComposeButton()
         // 初始化欢迎页
-        // FIXME: 暂时隐藏欢迎页面
-//        setupNewFeatureView()
+        setupNewFeatureView()
     }
     /// 初始化发布按钮
     private func setupComposeButton() {
@@ -221,11 +220,24 @@ extension CFMainViewController: UITabBarControllerDelegate {
     }
 }
 
+
+// MARK: - 发布按钮事件
 extension CFMainViewController {
     @objc fileprivate func composeButtonAction() {
         print("点击了发布按钮")
         let composeView = CFComposeView.composeView()
         
-        composeView.show()
+        composeView.show { [weak composeView](className) in
+            guard let className = className,
+             let cls = NSClassFromString(className) as? UIViewController.Type else {
+                composeView?.removeFromSuperview()
+                return
+            }
+            let nav = UINavigationController(rootViewController: cls.init())
+            
+            self.present(nav, animated: true, completion: { 
+                composeView?.removeFromSuperview()
+            })
+        }
     }
 }

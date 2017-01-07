@@ -11,6 +11,7 @@ import UIKit
 class CFComposeTypeButton: UIControl {
     let imageView = UIImageView()
     let titleLabel = UILabel()
+    var className: String?
     convenience init(imageName: String, title: String) {
         self.init()
         titleLabel.text = title
