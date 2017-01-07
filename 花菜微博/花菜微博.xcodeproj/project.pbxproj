@@ -68,6 +68,7 @@
 		B814A0191E20FCA900DEFDEB /* CFComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814A0181E20FCA900DEFDEB /* CFComposeView.swift */; };
 		B814A01B1E21054300DEFDEB /* CFComposeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814A01A1E21054300DEFDEB /* CFComposeView.xib */; };
 		B814A01D1E2117CE00DEFDEB /* CFComposeTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814A01C1E2117CE00DEFDEB /* CFComposeTypeButton.swift */; };
+		B814A0221E21476400DEFDEB /* CFComposeTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814A0211E21476400DEFDEB /* CFComposeTypeViewController.swift */; };
 		B8606FF71E1A4B82000F9ED0 /* CFRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */; };
 		B86070401E1A6991000F9ED0 /* CFRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */; };
 /* End PBXBuildFile section */
@@ -154,6 +155,7 @@
 		B814A0181E20FCA900DEFDEB /* CFComposeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFComposeView.swift; sourceTree = "<group>"; };
 		B814A01A1E21054300DEFDEB /* CFComposeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFComposeView.xib; sourceTree = "<group>"; };
 		B814A01C1E2117CE00DEFDEB /* CFComposeTypeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFComposeTypeButton.swift; sourceTree = "<group>"; };
+		B814A0211E21476400DEFDEB /* CFComposeTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFComposeTypeViewController.swift; sourceTree = "<group>"; };
 		B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshView.swift; sourceTree = "<group>"; };
 		B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -498,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				B814A01E1E21433F00DEFDEB /* 选择发布微博视图 */,
+				B814A0211E21476400DEFDEB /* CFComposeTypeViewController.swift */,
 			);
 			path = "ComposeView(发微博)";
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				83D71D2F1DF06072008A8CEA /* CFUntilConst.swift in Sources */,
 				83D71D3F1DF1937B008A8CEA /* UIScreen-Addition.swift in Sources */,
 				83D71CFC1DF02DD5008A8CEA /* NSObject+CFExtension.m in Sources */,
+				B814A0221E21476400DEFDEB /* CFComposeTypeViewController.swift in Sources */,
 				83C9385F1E0D445600D05DA9 /* UIImage+Additon.swift in Sources */,
 				8353489F1E0930D800E3B715 /* UIView-Layer.swift in Sources */,
 				83D71D1B1DF02E12008A8CEA /* UITextField+Placeholder.m in Sources */,

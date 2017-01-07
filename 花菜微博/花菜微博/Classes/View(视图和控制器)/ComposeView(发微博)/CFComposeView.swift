@@ -29,7 +29,7 @@ class CFComposeView: UIView {
     /// 关闭按钮中心点X约束
     @IBOutlet weak var closeButtonCenterXContraint: NSLayoutConstraint!
     /// 按钮数据数组
-    fileprivate let buttonsInfo = [["imageName": "tabbar_compose_idea", "title": "文字", "clsName": "WBComposeViewController"],
+    fileprivate let buttonsInfo = [["imageName": "tabbar_compose_idea", "title": "文字", "className": "CFComposeTypeViewController"],
                                    ["imageName": "tabbar_compose_photo", "title": "照片/视频"],
                                    ["imageName": "tabbar_compose_weibo", "title": "长微博"],
                                    ["imageName": "tabbar_compose_lbs", "title": "签到"],
@@ -214,6 +214,7 @@ fileprivate extension CFComposeView {
             else {
                 btn.addTarget(self, action: #selector(btnClick(selectButton:)), for: .touchUpInside)
             }
+            btn.className = dict["className"]
         }
         
         // 设置frame

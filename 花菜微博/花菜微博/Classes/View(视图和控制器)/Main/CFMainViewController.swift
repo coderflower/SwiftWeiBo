@@ -228,14 +228,17 @@ extension CFMainViewController {
         let composeView = CFComposeView.composeView()
         
         composeView.show { [weak composeView](className) in
+
             guard let className = className,
-             let cls = NSClassFromString(className) as? UIViewController.Type else {
+             let cls = NSClassFromString(Bundle.main.nameSpace + className) as? UIViewController.Type else {
                 composeView?.removeFromSuperview()
                 return
             }
-            let nav = UINavigationController(rootViewController: cls.init())
-            
-            self.present(nav, animated: true, completion: { 
+            let vc = cls.init()
+
+            let nav = UINavigationController(rootViewController: vc)
+
+            self.present(nav, animated: true, completion: {
                 composeView?.removeFromSuperview()
             })
         }
