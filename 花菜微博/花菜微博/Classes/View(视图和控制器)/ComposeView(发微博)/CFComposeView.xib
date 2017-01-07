@@ -24,26 +24,50 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5x-DI-gVa" userLabel="底部工具条">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kse-7F-HAL">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kse-7F-HAL" userLabel="关闭按钮">
                                         <rect key="frame" x="174.66666666666666" y="8.6666666666666288" width="26" height="26"/>
                                         <state key="normal" image="tabbar_compose_background_icon_close"/>
                                         <connections>
                                             <action selector="dismissAction" destination="V5S-Q3-tot" eventType="touchUpInside" id="w1h-wn-wAi"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sP-vQ-JAq" userLabel="返回按钮">
+                                        <rect key="frame" x="74.666666666666686" y="9" width="26" height="26"/>
+                                        <state key="normal" image="tabbar_compose_background_icon_return"/>
+                                        <connections>
+                                            <action selector="returnButtonAction" destination="V5S-Q3-tot" eventType="touchUpInside" id="N76-QM-BMa"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Kse-7F-HAL" firstAttribute="centerY" secondItem="K5x-DI-gVa" secondAttribute="centerY" id="2to-d2-vKJ"/>
+                                    <constraint firstItem="2sP-vQ-JAq" firstAttribute="centerY" secondItem="K5x-DI-gVa" secondAttribute="centerY" id="DLp-aQ-b1h"/>
                                     <constraint firstAttribute="height" constant="44" id="Qhi-dK-dQU"/>
                                     <constraint firstItem="Kse-7F-HAL" firstAttribute="centerX" secondItem="K5x-DI-gVa" secondAttribute="centerX" id="XRU-4f-BTk"/>
+                                    <constraint firstItem="2sP-vQ-JAq" firstAttribute="centerX" secondItem="K5x-DI-gVa" secondAttribute="centerX" constant="-100" id="tgU-uG-rq9"/>
                                 </constraints>
                             </view>
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="compose_slogan" translatesAutoresizingMaskIntoConstraints="NO" id="Eoq-Cr-6DZ">
+                                <rect key="frame" x="111" y="100" width="154" height="48"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqM-Db-6nJ">
+                                <rect key="frame" x="0.0" y="299" width="375" height="224"/>
+                                <color key="backgroundColor" red="0.74528459820000004" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="224" id="7N2-94-wXN"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Eoq-Cr-6DZ" firstAttribute="top" secondItem="2Td-hG-0Nu" secondAttribute="top" constant="100" id="1uO-56-6hB"/>
                             <constraint firstItem="K5x-DI-gVa" firstAttribute="leading" secondItem="2Td-hG-0Nu" secondAttribute="leading" id="A4c-v7-0bo"/>
+                            <constraint firstAttribute="trailing" secondItem="jqM-Db-6nJ" secondAttribute="trailing" id="CZJ-lV-cLy"/>
                             <constraint firstAttribute="trailing" secondItem="K5x-DI-gVa" secondAttribute="trailing" id="EEk-dt-sdv"/>
+                            <constraint firstItem="K5x-DI-gVa" firstAttribute="top" secondItem="jqM-Db-6nJ" secondAttribute="bottom" constant="100" id="fcr-dq-lZn"/>
+                            <constraint firstItem="jqM-Db-6nJ" firstAttribute="leading" secondItem="2Td-hG-0Nu" secondAttribute="leading" id="gEO-OI-gGj"/>
                             <constraint firstAttribute="bottom" secondItem="K5x-DI-gVa" secondAttribute="bottom" id="lG8-N1-m6E"/>
+                            <constraint firstItem="Eoq-Cr-6DZ" firstAttribute="centerX" secondItem="2Td-hG-0Nu" secondAttribute="centerX" id="mXk-eS-hxl"/>
                         </constraints>
                     </view>
                     <blurEffect style="extraLight"/>
@@ -58,11 +82,17 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="closeButton" destination="Kse-7F-HAL" id="had-Zc-b1A"/>
+                <outlet property="closeButtonCenterXContraint" destination="XRU-4f-BTk" id="SmL-ow-kaS"/>
+                <outlet property="returnButton" destination="2sP-vQ-JAq" id="6oH-CU-LgL"/>
+                <outlet property="returnButtonCenterXContraint" destination="tgU-uG-rq9" id="YDZ-ec-XE9"/>
+                <outlet property="scorllView" destination="jqM-Db-6nJ" id="Ypi-3v-Hac"/>
             </connections>
             <point key="canvasLocation" x="-4" y="-119"/>
         </view>
     </objects>
     <resources>
+        <image name="compose_slogan" width="154" height="48"/>
         <image name="tabbar_compose_background_icon_close" width="26" height="26"/>
+        <image name="tabbar_compose_background_icon_return" width="26" height="26"/>
     </resources>
 </document>
