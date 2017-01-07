@@ -27,7 +27,7 @@ class CFNewFeatureView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.clear
-        setupUI()
+        setupOwerViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,7 +39,7 @@ class CFNewFeatureView: UIView {
 
 // MARK: - 添加子视图
 extension CFNewFeatureView {
-    fileprivate func setupUI() {
+    fileprivate func setupOwerViews() {
         // 添加图片容器视图
         setupContentView()
         // 添加进入微博按钮

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="V5S-Q3-tot" customClass="CFComposeView" customModule="花菜微博" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W4W-bY-GzD">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2Td-hG-0Nu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5x-DI-gVa" userLabel="底部工具条">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kse-7F-HAL">
+                                        <rect key="frame" x="174.66666666666666" y="8.6666666666666288" width="26" height="26"/>
+                                        <state key="normal" image="tabbar_compose_background_icon_close"/>
+                                        <connections>
+                                            <action selector="dismissAction" destination="V5S-Q3-tot" eventType="touchUpInside" id="w1h-wn-wAi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Kse-7F-HAL" firstAttribute="centerY" secondItem="K5x-DI-gVa" secondAttribute="centerY" id="2to-d2-vKJ"/>
+                                    <constraint firstAttribute="height" constant="44" id="Qhi-dK-dQU"/>
+                                    <constraint firstItem="Kse-7F-HAL" firstAttribute="centerX" secondItem="K5x-DI-gVa" secondAttribute="centerX" id="XRU-4f-BTk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="K5x-DI-gVa" firstAttribute="leading" secondItem="2Td-hG-0Nu" secondAttribute="leading" id="A4c-v7-0bo"/>
+                            <constraint firstAttribute="trailing" secondItem="K5x-DI-gVa" secondAttribute="trailing" id="EEk-dt-sdv"/>
+                            <constraint firstAttribute="bottom" secondItem="K5x-DI-gVa" secondAttribute="bottom" id="lG8-N1-m6E"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="extraLight"/>
+                </visualEffectView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="W4W-bY-GzD" secondAttribute="trailing" id="3FV-pA-zru"/>
+                <constraint firstItem="W4W-bY-GzD" firstAttribute="top" secondItem="V5S-Q3-tot" secondAttribute="top" id="5yC-rW-2JX"/>
+                <constraint firstAttribute="bottom" secondItem="W4W-bY-GzD" secondAttribute="bottom" id="Llt-OZ-xyI"/>
+                <constraint firstItem="W4W-bY-GzD" firstAttribute="leading" secondItem="V5S-Q3-tot" secondAttribute="leading" id="N5w-2Z-b1R"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="closeButton" destination="Kse-7F-HAL" id="had-Zc-b1A"/>
+            </connections>
+            <point key="canvasLocation" x="-4" y="-119"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tabbar_compose_background_icon_close" width="26" height="26"/>
+    </resources>
+</document>

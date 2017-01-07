@@ -16,7 +16,7 @@ class CFWelcomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.red
-        setupUI()
+        setupOwerViews()
         setupLayoutConstraint()
     }
     
@@ -29,7 +29,7 @@ class CFWelcomeView: UIView {
 // MARK: - UI界面相关
 extension CFWelcomeView {
     /// 添加子控件
-    fileprivate func setupUI() {
+    fileprivate func setupOwerViews() {
         // 背景图片
         let backImageView = UIImageView(image: UIImage(named: "ad_background"))
         backImageView.frame = UIScreen.main.bounds

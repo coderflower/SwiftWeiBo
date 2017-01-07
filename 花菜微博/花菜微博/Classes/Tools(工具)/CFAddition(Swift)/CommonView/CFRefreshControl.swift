@@ -24,12 +24,12 @@ class CFRefreshControl: UIControl {
     let refreshView = CFRefreshView()
     init() {
         super.init(frame: CGRect.zero)
-        setupUI()
+        setupOwerViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupUI()
+        setupOwerViews()
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -94,9 +94,9 @@ class CFRefreshControl: UIControl {
 }
 
 extension CFRefreshControl {
-    fileprivate func setupUI() {
-        backgroundColor = superview?.backgroundColor
-//        clipsToBounds = true
+    fileprivate func setupOwerViews() {
+//        backgroundColor = superview?.backgroundColor
+        backgroundColor = UIColor.red
         addSubview(refreshView)
         // 添加约束
         setupConstraints()
@@ -176,5 +176,8 @@ extension CFRefreshControl {
         var inset = sv.contentInset
         inset.top -= CFRefreshViewHeight
         sv.contentInset = inset
+        // 保存最后刷新时间
+        UserDefaults.standard.set(Date(), forKey: "CFRefreshLastUpdateTimeKey")
+        UserDefaults.standard.synchronize()
     }
 }

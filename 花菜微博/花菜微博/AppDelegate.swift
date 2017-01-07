@@ -24,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loadAppInfo()
         // 添加窗口,设置根控制器
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = CFMainViewController()
+        window?.rootViewController = CFMainViewController.shared
         window?.makeKeyAndVisible()
-
+        
         return true
     }
     

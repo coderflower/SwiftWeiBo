@@ -28,7 +28,7 @@ class CFBaseViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // 初始化UI界面
-        setupUI()
+        setupOwerViews()
         // 请求数据
         CFNetworker.shared.userLogon ? refreshControl?.beginRefreshing() : ()
         // 注册通知
@@ -97,7 +97,7 @@ extension CFBaseViewController {
 // MARK: - 设置UI界面
 extension CFBaseViewController {
     /// 初始化UI界面
-    fileprivate func setupUI() {
+    fileprivate func setupOwerViews() {
         // 设置随机背景色
         view.backgroundColor = UIColor.cf_randomColor()
         // 取消自动缩进 - 如果隐藏了导航栏,会缩进20个点

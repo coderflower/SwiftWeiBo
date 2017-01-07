@@ -65,6 +65,8 @@
 		83F6C6E91DEF262D00ACF9E5 /* CFMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F6C6E81DEF262D00ACF9E5 /* CFMessageViewController.swift */; };
 		83F6C6EB1DEF263B00ACF9E5 /* CFDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F6C6EA1DEF263B00ACF9E5 /* CFDiscoverViewController.swift */; };
 		83F6C6ED1DEF264A00ACF9E5 /* CFPofileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F6C6EC1DEF264A00ACF9E5 /* CFPofileViewController.swift */; };
+		B814A0191E20FCA900DEFDEB /* CFComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814A0181E20FCA900DEFDEB /* CFComposeView.swift */; };
+		B814A01B1E21054300DEFDEB /* CFComposeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814A01A1E21054300DEFDEB /* CFComposeView.xib */; };
 		B8606FF71E1A4B82000F9ED0 /* CFRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */; };
 		B86070401E1A6991000F9ED0 /* CFRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */; };
 /* End PBXBuildFile section */
@@ -148,6 +150,8 @@
 		83F6C6EA1DEF263B00ACF9E5 /* CFDiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFDiscoverViewController.swift; sourceTree = "<group>"; };
 		83F6C6EC1DEF264A00ACF9E5 /* CFPofileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFPofileViewController.swift; sourceTree = "<group>"; };
 		83F6C6EE1DEF2E1000ACF9E5 /* WeiBo-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeiBo-Bridge.h"; sourceTree = "<group>"; };
+		B814A0181E20FCA900DEFDEB /* CFComposeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFComposeView.swift; sourceTree = "<group>"; };
+		B814A01A1E21054300DEFDEB /* CFComposeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFComposeView.xib; sourceTree = "<group>"; };
 		B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshView.swift; sourceTree = "<group>"; };
 		B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -397,23 +401,25 @@
 			isa = PBXGroup;
 			children = (
 				83F6C6DC1DEF250500ACF9E5 /* Main */,
-				83F6C6DB1DEF250500ACF9E5 /* Home */,
-				83F6C6DD1DEF250500ACF9E5 /* Message */,
-				83F6C6DA1DEF250500ACF9E5 /* Discover */,
-				83F6C6DE1DEF250500ACF9E5 /* Pofile */,
+				83F6C6DB1DEF250500ACF9E5 /* Home(首页) */,
+				83F6C6DD1DEF250500ACF9E5 /* Message(消息) */,
+				B814A0171E20FC6700DEFDEB /* ComposeView(发微博) */,
+				83F6C6DA1DEF250500ACF9E5 /* Discover(发现) */,
+				83F6C6DE1DEF250500ACF9E5 /* Pofile(我的) */,
 			);
 			path = "View(视图和控制器)";
 			sourceTree = "<group>";
 		};
-		83F6C6DA1DEF250500ACF9E5 /* Discover */ = {
+		83F6C6DA1DEF250500ACF9E5 /* Discover(发现) */ = {
 			isa = PBXGroup;
 			children = (
 				83F6C6EA1DEF263B00ACF9E5 /* CFDiscoverViewController.swift */,
 			);
+			name = "Discover(发现)";
 			path = Discover;
 			sourceTree = "<group>";
 		};
-		83F6C6DB1DEF250500ACF9E5 /* Home */ = {
+		83F6C6DB1DEF250500ACF9E5 /* Home(首页) */ = {
 			isa = PBXGroup;
 			children = (
 				83F6C6E61DEF262100ACF9E5 /* CFHomeViewController.swift */,
@@ -423,6 +429,7 @@
 				838A708A1E14121500168A05 /* CFStatusNormalCell.xib */,
 				838A70881E1411CD00168A05 /* CFStatusRetweetedCell.xib */,
 			);
+			name = "Home(首页)";
 			path = Home;
 			sourceTree = "<group>";
 		};
@@ -438,19 +445,21 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		83F6C6DD1DEF250500ACF9E5 /* Message */ = {
+		83F6C6DD1DEF250500ACF9E5 /* Message(消息) */ = {
 			isa = PBXGroup;
 			children = (
 				83F6C6E81DEF262D00ACF9E5 /* CFMessageViewController.swift */,
 			);
+			name = "Message(消息)";
 			path = Message;
 			sourceTree = "<group>";
 		};
-		83F6C6DE1DEF250500ACF9E5 /* Pofile */ = {
+		83F6C6DE1DEF250500ACF9E5 /* Pofile(我的) */ = {
 			isa = PBXGroup;
 			children = (
 				83F6C6EC1DEF264A00ACF9E5 /* CFPofileViewController.swift */,
 			);
+			name = "Pofile(我的)";
 			path = Pofile;
 			sourceTree = "<group>";
 		};
@@ -481,6 +490,15 @@
 				83D71CF21DF02D76008A8CEA /* UIKit */,
 			);
 			path = "CFExtension(OC)";
+			sourceTree = "<group>";
+		};
+		B814A0171E20FC6700DEFDEB /* ComposeView(发微博) */ = {
+			isa = PBXGroup;
+			children = (
+				B814A0181E20FCA900DEFDEB /* CFComposeView.swift */,
+				B814A01A1E21054300DEFDEB /* CFComposeView.xib */,
+			);
+			path = "ComposeView(发微博)";
 			sourceTree = "<group>";
 		};
 		CB92F8B939F5FBDDF4011B56 /* Frameworks */ = {
@@ -557,6 +575,7 @@
 			files = (
 				8322C3921DF43D43006C7EB7 /* main.json in Resources */,
 				83F6C6CF1DEF233900ACF9E5 /* LaunchScreen.storyboard in Resources */,
+				B814A01B1E21054300DEFDEB /* CFComposeView.xib in Resources */,
 				838A70891E1411CD00168A05 /* CFStatusRetweetedCell.xib in Resources */,
 				838A708B1E14121500168A05 /* CFStatusNormalCell.xib in Resources */,
 				83F6C6CC1DEF233900ACF9E5 /* Assets.xcassets in Resources */,
@@ -642,6 +661,7 @@
 				83C938AD1E0E5A2500D05DA9 /* CFStatusToolBar.swift in Sources */,
 				83F6C6E91DEF262D00ACF9E5 /* CFMessageViewController.swift in Sources */,
 				83F6C6EB1DEF263B00ACF9E5 /* CFDiscoverViewController.swift in Sources */,
+				B814A0191E20FCA900DEFDEB /* CFComposeView.swift in Sources */,
 				B86070401E1A6991000F9ED0 /* CFRefreshControl.swift in Sources */,
 				83F6C6E51DEF257900ACF9E5 /* CFBaseViewController.swift in Sources */,
 				8322C38C1DF40CD4006C7EB7 /* CFVisitorView.swift in Sources */,

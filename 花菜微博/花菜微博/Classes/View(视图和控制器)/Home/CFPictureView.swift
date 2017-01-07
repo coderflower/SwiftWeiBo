@@ -41,12 +41,12 @@ class CFPictureView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = superview?.backgroundColor
-        setupUI()
+        setupOwerViews()
     }
 }
 
 extension CFPictureView {
-    fileprivate func setupUI() {
+    fileprivate func setupOwerViews() {
         clipsToBounds = true
         let count = 3
         let rect = CGRect(x: 0,

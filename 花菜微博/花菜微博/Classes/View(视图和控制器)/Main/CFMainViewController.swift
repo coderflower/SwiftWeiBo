@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 class CFMainViewController: UITabBarController {
+    static let shared: CFMainViewController = CFMainViewController()
     // 定时器
     fileprivate var timer: Timer?
     
@@ -19,7 +20,7 @@ class CFMainViewController: UITabBarController {
         // 添加子控制器
         setupChildViewControllers()
         // 初始子UI界面
-        setupUI()
+        setupOwerViews()
         
         // 初始化定时器
         setupTimer()
@@ -76,7 +77,7 @@ class CFMainViewController: UITabBarController {
 // MARK: - UI界面相关
 extension CFMainViewController {
     /// 初始化UI界面
-    fileprivate func setupUI() {
+    fileprivate func setupOwerViews() {
         // 初始化发布按钮
         setupComposeButton()
         // 初始化欢迎页
@@ -90,6 +91,7 @@ extension CFMainViewController {
         let width = tabBar.bounds.width / CGFloat(childViewControllers.count)
         composeButton.frame = tabBar.bounds.insetBy(dx: 2 * width, dy: 0)
         tabBar.addSubview(composeButton)
+        composeButton.addTarget(self, action: #selector(composeButtonAction), for: .touchUpInside)
     }
     /// 初始化欢迎页
     private func setupNewFeatureView() {
@@ -216,5 +218,14 @@ extension CFMainViewController: UITabBarControllerDelegate {
             
         }
         return !(viewController.isMember(of: UIViewController.self))
+    }
+}
+
+extension CFMainViewController {
+    @objc fileprivate func composeButtonAction() {
+        print("点击了发布按钮")
+        let composeView = CFComposeView.composeView()
+        
+        composeView.show()
     }
 }
