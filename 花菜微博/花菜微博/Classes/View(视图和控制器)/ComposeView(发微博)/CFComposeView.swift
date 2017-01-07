@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import pop
 /// 按钮大小
 fileprivate let kComposeTypeButtonSize = CGSize(width: 100, height: 100)
 
@@ -58,6 +58,8 @@ class CFComposeView: UIView {
     /// 显示发微博视图
     func show() {
         CFMainViewController.shared.view .addSubview(self)
+        // 添加动画
+        showCurrentView()
     }
     
     @IBAction func dismissAction() {
@@ -78,6 +80,40 @@ class CFComposeView: UIView {
     }
 }
 
+fileprivate extension CFComposeView {
+    func showCurrentView() {
+        // 创建动画
+        let anim: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        // 设置属性
+        anim.fromValue = 0
+        anim.toValue = 1
+        anim.duration = 0.5
+        // 添加动画
+        pop_add(anim, forKey: nil)
+        // 按钮动画
+        showButtons()
+    }
+    
+    func showButtons()  {
+        // 获取做动画的按钮
+        let v = scorllView.subviews[0]
+        
+        for (i , btn) in v.subviews.enumerated() {
+            // 创建弹力动画
+            let anim: POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
+            anim.fromValue = btn.center.y + 300
+            anim.toValue = btn.center.y
+            // 弹力速度
+            anim.springSpeed = 8
+            // 弹力系数 0 ~ 20 默认是4
+            anim.springBounciness = 8
+            // 动画开始时间
+            anim.beginTime = CACurrentMediaTime() + CFTimeInterval(i) * 0.025
+            // 添加动画
+            btn.layer.pop_add(anim, forKey: nil)
+        }
+    }
+}
 
 
 fileprivate extension CFComposeView {
