@@ -28,6 +28,8 @@ class CFStatusCell: UITableViewCell {
             pictureView.viewModel = viewModel
             // 设置被转发微博正文
             retweetedTextLabel?.text = viewModel?.retweetedText
+            // 设置微博来源
+            sourceLable.text = viewModel?.status.source
         }
     }
     

@@ -25,6 +25,10 @@ class CFStatus: NSObject {
     var attitudes_count: Int = 0
     /// 被转发的微博
     var retweeted_status: CFStatus?
+    /// 微博创建时间
+    var created_at: String?
+    /// 微博来源
+    var source: String?
     
     override var description: String {
         return yy_modelDescription()
