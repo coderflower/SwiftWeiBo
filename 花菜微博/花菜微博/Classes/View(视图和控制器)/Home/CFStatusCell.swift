@@ -30,6 +30,7 @@ class CFStatusCell: UITableViewCell {
             retweetedTextLabel?.text = viewModel?.retweetedText
             // 设置微博来源
             sourceLable.text = viewModel?.status.source
+            print(sourceLable.text ?? "")
         }
     }
     

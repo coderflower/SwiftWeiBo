@@ -28,7 +28,16 @@ class CFStatus: NSObject {
     /// 微博创建时间
     var created_at: String?
     /// 微博来源
-    var source: String?
+    var source: String? {
+        didSet {
+            if let str = self.sourceRegular(string: source)?.text {
+                source = "来自 \(str)"
+            }
+            else {
+                source = nil
+            }
+        }
+    }
     
     override var description: String {
         return yy_modelDescription()
@@ -40,4 +49,22 @@ class CFStatus: NSObject {
     class func modelContainerPropertyGenericClass() -> [String: AnyClass] {
         return ["pic_urls": CFStatusPicture.self]
     }
+    
+    
+    func sourceRegular(string: String?) -> (link: String, text: String)?  {
+        // 创建匹配规则
+        let pattern = "<a href=\"(.*?)\".*?>(.*?)</a>"
+        // 根据匹配规则创建正则表达式
+        guard let string = string,
+            let regular = try? NSRegularExpression(pattern: pattern, options: []),
+            let result =  regular.firstMatch(in: string, options: [], range: NSRange(location: 0, length: string.characters.count)) else {
+                return nil
+        }
+        // 获取结果
+        let link = (string as NSString).substring(with: result.rangeAt(1))
+        let text = (string as NSString).substring(with: result.rangeAt(2))
+        
+        return (link, text)
+    }
+    
 }
