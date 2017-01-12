@@ -16,7 +16,13 @@ class CFStatusCell: UITableViewCell {
             // 昵称
             nameLabel.text = viewModel?.status.user?.screen_name
             // 内容
-            contentLabel.text = viewModel?.status.text
+//            contentLabel.text = viewModel?.status.text
+//            // 设置被转发微博正文
+//            retweetedTextLabel?.text = viewModel?.retweetedText
+            
+            contentLabel.attributedText = viewModel?.statusAttrText
+            retweetedTextLabel?.attributedText = viewModel?.retweetedAttrText
+            
             // 会员图标
             memberIconView.image = viewModel?.memberIcon
             // 认证图标
@@ -26,11 +32,8 @@ class CFStatusCell: UITableViewCell {
             toolBar.viewModel = viewModel
             // 设置配图视图数据
             pictureView.viewModel = viewModel
-            // 设置被转发微博正文
-            retweetedTextLabel?.text = viewModel?.retweetedText
             // 设置微博来源
             sourceLable.text = viewModel?.status.source
-            print(sourceLable.text ?? "")
         }
     }
     

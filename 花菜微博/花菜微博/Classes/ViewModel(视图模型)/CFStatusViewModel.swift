@@ -42,14 +42,27 @@ class CFStatusViewModel: CustomStringConvertible {
     var retweetedText: String? {
         return "@" + (status.retweeted_status?.user?.screen_name ?? "") + ":" + (status.retweeted_status?.text ?? "")
     }
+    /// 微博正文属性文本
+    var retweetedAttrText: NSAttributedString?
+    /// 被转发的微博属性文本
+    var statusAttrText: NSAttributedString?
     
     init(model: CFStatus) {
         self.status = model
         setMemberlevel()
         setVerifiedType()
-        setCountStrin()
+        setCountString()
         // 有原创的计算原创的,有转发的计算转发的
         pictureViewSize = calculatePictureViewSize(count: picUrls?.count ?? 0)
+        
+        // 设置微博属性文本
+        let originalFont = UIFont.systemFont(ofSize: 15)
+        let retweetedFont = UIFont.systemFont(ofSize: 14)
+        // 设置正文属性文本
+        statusAttrText = CFEmoticonHelper.sharedHelper.emoticonString(targetString: status.text ?? "", font: originalFont)
+        // 设置转发属性文本
+        let text = "@" + (status.retweeted_status?.user?.screen_name ?? "") + ":" + (status.retweeted_status?.text ?? "")
+        retweetedAttrText = CFEmoticonHelper.sharedHelper.emoticonString(targetString: text, font: retweetedFont)
         // 计算高度
         updateRowHeight()
     }
@@ -80,7 +93,7 @@ class CFStatusViewModel: CustomStringConvertible {
         }
     }
     
-    fileprivate func setCountStrin() {
+    fileprivate func setCountString() {
         retweetStr = countString(count: self.status.reposts_count, defaultString: "转发")
         commentStr = countString(count: self.status.comments_count, defaultString: "评论")
         likeStr = countString(count: self.status.attitudes_count, defaultString: "赞")
@@ -156,17 +169,25 @@ class CFStatusViewModel: CustomStringConvertible {
         var rowHeight: CGFloat = 0
         // label最大宽度
         let maxWidth: CGFloat = UIScreen.main.cf_screenWidth - 2 * CFCommonMargin
+        let viewSize = CGSize(width: maxWidth, height: CGFloat(MAXFLOAT))
         // 顶部高度
         let topHeight: CGFloat = CFCommonMargin * 2 + CFStatusIconViewHeight + CFCommonMargin
-
-        let textHeight: CGFloat = status.text?.calculateSize(font: UIFont.systemFont(ofSize: 15), maxWidth: maxWidth).height ?? 0
         
-        rowHeight += topHeight + textHeight
-        print("正文高度:\(textHeight) + \(status.text)")
+        rowHeight += topHeight
+        
+        if let text = statusAttrText {
+            let textHeight = text.boundingRect(with: viewSize, options: [.usesLineFragmentOrigin], context: nil).height
+            print(text,textHeight)
+            rowHeight += CGFloat(ceilf(Float(textHeight)))
+        }
+        
         // 被转发的微博
         if status.retweeted_status != nil {
-            let retweetHeight: CGFloat = retweetedText?.calculateSize(font: UIFont.systemFont(ofSize: 14), maxWidth: maxWidth).height ?? 0
-            rowHeight += CFCommonMargin * 2 + retweetHeight
+            if let text = retweetedAttrText {
+                let textHeight = text.boundingRect(with: viewSize, options: [.usesLineFragmentOrigin], context: nil).height
+                rowHeight += CGFloat(ceilf(Float(textHeight)))
+                rowHeight += CFCommonMargin * 2
+            }
         }
         rowHeight += pictureViewSize.height + CFCommonMargin + CFStatusToolbarHeight
         

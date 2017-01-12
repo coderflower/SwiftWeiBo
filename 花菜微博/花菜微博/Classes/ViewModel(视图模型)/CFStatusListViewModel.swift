@@ -9,7 +9,7 @@
 import Foundation
 import SDWebImage
 private let maxPullupTryTimes = 3
-/// 尾部数据列表属兔
+/// 尾部数据列表视图模型
 /*
     父类的选择
   - 如果类需要使用 'KVC' 或者字典转模型框架设置对象值,类就需要继承自NSObject
