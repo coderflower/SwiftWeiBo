@@ -36,7 +36,7 @@ class CFNetworker: AFHTTPSessionManager {
     var userLogon: Bool {
         return userAccount.access_token != nil
     }
-    func tokenRequest(method: HTTPMethod = .GET, URLString: String, parameters: [String : AnyObject]? ,completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) -> () {
+    func tokenRequest(method: HTTPMethod = .GET, URLString: String, parameters: [String : AnyObject]? ,name: String? = nil, data: Data? = nil, completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) -> () {
         // 处理token
         guard let token = userAccount.access_token else {
             print("token 为 nil!, 请重新登录")
@@ -52,8 +52,32 @@ class CFNetworker: AFHTTPSessionManager {
         }
         // 此处parameters一定有值
         parameters!["access_token"] = token as AnyObject?
+        // 判断是否是上传请求
+        if let name = name, let data = data {
+            upload(URLString: URLString, parameters: parameters, name: name, data: data, completion: completion)
+        }
+        else {
+            request(method: method, URLString: URLString, parameters: parameters, completion: completion)
+        }
+    }
+    
+    func upload(URLString: String, parameters: [String : AnyObject]? ,name: String, data: Data, completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) {
         
-        request(method: method, URLString: URLString, parameters: parameters, completion: completion)
+        post(URLString, parameters: parameters, constructingBodyWith: { (formData) in
+            // 拼接上传参数
+            formData.appendPart(withFileData: data, name: name, fileName: "xxx", mimeType: "application/octet-stream")
+        }, progress: nil, success: { (_, json) in
+            completion(json as AnyObject, true)
+        }) { (task, error) in
+            // 针对403处理用户token过期
+            if (task?.response as? HTTPURLResponse)?.statusCode == 403 {
+                print("token 已过期")
+                // 发送通知,提示用户重新登录(本方法不知道谁被调用,谁接手通知,谁处理)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUserShoudLoginNotification), object: "bad token")
+            }
+            print("错误信息 == \(error)")
+            completion(nil, false)
+        }
     }
     
     

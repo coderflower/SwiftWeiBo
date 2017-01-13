@@ -62,10 +62,12 @@ class CFComposeTypeViewController: UIViewController {
             print("发微博\(text)")
             CFNetworker.shared.postStatus(text: text, completion: { (result, isSuccess) in
                 let message = isSuccess ? "发布成功" : "网络不给力请稍后重试"
+                // 修改指示器样式
                 SVProgressHUD.setDefaultStyle(.dark)
                 SVProgressHUD.showInfo(withStatus: message)
                 if isSuccess {
                     DispatchQueue.main.asyncAfter(deadline: 1) {
+                        // 还原指示器样式
                         self.dismiss(animated: true, completion: nil)
                     }
                 }
