@@ -6,8 +6,6 @@
 	<string>14F27</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>CFBundleExecutable</key>
-	<string>Emoticons</string>
 	<key>CFBundleIdentifier</key>
 	<string>cn.itcast.Emoticons</string>
 	<key>CFBundleInfoDictionaryVersion</key>

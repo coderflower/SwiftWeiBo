@@ -128,7 +128,7 @@ extension CFEmoticonHelper {
                 print(em)
             }
         }
-        // 同一设置字符串的字体
+        // 统一设置字符串的字体，保证所有字体一致
         attriString.addAttributes([NSFontAttributeName: font], range: NSRange(location: 0, length: attriString.length))
         return attriString
     }

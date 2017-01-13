@@ -15,6 +15,10 @@ import Foundation
 2. 实现 description 计算属性
  
  */
+
+// 设置微博属性文本
+let originalStatusTextFont = UIFont.systemFont(ofSize: 15)
+let retweetedStatusTextFont = UIFont.systemFont(ofSize: 14)
 class CFStatusViewModel: CustomStringConvertible {
     
     /// 模型数据
@@ -38,10 +42,6 @@ class CFStatusViewModel: CustomStringConvertible {
     }
     /// 缓存高度
     var rowHeight: CGFloat = 0
-    /// 被转发的微博正文
-    var retweetedText: String? {
-        return "@" + (status.retweeted_status?.user?.screen_name ?? "") + ":" + (status.retweeted_status?.text ?? "")
-    }
     /// 微博正文属性文本
     var retweetedAttrText: NSAttributedString?
     /// 被转发的微博属性文本
@@ -54,15 +54,12 @@ class CFStatusViewModel: CustomStringConvertible {
         setCountString()
         // 有原创的计算原创的,有转发的计算转发的
         pictureViewSize = calculatePictureViewSize(count: picUrls?.count ?? 0)
-        
-        // 设置微博属性文本
-        let originalFont = UIFont.systemFont(ofSize: 15)
-        let retweetedFont = UIFont.systemFont(ofSize: 14)
         // 设置正文属性文本
-        statusAttrText = CFEmoticonHelper.sharedHelper.emoticonString(targetString: status.text ?? "", font: originalFont)
-        // 设置转发属性文本
+        statusAttrText = CFEmoticonHelper.sharedHelper.emoticonString(targetString: status.text ?? "", font: originalStatusTextFont)
+        // 获取转发文本
         let text = "@" + (status.retweeted_status?.user?.screen_name ?? "") + ":" + (status.retweeted_status?.text ?? "")
-        retweetedAttrText = CFEmoticonHelper.sharedHelper.emoticonString(targetString: text, font: retweetedFont)
+        // 设置转发属性文本
+        retweetedAttrText = CFEmoticonHelper.sharedHelper.emoticonString(targetString: text, font: retweetedStatusTextFont)
         // 计算高度
         updateRowHeight()
     }
