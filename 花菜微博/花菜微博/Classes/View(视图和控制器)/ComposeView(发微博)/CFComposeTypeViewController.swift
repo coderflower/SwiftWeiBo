@@ -78,8 +78,9 @@ fileprivate extension CFComposeTypeViewController {
         textView.alwaysBounceVertical = true
         // 拖拽时隐藏键盘
         textView.keyboardDismissMode = .onDrag
-        textView.backgroundColor = UIColor.red
         textView.placeholder = "分享新鲜事..."
+        textView.placeholderColor = UIColor.darkGray
+        textView.delegate = self
         view.addSubview(textView)
         view.addSubview(toolBar)
         setupToolBar()
@@ -168,4 +169,10 @@ fileprivate extension CFComposeTypeViewController {
     }
 }
 
+extension CFComposeTypeViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        // 修改发布按钮的状态
+        sendButton.isEnabled = textView.hasText
+    }
+}
 
