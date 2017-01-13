@@ -32,8 +32,10 @@ class CFComposeTypeViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         view.backgroundColor = UIColor.cf_randomColor()
+        // 初始化界面
         setupUI()
-       
+        // 监听通知
+        setupNotify()
     }
     
     @objc fileprivate func cancel() {
@@ -71,8 +73,10 @@ fileprivate extension CFComposeTypeViewController {
         textView.text = "圣诞节福利就按立方加辣椒等垃圾了就发了多少件来发掘了家里阿里积分拉丁科技拉拉解放路口见联发科技拉粉丝李会计垃圾费了尽量快点放极爱了解放路的空间啦了"
         view.addSubview(textView)
         view.addSubview(toolBar)
-        setupConstraints()
+        setupToolBar()
         setupNavigationBar()
+        setupConstraints()
+        
     }
     
     /// 设置导航栏
@@ -82,6 +86,11 @@ fileprivate extension CFComposeTypeViewController {
         // 右侧按钮
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendButton)
         sendButton.isEnabled = false
+    }
+    
+    /// 设置底部 toolbar
+    func setupToolBar() {
+        
     }
     
     /// 设置控件约束
@@ -96,3 +105,32 @@ fileprivate extension CFComposeTypeViewController {
         }
     }
 }
+
+
+// MARK: - 通知相关
+fileprivate extension CFComposeTypeViewController {
+    func setupNotify() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardChangeFrame(notiy:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    @objc func keyBoardChangeFrame(notiy: NSNotification) {
+        if let rect = notiy.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+            // 根据键盘位置不同，相应的修改 toolBar 的底部约束
+            if rect.minY == UIScreen.main.cf_screenHeight {
+                toolBar.snp.updateConstraints({ (make) in
+                    make.bottom.equalToSuperview()
+                })
+            }
+            else {
+                toolBar.snp.updateConstraints({ (make) in
+                    make.bottom.equalToSuperview().offset(-rect.height)
+                })
+            }
+            // 更新约束
+            view.layoutIfNeeded()
+        }
+        
+    }
+}
+
+
