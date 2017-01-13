@@ -118,6 +118,8 @@ extension CFHomeViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId,
                                                  for: indexPath) as! CFStatusCell
         cell.viewModel = viewModel
+        
+        cell.delegate = self
         return cell
     }
     
@@ -127,4 +129,10 @@ extension CFHomeViewController {
     }
 }
 
+
+extension CFHomeViewController: CFStatusCellDelegate {
+    func statusCellDidSelectedLinkText(cell: CFStatusCell, text: String) {
+        print(text)
+    }
+}
 

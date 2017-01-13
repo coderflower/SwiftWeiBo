@@ -125,7 +125,6 @@ class CFStatusViewModel: CustomStringConvertible {
         let row = (count - 1) / 3 + 1
         // 计算高度
         let height = CFStatusPictureViewOutterMargin + CGFloat(row - 1) * CFStatusPictureViewInnerMargin + CGFloat(row) * CFStatusPictureItemWidth
-        print(height,count)
         return CGSize(width: CFStatusPictureViewWidth, height: height)
     }
     
@@ -174,7 +173,6 @@ class CFStatusViewModel: CustomStringConvertible {
         
         if let text = statusAttrText {
             let textHeight = text.boundingRect(with: viewSize, options: [.usesLineFragmentOrigin], context: nil).height
-            print(text,textHeight)
             rowHeight += CGFloat(ceilf(Float(textHeight)))
         }
         

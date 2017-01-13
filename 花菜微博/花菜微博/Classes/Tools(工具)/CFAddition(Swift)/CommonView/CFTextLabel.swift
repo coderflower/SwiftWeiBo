@@ -8,9 +8,8 @@
 
 import UIKit
 
-@objc
 
-public protocol CFTextLabelDelegate: NSObjectProtocol {
+@objc public protocol CFTextLabelDelegate: NSObjectProtocol {
     
     /// 选中链接文本
     ///

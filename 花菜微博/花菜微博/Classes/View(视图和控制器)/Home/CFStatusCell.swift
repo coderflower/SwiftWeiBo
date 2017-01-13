@@ -8,21 +8,28 @@
 
 import UIKit
 
-class CFStatusCell: UITableViewCell {
+/// 微博 cell 代理
+@objc protocol CFStatusCellDelegate: NSObjectProtocol {
+    
+    /// 微博 cell选中 URL 回调
+    ///
+    /// - Parameters:
+    ///   - cell: 微博 cell
+    ///   - text: 被选中的文本
+    @objc func statusCellDidSelectedLinkText(cell: CFStatusCell, text: String)
+}
 
+class CFStatusCell: UITableViewCell {
+    weak var delegate: CFStatusCellDelegate?
     /// 微博视图模型
     var viewModel: CFStatusViewModel? {
         didSet {
             // 昵称
             nameLabel.text = viewModel?.status.user?.screen_name
-            // 内容
-//            contentLabel.text = viewModel?.status.text
-//            // 设置被转发微博正文
-//            retweetedTextLabel?.text = viewModel?.retweetedText
-            
+            // 设置正文属性文本
             contentLabel.attributedText = viewModel?.statusAttrText
+            // 设置转发微博属性文本
             retweetedTextLabel?.attributedText = viewModel?.retweetedAttrText
-            
             // 会员图标
             memberIconView.image = viewModel?.memberIcon
             // 认证图标
@@ -50,13 +57,13 @@ class CFStatusCell: UITableViewCell {
     /// 来源
     @IBOutlet weak var sourceLable: UILabel!
     /// 正文
-    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var contentLabel: CFTextLabel!
     /// 底部工具条
     @IBOutlet weak var toolBar: CFStatusToolBar!
     /// 图片视图
     @IBOutlet weak var pictureView: CFPictureView!
     /// 被转发的微博正文,原创微博没有该label
-    @IBOutlet weak var retweetedTextLabel: UILabel?
+    @IBOutlet weak var retweetedTextLabel: CFTextLabel?
     override func awakeFromNib() {
         // Initialization code
         // 开启离屏渲染
@@ -65,6 +72,9 @@ class CFStatusCell: UITableViewCell {
         layer.shouldRasterize = true
         // 栅格化必须指定分辨率
         layer.rasterizationScale = UIScreen.main.scale
+        // 设置代理
+        contentLabel.delegate = self
+        retweetedTextLabel?.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -73,4 +83,10 @@ class CFStatusCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+extension CFStatusCell: CFTextLabelDelegate {
+    func textLabelDidSelectedLinkText(textlable: CFTextLabel, text: String) {
+        delegate?.statusCellDidSelectedLinkText(cell: self, text: text)
+    }
 }

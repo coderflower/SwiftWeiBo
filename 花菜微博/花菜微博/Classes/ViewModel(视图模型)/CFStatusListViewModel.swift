@@ -99,7 +99,7 @@ class CFStatusListViewModel {
                 let url = URL(string: pic) else {
                 continue
             }
-            print("缓存的单张图片连接为\(url)")
+            // print("缓存的单张图片连接为\(url)")
             // 进入队列组
             group.enter()
             // 下载图片
