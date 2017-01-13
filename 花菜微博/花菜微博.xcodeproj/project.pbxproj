@@ -75,6 +75,7 @@
 		B81958CC1E24E345006AAF86 /* CFEmoticonPackge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81958C81E24E345006AAF86 /* CFEmoticonPackge.swift */; };
 		B8606FF71E1A4B82000F9ED0 /* CFRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */; };
 		B86070401E1A6991000F9ED0 /* CFRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */; };
+		B88906381E286063006156A2 /* CFTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88906371E286063006156A2 /* CFTextLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -166,6 +167,7 @@
 		B81958C81E24E345006AAF86 /* CFEmoticonPackge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFEmoticonPackge.swift; sourceTree = "<group>"; };
 		B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshView.swift; sourceTree = "<group>"; };
 		B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshControl.swift; sourceTree = "<group>"; };
+		B88906371E286063006156A2 /* CFTextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFTextLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,8 +343,8 @@
 		83D71D411DF193D5008A8CEA /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
-				B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */,
-				B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */,
+				B88906361E286041006156A2 /* CFTextLabel */,
+				B88906351E285FC0006156A2 /* Refresh */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -551,6 +553,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B88906351E285FC0006156A2 /* Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */,
+				B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */,
+			);
+			name = Refresh;
+			sourceTree = "<group>";
+		};
+		B88906361E286041006156A2 /* CFTextLabel */ = {
+			isa = PBXGroup;
+			children = (
+				B88906371E286063006156A2 /* CFTextLabel.swift */,
+			);
+			name = CFTextLabel;
+			sourceTree = "<group>";
+		};
 		CB92F8B939F5FBDDF4011B56 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -748,6 +767,7 @@
 				83691E201E0EDD0400578E5E /* CFPictureView.swift in Sources */,
 				83F6C6C51DEF233900ACF9E5 /* AppDelegate.swift in Sources */,
 				83D71D281DF03C2C008A8CEA /* NSObject+CFRuntime.m in Sources */,
+				B88906381E286063006156A2 /* CFTextLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
