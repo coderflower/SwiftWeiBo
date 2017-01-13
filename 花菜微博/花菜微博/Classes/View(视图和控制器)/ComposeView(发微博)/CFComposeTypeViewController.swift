@@ -24,14 +24,13 @@ class CFComposeTypeViewController: UIViewController {
         button.setBackgroundImage(UIImage(named: "common_button_orange_highlighted"), for: .highlighted)
         button.setBackgroundImage(UIImage(named: "common_button_white_disable"), for: .disabled)
         button.frame = CGRect(x: 0, y: 0, width: 45, height: 35)
+        button.addTarget(self, action: #selector(sendStatus), for: .touchUpInside)
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
-//        view.backgroundColor = UIColor.cf_randomColor()
         // 初始化界面
         setupUI()
         // 监听通知
@@ -58,15 +57,16 @@ class CFComposeTypeViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @objc func sendStatus() {
+        if let text = textView.text {
+            print("发微博\(text)")
+            CFNetworker.shared.postStatus(text: text, completion: { (result, isSuccess) in
+                if isSuccess {
+                    print("发送成功")
+                }
+            })
+        }
     }
-    */
 
 }
 

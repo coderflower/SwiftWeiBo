@@ -62,6 +62,22 @@ extension CFNetworker {
     }
 }
 
+// MARK: - 发微博
+extension CFNetworker {
+   
+    func postStatus(text: String, completion: @escaping (_ dict: [String: AnyObject]?, _ isSuccess: Bool) -> ()) {
+       
+        let urlString = "https://api.weibo.com/2/statuses/update.json"
+        let parameters = ["status": text]
+        tokenRequest(method: .POST, URLString: urlString, parameters: parameters as [String : AnyObject]?) { (json, isSuccess) in
+            completion(json as? [String: AnyObject], isSuccess)
+        }
+        
+    }
+
+    
+}
+
 
 // MARK: - OAuth相关方法
 extension CFNetworker {

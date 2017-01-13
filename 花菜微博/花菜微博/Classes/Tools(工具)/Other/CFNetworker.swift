@@ -70,6 +70,7 @@ class CFNetworker: AFHTTPSessionManager {
                 // 发送通知,提示用户重新登录(本方法不知道谁被调用,谁接手通知,谁处理)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: kUserShoudLoginNotification), object: "bad token")
             }
+            print("错误信息 == \(error)")
             completion(nil, false)
         }
         
