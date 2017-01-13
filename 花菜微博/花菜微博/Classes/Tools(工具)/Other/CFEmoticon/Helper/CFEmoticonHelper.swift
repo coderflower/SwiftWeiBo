@@ -120,12 +120,10 @@ extension CFEmoticonHelper {
         for m in matchs.reversed() {
             let range = m.rangeAt(0)
             let subString = (targetString as NSString).substring(with: range)
-            print(subString)
             // 查找对应的表情符号
             // 使用表情符号中的属性文本,替换原有的属性文本的内容
             if let em = CFEmoticonHelper.sharedHelper.findEmoticon(subString) {
                 attriString.replaceCharacters(in: range, with: em.imageText(font: font))
-                print(em)
             }
         }
         // 统一设置字符串的字体，保证所有字体一致

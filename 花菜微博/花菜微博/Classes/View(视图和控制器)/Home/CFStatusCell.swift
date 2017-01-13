@@ -83,7 +83,7 @@ class CFStatusCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-}
+} 
 
 extension CFStatusCell: CFTextLabelDelegate {
     func textLabelDidSelectedLinkText(textlable: CFTextLabel, text: String) {
