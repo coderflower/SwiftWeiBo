@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-
+import SVProgressHUD
 
 class CFComposeTypeViewController: UIViewController {
     var textView = CFPlaceholderTextView()
@@ -61,8 +61,13 @@ class CFComposeTypeViewController: UIViewController {
         if let text = textView.text {
             print("发微博\(text)")
             CFNetworker.shared.postStatus(text: text, completion: { (result, isSuccess) in
+                let message = isSuccess ? "发布成功" : "网络不给力请稍后重试"
+                SVProgressHUD.setDefaultStyle(.dark)
+                SVProgressHUD.showInfo(withStatus: message)
                 if isSuccess {
-                    print("发送成功")
+                    DispatchQueue.main.asyncAfter(deadline: 1) {
+                        self.dismiss(animated: true, completion: nil)
+                    }
                 }
             })
         }
