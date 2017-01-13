@@ -223,7 +223,7 @@ fileprivate extension CFComposeView {
             let row = i / numberOfCountInColumn
             let col = i % 3
             // 根据行列计算x/y
-            let x = CGFloat(col) * composeButtonColumnMargin + CGFloat(col) * kComposeTypeButtonSize.width
+            let x = CGFloat(col + 1) * composeButtonColumnMargin + CGFloat(col) * kComposeTypeButtonSize.width
             let y: CGFloat = CGFloat(row) * (kComposeTypeButtonSize.height + composeButtonRowMargin)
             btn.frame = CGRect(origin: CGPoint(x: x, y: y), size: kComposeTypeButtonSize)
         }

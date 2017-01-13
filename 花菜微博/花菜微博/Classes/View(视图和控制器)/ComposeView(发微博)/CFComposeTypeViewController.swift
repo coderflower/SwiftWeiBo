@@ -7,16 +7,33 @@
 //
 
 import UIKit
+import SnapKit
+
 
 class CFComposeTypeViewController: UIViewController {
-
+    var textView = UITextView()
+    var toolBar = UIToolbar()
+    lazy var sendButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("发布", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(UIColor.darkGray, for: .disabled)
+        
+        button.setBackgroundImage(UIImage(named: "common_button_orange"), for: .normal)
+        button.setBackgroundImage(UIImage(named: "common_button_orange_highlighted"), for: .highlighted)
+        button.setBackgroundImage(UIImage(named: "common_button_white_disable"), for: .disabled)
+        button.frame = CGRect(x: 0, y: 0, width: 45, height: 35)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
         view.backgroundColor = UIColor.cf_randomColor()
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", target: self, action: #selector(cancel))
+        setupUI()
+       
     }
     
     @objc fileprivate func cancel() {
@@ -40,4 +57,42 @@ class CFComposeTypeViewController: UIViewController {
     }
     */
 
+}
+
+fileprivate extension CFComposeTypeViewController {
+    
+    /// 初始化 UI 界面
+    func setupUI() {
+        // 设置垂直方向永远可以拖拽
+        textView.alwaysBounceVertical = true
+        // 拖拽时隐藏键盘
+        textView.keyboardDismissMode = .onDrag
+        textView.backgroundColor = UIColor.lightGray
+        textView.text = "圣诞节福利就按立方加辣椒等垃圾了就发了多少件来发掘了家里阿里积分拉丁科技拉拉解放路口见联发科技拉粉丝李会计垃圾费了尽量快点放极爱了解放路的空间啦了"
+        view.addSubview(textView)
+        view.addSubview(toolBar)
+        setupConstraints()
+        setupNavigationBar()
+    }
+    
+    /// 设置导航栏
+    func setupNavigationBar() {
+        // 左侧按钮
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", target: self, action: #selector(cancel))
+        // 右侧按钮
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendButton)
+        sendButton.isEnabled = false
+    }
+    
+    /// 设置控件约束
+    func setupConstraints() {
+        toolBar.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(44)
+        }
+        textView.snp.makeConstraints { (make) in
+            make.left.right.top.equalToSuperview()
+            make.bottom.equalTo(toolBar.snp.bottom)
+        }
+    }
 }
