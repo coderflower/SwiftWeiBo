@@ -11,7 +11,7 @@ import SnapKit
 
 
 class CFComposeTypeViewController: UIViewController {
-    var textView = UITextView()
+    var textView = CFPlaceholderTextView()
     var toolBar = UIToolbar()
     lazy var sendButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -31,11 +31,20 @@ class CFComposeTypeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        view.backgroundColor = UIColor.cf_randomColor()
+//        view.backgroundColor = UIColor.cf_randomColor()
         // 初始化界面
         setupUI()
         // 监听通知
         setupNotify()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textView.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        textView.resignFirstResponder()
     }
     
     @objc fileprivate func cancel() {
@@ -69,8 +78,8 @@ fileprivate extension CFComposeTypeViewController {
         textView.alwaysBounceVertical = true
         // 拖拽时隐藏键盘
         textView.keyboardDismissMode = .onDrag
-        textView.backgroundColor = UIColor.lightGray
-        textView.text = "圣诞节福利就按立方加辣椒等垃圾了就发了多少件来发掘了家里阿里积分拉丁科技拉拉解放路口见联发科技拉粉丝李会计垃圾费了尽量快点放极爱了解放路的空间啦了"
+        textView.backgroundColor = UIColor.red
+        textView.placeholder = "分享新鲜事..."
         view.addSubview(textView)
         view.addSubview(toolBar)
         setupToolBar()
@@ -90,7 +99,28 @@ fileprivate extension CFComposeTypeViewController {
     
     /// 设置底部 toolbar
     func setupToolBar() {
-        
+        let settings = [
+            ["imageName": "compose_toolbar_picture"],
+            ["imageName": "compose_mentionbutton_background"],
+            ["imageName": "compose_trendbutton_background"],
+            ["imageName": "compose_emoticonbutton_background"],
+            ["imageName": "compose_add_background"]
+                        ]
+        var items = [UIBarButtonItem]()
+        for s in settings {
+            guard let imageName = s["imageName"] else {
+                continue
+            }
+            let button = UIButton(type: .custom)
+            button.setImage(UIImage(named: imageName), for: .normal)
+            button.setImage(UIImage(named: imageName + "_highlighted"), for: .highlighted)
+            button.sizeToFit()
+            let barItem = UIBarButtonItem(customView: button)
+            items.append(barItem)
+            items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
+        }
+        items.removeLast()
+        toolBar.items = items
     }
     
     /// 设置控件约束
@@ -103,18 +133,21 @@ fileprivate extension CFComposeTypeViewController {
             make.left.right.top.equalToSuperview()
             make.bottom.equalTo(toolBar.snp.bottom)
         }
+        view.layoutIfNeeded()
     }
 }
 
 
 // MARK: - 通知相关
 fileprivate extension CFComposeTypeViewController {
+    /// 监听通知
     func setupNotify() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardChangeFrame(notiy:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
-    
+    /// 键盘位置改变通知调用方法
     @objc func keyBoardChangeFrame(notiy: NSNotification) {
-        if let rect = notiy.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+        if let rect = notiy.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect,
+            let duration = notiy.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? Double {
             // 根据键盘位置不同，相应的修改 toolBar 的底部约束
             if rect.minY == UIScreen.main.cf_screenHeight {
                 toolBar.snp.updateConstraints({ (make) in
@@ -126,8 +159,10 @@ fileprivate extension CFComposeTypeViewController {
                     make.bottom.equalToSuperview().offset(-rect.height)
                 })
             }
-            // 更新约束
-            view.layoutIfNeeded()
+            UIView.animate(withDuration: duration, animations: { 
+                // 更新约束
+                self.view.layoutIfNeeded()
+            })
         }
         
     }

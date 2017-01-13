@@ -76,6 +76,7 @@
 		B8606FF71E1A4B82000F9ED0 /* CFRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */; };
 		B86070401E1A6991000F9ED0 /* CFRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */; };
 		B88906381E286063006156A2 /* CFTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88906371E286063006156A2 /* CFTextLabel.swift */; };
+		B889064A1E28F48A006156A2 /* CFPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88906491E28F48A006156A2 /* CFPlaceholderTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +169,7 @@
 		B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshView.swift; sourceTree = "<group>"; };
 		B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshControl.swift; sourceTree = "<group>"; };
 		B88906371E286063006156A2 /* CFTextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFTextLabel.swift; sourceTree = "<group>"; };
+		B88906491E28F48A006156A2 /* CFPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFPlaceholderTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +347,7 @@
 			children = (
 				B88906361E286041006156A2 /* CFTextLabel */,
 				B88906351E285FC0006156A2 /* Refresh */,
+				B88906491E28F48A006156A2 /* CFPlaceholderTextView.swift */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -753,6 +756,7 @@
 				83C938AB1E0E4E9200D05DA9 /* UIImageView+WebImage.swift in Sources */,
 				83D71D2F1DF06072008A8CEA /* CFUntilConst.swift in Sources */,
 				83D71D3F1DF1937B008A8CEA /* UIScreen-Addition.swift in Sources */,
+				B889064A1E28F48A006156A2 /* CFPlaceholderTextView.swift in Sources */,
 				83D71CFC1DF02DD5008A8CEA /* NSObject+CFExtension.m in Sources */,
 				B814A0221E21476400DEFDEB /* CFComposeTypeViewController.swift in Sources */,
 				83C9385F1E0D445600D05DA9 /* UIImage+Additon.swift in Sources */,
