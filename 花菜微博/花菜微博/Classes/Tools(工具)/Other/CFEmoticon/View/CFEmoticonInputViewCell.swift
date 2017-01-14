@@ -22,7 +22,6 @@ protocol CFEmoticonInputViewCellDelegate: NSObjectProtocol {
 class CFEmoticonInputViewCell: UICollectionViewCell {
     var emoticons: [CFEmoticon]? {
         didSet {
-            print(emoticons?.count ?? "")
             // 隐藏所有的按钮
             for v in contentView.subviews {
                 v.isHidden = true
@@ -101,7 +100,7 @@ extension CFEmoticonInputViewCell {
     @objc fileprivate func selectedEmoticon(button: UIButton) {
         var em: CFEmoticon?
         if button.tag < emoticons?.count ?? 0 {
-            em = emoticons?[tag]
+            em = emoticons?[button.tag]
         }
         // 如果是删除按钮，则 em 为 nil
         delegate?.emoticonInputViewCellDidSelectedEmoticon(cell: self, emoticon: em)
