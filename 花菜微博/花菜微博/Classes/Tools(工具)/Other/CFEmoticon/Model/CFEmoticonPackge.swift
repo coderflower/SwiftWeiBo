@@ -43,7 +43,7 @@ public class CFEmoticonPackge: NSObject {
         return (emoticons.count - 1) / 20 + 1
     }
     
-    public func emotion(page: Int) -> [CFEmoticon] {
+    public func emoticon(page: Int) -> [CFEmoticon] {
         // 每页数量
         let count = 20
         // 起始位置

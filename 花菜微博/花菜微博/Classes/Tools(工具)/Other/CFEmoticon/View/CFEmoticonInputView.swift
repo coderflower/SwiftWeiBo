@@ -36,9 +36,6 @@ class CFEmoticonInputView: UIView {
         toolbar.frame = CGRect(x: 0, y: bounds.height - 40, width: bounds.width, height: 40)
         collectionView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height - 40)
     }
-    
-    
-    
 }
 
 
@@ -52,7 +49,9 @@ fileprivate extension CFEmoticonInputView {
         addSubview(toolbar)
         
         collectionView.dataSource = self
-        
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.bounces = false
+        collectionView.isPagingEnabled = true
         collectionView.register(CFEmoticonInputViewCell.self, forCellWithReuseIdentifier: CFEmoticonInputViewCellId)
     }
 }
@@ -63,12 +62,17 @@ extension CFEmoticonInputView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return CFEmoticonHelper.sharedHelper.packages[section].numberOfPages
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CFEmoticonInputViewCellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CFEmoticonInputViewCellId, for: indexPath) as! CFEmoticonInputViewCell
         cell.backgroundColor = UIColor.blue
+        
+        let p = CFEmoticonHelper.sharedHelper.packages[indexPath.section]
+        
+        cell.emoticons = p.emoticon(page: indexPath.row)
+        
         return cell
     }
     

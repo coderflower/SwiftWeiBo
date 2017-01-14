@@ -11,5 +11,57 @@ import UIKit
 
 /// 表情键盘 cell,每个 cell 包含20个表情 + 一个删除按钮
 class CFEmoticonInputViewCell: UICollectionViewCell {
+    var emoticons: [CFEmoticon]? {
+        didSet {
+            print(emoticons ?? "")
+        }
+    }
     
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
+fileprivate extension CFEmoticonInputViewCell {
+    /// 初始化界面
+    func setupUI() {
+        // 行，列
+        let colCount = 7
+        let rowCount = 3
+        // 左右间距
+        let margin: CGFloat = 8
+        // 底部间距，用于 pageControl
+        let bottomMargin: CGFloat = 16
+        
+        let w = (bounds.width - 2 * margin) / CGFloat(colCount)
+        let h = (bounds.height - bottomMargin) / CGFloat(rowCount)
+        
+        // 创建21个按钮
+        for i in 0..<21 {
+            let btn = UIButton(type: .custom)
+            contentView.addSubview(btn)
+            let row = i / colCount
+            let col = i % colCount
+            let x = margin + CGFloat(col) * w
+            let y = CGFloat(row) * h
+            btn.frame = CGRect(x: x, y: y, width: w, height: h)
+            // 设置按钮字体大小，
+            btn.titleLabel?.font = UIFont.systemFont(ofSize: 32)
+            btn.tag = i
+            btn.addTarget(self, action: #selector(selectedEmoticon(buttn:)), for: .touchUpInside)
+        }
+    }
+}
+
+extension CFEmoticonInputViewCell {
+    @objc fileprivate func selectedEmoticon(buttn: UIButton) {
+        print("选中第\(buttn.tag)按钮")
+    }
 }
