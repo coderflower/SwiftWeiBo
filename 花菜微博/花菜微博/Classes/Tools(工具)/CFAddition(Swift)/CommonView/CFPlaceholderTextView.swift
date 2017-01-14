@@ -59,6 +59,7 @@ class CFPlaceholderTextView: UITextView {
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         setupUI()
+        font = UIFont.systemFont(ofSize: 14)
         
     }
     
@@ -77,7 +78,7 @@ class CFPlaceholderTextView: UITextView {
             attrs[NSFontAttributeName] = font
         }
         else {
-            attrs[NSFontAttributeName] = UIFont.systemFont(ofSize: 12)
+            attrs[NSFontAttributeName] = UIFont.systemFont(ofSize: 14)
         }
         
         let x: CGFloat = 5
