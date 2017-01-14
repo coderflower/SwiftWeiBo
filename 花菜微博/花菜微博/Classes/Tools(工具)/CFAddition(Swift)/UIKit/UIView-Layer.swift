@@ -12,7 +12,7 @@ import UIKit
 // MARK: - layer相关属性
 extension UIView {
     
-    var borderColor: UIColor {
+    @IBInspectable var borderColor: UIColor {
         get {
             return UIColor(cgColor: self.layer.borderColor ?? UIColor.white.cgColor)
         }
@@ -21,7 +21,7 @@ extension UIView {
         }
     }
     
-    var cornerRadius: CGFloat {
+    @IBInspectable var cornerRadius: CGFloat {
         get {
             return self.layer.cornerRadius
         }
@@ -34,7 +34,7 @@ extension UIView {
         }
     }
 
-    var borderWidth: CGFloat {
+    @IBInspectable var borderWidth: CGFloat {
         get {
             return self.layer.borderWidth
         }

@@ -65,14 +65,23 @@ extension CFNetworker {
 // MARK: - 发微博
 extension CFNetworker {
    
-    func postStatus(text: String, completion: @escaping (_ dict: [String: AnyObject]?, _ isSuccess: Bool) -> ()) {
-       
-        let urlString = "https://api.weibo.com/2/statuses/update.json"
-        let parameters = ["status": text]
-        tokenRequest(method: .POST, URLString: urlString, parameters: parameters as [String : AnyObject]?) { (json, isSuccess) in
-            completion(json as? [String: AnyObject], isSuccess)
+    func postStatus(text: String, image: UIImage? = nil, completion: @escaping (_ dict: [String: AnyObject]?, _ isSuccess: Bool) -> ()) {
+        var urlString: String = "https://api.weibo.com/2/statuses/update.json"
+        var name: String?
+        var data: Data?
+        if let image = image {
+            // 上传图片
+            urlString = "https://upload.api.weibo.com/2/statuses/upload.json"
+            name = "pic"
+            data = UIImagePNGRepresentation(image)
         }
+        let parameters = ["status": text]
         
+        tokenRequest(method: .POST, URLString: urlString, parameters: parameters as [String : AnyObject]?, name: name, data: data) { (json, isSuccess) in
+            
+            completion(json as? [String: AnyObject], isSuccess)
+            
+        }
     }
 
     

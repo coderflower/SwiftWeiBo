@@ -60,7 +60,9 @@ class CFComposeTypeViewController: UIViewController {
     @objc func sendStatus() {
         if let text = textView.text {
             print("发微博\(text)")
-            CFNetworker.shared.postStatus(text: text, completion: { (result, isSuccess) in
+            let image = UIImage(named: "icon_earth")
+            
+            CFNetworker.shared.postStatus(text: text, image: image) { (result, isSuccess) in
                 let message = isSuccess ? "发布成功" : "网络不给力请稍后重试"
                 // 修改指示器样式
                 SVProgressHUD.setDefaultStyle(.dark)
@@ -71,7 +73,7 @@ class CFComposeTypeViewController: UIViewController {
                         self.dismiss(animated: true, completion: nil)
                     }
                 }
-            })
+            }
         }
     }
 
@@ -154,8 +156,8 @@ fileprivate extension CFComposeTypeViewController {
     }
     /// 键盘位置改变通知调用方法
     @objc func keyBoardChangeFrame(notiy: NSNotification) {
-        if let rect = notiy.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let duration = notiy.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? Double {
+        if let rect = notiy.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
+            /* , let duration = notiy.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? Double */ {
             // 根据键盘位置不同，相应的修改 toolBar 的底部约束
             if rect.minY == UIScreen.main.cf_screenHeight {
                 toolBar.snp.updateConstraints({ (make) in
@@ -167,10 +169,10 @@ fileprivate extension CFComposeTypeViewController {
                     make.bottom.equalToSuperview().offset(-rect.height)
                 })
             }
-            UIView.animate(withDuration: duration, animations: { 
+//            UIView.animate(withDuration: duration, animations: { 
                 // 更新约束
                 self.view.layoutIfNeeded()
-            })
+//            })
         }
         
     }
