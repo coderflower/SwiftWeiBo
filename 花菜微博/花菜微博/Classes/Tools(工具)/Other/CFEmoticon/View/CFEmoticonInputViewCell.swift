@@ -8,6 +8,15 @@
 
 import UIKit
 
+protocol CFEmoticonInputViewCellDelegate: NSObjectProtocol {
+    
+    /// 选中表情回调
+    ///
+    /// - Parameters:
+    ///   - cell:  cell
+    ///   - emoticon: 对应的表情模型/nil 则表示点击的是删除按钮
+    func emoticonInputViewCellDidSelectedEmoticon(cell: CFEmoticonInputViewCell, emoticon: CFEmoticon?)
+}
 
 /// 表情键盘 cell,每个 cell 是一个完整的页面 包含20个表情 + 一个删除按钮
 class CFEmoticonInputViewCell: UICollectionViewCell {
@@ -35,6 +44,9 @@ class CFEmoticonInputViewCell: UICollectionViewCell {
             
         }
     }
+    
+    /// 代理
+    weak var delegate: CFEmoticonInputViewCellDelegate?
     
     
     override init(frame: CGRect) {
@@ -74,7 +86,7 @@ fileprivate extension CFEmoticonInputViewCell {
             // 设置按钮字体大小，
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 32)
             btn.tag = i
-            btn.addTarget(self, action: #selector(selectedEmoticon(buttn:)), for: .touchUpInside)
+            btn.addTarget(self, action: #selector(selectedEmoticon(button:)), for: .touchUpInside)
         }
         
         // 取出最后一个，设置图片
@@ -86,7 +98,16 @@ fileprivate extension CFEmoticonInputViewCell {
 }
 
 extension CFEmoticonInputViewCell {
-    @objc fileprivate func selectedEmoticon(buttn: UIButton) {
-        print("选中第\(buttn.tag)按钮")
+    @objc fileprivate func selectedEmoticon(button: UIButton) {
+        print("选中第\(button.tag)按钮")
+        
+        var em: CFEmoticon?
+        if button.tag < emoticons?.count ?? 0 {
+            em = emoticons?[tag]
+        }
+        
+        // 如果是删除按钮，则 em 为 nil
+        delegate?.emoticonInputViewCellDidSelectedEmoticon(cell: self, emoticon: em)
+        
     }
 }

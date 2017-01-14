@@ -68,11 +68,24 @@ extension CFEmoticonInputView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CFEmoticonInputViewCellId, for: indexPath) as! CFEmoticonInputViewCell
 
+        // 取出对应的表情包
         let p = CFEmoticonHelper.sharedHelper.packages[indexPath.section]
-        
+        // 获取对应页面的表情数据
         cell.emoticons = p.emoticon(page: indexPath.row)
+        // 设置代理
+        cell.delegate = self
         
         return cell
     }
-    
+}
+
+extension CFEmoticonInputView: CFEmoticonInputViewCellDelegate {
+    func emoticonInputViewCellDidSelectedEmoticon(cell: CFEmoticonInputViewCell, emoticon: CFEmoticon?) {
+        if let emoticon = emoticon {
+            print("点击的是\(emoticon)")
+        }
+        else {
+            print("点击的是删除按钮")
+        }
+    }
 }
