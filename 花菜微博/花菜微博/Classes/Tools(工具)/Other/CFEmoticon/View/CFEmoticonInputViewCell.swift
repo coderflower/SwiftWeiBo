@@ -13,7 +13,23 @@ import UIKit
 class CFEmoticonInputViewCell: UICollectionViewCell {
     var emoticons: [CFEmoticon]? {
         didSet {
-            print(emoticons ?? "")
+            print(emoticons?.count ?? "")
+            // 隐藏所有的按钮
+            for v in contentView.subviews {
+                v.isHidden = true
+            }
+            
+            // 遍历表情模型数组，设置按钮图片
+            for (i,em) in (emoticons ?? []).enumerated() {
+                // 取出对应的按钮
+                if let btn = contentView.subviews[i] as? UIButton {
+                    // 设置两个避免重复利用问题
+                    btn.setImage(em.image, for: .normal)
+                    btn.setTitle(em.emoji, for: .normal)
+                    btn.isHidden = false
+                }
+            }
+            
         }
     }
     
@@ -54,6 +70,7 @@ fileprivate extension CFEmoticonInputViewCell {
             btn.frame = CGRect(x: x, y: y, width: w, height: h)
             // 设置按钮字体大小，
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 32)
+            btn.setTitle("\(i)", for: .normal)
             btn.tag = i
             btn.addTarget(self, action: #selector(selectedEmoticon(buttn:)), for: .touchUpInside)
         }

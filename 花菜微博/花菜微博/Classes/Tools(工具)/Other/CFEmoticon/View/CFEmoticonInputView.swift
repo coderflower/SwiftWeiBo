@@ -67,8 +67,7 @@ extension CFEmoticonInputView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CFEmoticonInputViewCellId, for: indexPath) as! CFEmoticonInputViewCell
-        cell.backgroundColor = UIColor.blue
-        
+
         let p = CFEmoticonHelper.sharedHelper.packages[indexPath.section]
         
         cell.emoticons = p.emoticon(page: indexPath.row)
