@@ -38,6 +38,29 @@ public class CFEmoticonPackge: NSObject {
     /// 懒加载碧青模型的空数组
     public lazy var emoticons = [CFEmoticon]()
     
+    /// 表情页数量，每页20个
+    public var numberOfPages: Int {
+        return (emoticons.count - 1) / 20 + 1
+    }
+    
+    public func emotion(page: Int) -> [CFEmoticon] {
+        // 每页数量
+        let count = 20
+        // 起始位置
+        let location = page * count
+        // 实际数量
+        var length = count
+        // 越界处理
+        if location + length > emoticons.count {
+            length = emoticons.count - location
+        }
+        
+        let tmp = (emoticons as NSArray).subarray(with: NSRange(location: location, length: length))
+        
+        return tmp as! [CFEmoticon]
+    }
+    
+    
     init(dict: [String: AnyObject]) {
         super.init()
         // KVC字典转模型

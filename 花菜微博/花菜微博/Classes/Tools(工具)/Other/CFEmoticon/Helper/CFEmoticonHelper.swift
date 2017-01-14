@@ -129,5 +129,9 @@ extension CFEmoticonHelper {
         attriString.addAttributes([NSFontAttributeName: font], range: NSRange(location: 0, length: attriString.length))
         return attriString
     }
-    
 }
+
+
+
+
+

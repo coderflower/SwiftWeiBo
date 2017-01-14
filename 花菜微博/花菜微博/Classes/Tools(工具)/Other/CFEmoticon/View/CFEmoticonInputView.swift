@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let CFEmoticonInputViewCellId = "CFEmoticonInputViewCellId"
+/// 表情键盘
 class CFEmoticonInputView: UIView {
     
     /// 底部工具条
@@ -48,5 +50,26 @@ fileprivate extension CFEmoticonInputView {
         collectionView.backgroundColor = UIColor.white
         // 添加 toolbar
         addSubview(toolbar)
+        
+        collectionView.dataSource = self
+        
+        collectionView.register(CFEmoticonInputViewCell.self, forCellWithReuseIdentifier: CFEmoticonInputViewCellId)
     }
+}
+
+extension CFEmoticonInputView: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return CFEmoticonHelper.sharedHelper.packages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CFEmoticonInputViewCellId, for: indexPath)
+        cell.backgroundColor = UIColor.blue
+        return cell
+    }
+    
 }

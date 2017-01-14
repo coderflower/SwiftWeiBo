@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+/// 表情键盘布局
 class CFEmoticonInputViewLayout: UICollectionViewFlowLayout {
     
     
