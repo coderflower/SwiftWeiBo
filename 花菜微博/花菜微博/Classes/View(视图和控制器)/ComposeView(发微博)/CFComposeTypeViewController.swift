@@ -28,6 +28,10 @@ class CFComposeTypeViewController: UIViewController {
         return button
     }()
     
+    lazy var emoticonView: CFEmoticonInputView = CFEmoticonInputView.inputView(frame: CGRect.zero) { [weak self](emoticon) in
+        self?.textView.inserEmoticon(emoticon)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -58,23 +62,27 @@ class CFComposeTypeViewController: UIViewController {
     
 
     @objc func sendStatus() {
-        if let text = textView.text {
-            print("发微博\(text)")
-            let image = UIImage(named: "icon_earth")
-            
-            CFNetworker.shared.postStatus(text: text, image: image) { (result, isSuccess) in
-                let message = isSuccess ? "发布成功" : "网络不给力请稍后重试"
-                // 修改指示器样式
-                SVProgressHUD.setDefaultStyle(.dark)
-                SVProgressHUD.showInfo(withStatus: message)
-                if isSuccess {
-                    DispatchQueue.main.asyncAfter(deadline: 1) {
-                        // 还原指示器样式
-                        self.dismiss(animated: true, completion: nil)
-                    }
+    
+        let image = UIImage(named: "icon_earth")
+        CFNetworker.shared.postStatus(text: textView.emoticonString, image: image) { (result, isSuccess) in
+            let message = isSuccess ? "发布成功" : "网络不给力请稍后重试"
+            // 修改指示器样式
+            SVProgressHUD.setDefaultStyle(.dark)
+            SVProgressHUD.showInfo(withStatus: message)
+            if isSuccess {
+                DispatchQueue.main.asyncAfter(deadline: 1) {
+                    // 还原指示器样式
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
         }
+    }
+    
+    @objc fileprivate func emoticonKeyboard() {
+        // 切换键盘类型
+        textView.inputView = (textView.inputView == nil) ? emoticonView : nil
+        // 刷新键盘
+        textView.reloadInputViews()
     }
 
 }
@@ -113,12 +121,12 @@ fileprivate extension CFComposeTypeViewController {
             ["imageName": "compose_toolbar_picture"],
             ["imageName": "compose_mentionbutton_background"],
             ["imageName": "compose_trendbutton_background"],
-            ["imageName": "compose_emoticonbutton_background"],
+            ["imageName": "compose_emoticonbutton_background","actionName": "emoticonKeyboard"],
             ["imageName": "compose_add_background"]
                         ]
         var items = [UIBarButtonItem]()
-        for s in settings {
-            guard let imageName = s["imageName"] else {
+        for dict in settings {
+            guard let imageName = dict["imageName"] else {
                 continue
             }
             let button = UIButton(type: .custom)
@@ -128,6 +136,9 @@ fileprivate extension CFComposeTypeViewController {
             let barItem = UIBarButtonItem(customView: button)
             items.append(barItem)
             items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
+            if let actionName = dict["actionName"] {
+                button.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+            }
         }
         items.removeLast()
         toolBar.items = items
@@ -169,6 +180,7 @@ fileprivate extension CFComposeTypeViewController {
                     make.bottom.equalToSuperview().offset(-rect.height)
                 })
             }
+            emoticonView.frame = CGRect(x: 0, y: 0, width: rect.width, height: rect.height)
 //            UIView.animate(withDuration: duration, animations: { 
                 // 更新约束
                 self.view.layoutIfNeeded()
@@ -177,6 +189,8 @@ fileprivate extension CFComposeTypeViewController {
         
     }
 }
+
+
 
 extension CFComposeTypeViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {

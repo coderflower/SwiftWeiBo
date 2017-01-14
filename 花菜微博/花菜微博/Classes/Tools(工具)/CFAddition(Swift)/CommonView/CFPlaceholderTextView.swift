@@ -9,6 +9,25 @@
 import UIKit
 
 class CFPlaceholderTextView: UITextView {
+    var emoticonString: String {
+        // 创建可变字符串，
+        var restulString = String()
+        if let attr = attributedText {
+            let range = NSRange(location: 0, length: attr.length)
+            attr.enumerateAttributes(in: range, options: [], using: { (dict, range, _) in
+                // 获取附件，并从附件中获取图片表情对应的文本
+                if let attachment = dict["NSAttachment"] as? CFEmoticonAttachment,
+                    let chs = attachment.chs {
+                    restulString += chs
+                }
+                else {
+                    restulString += (attr.string as NSString).substring(with: range)
+                }
+            })
+        }
+        return restulString
+    }
+ 
 
     var placeholder: String? {
         didSet {
@@ -94,3 +113,40 @@ fileprivate extension CFPlaceholderTextView {
         setNeedsDisplay()
     }
 }
+
+extension CFPlaceholderTextView {
+    /// 向文本视图插入表情
+    ///
+    /// - Parameter em: 表情模型
+    func inserEmoticon(_ em: CFEmoticon?) {
+        guard let em = em else {
+            deleteBackward()
+            return
+        }
+        // 插入 emoji 表情
+        if let emoji = em.emoji,
+            let range = selectedTextRange {
+            replace(range, withText: emoji)
+            return
+        }
+        // 插入图片表情
+        // 获取表情文本
+        let imageText = em.imageText(font: font!)
+        // 获取 textView 属性文本,并转换为可变
+        let attrM = NSMutableAttributedString(attributedString: attributedText)
+        // 将图片的表情文本插入到 textView 属性文本中
+        // 获取光标位置
+        let range = selectedRange
+        attrM.replaceCharacters(in: selectedRange, with:  imageText)
+        // 重新赋值给 textView
+        attributedText = attrM
+        // 恢复光标位置,此处 length 不能使用 range.lengt -> 是选的字符总长 -> 可能会多选,此处应使用0
+        selectedRange = NSRange(location: range.location + 1, length: 0)
+        // 通知代理文本改变
+        delegate?.textViewDidChange?(self)
+        // 重绘占位文本
+        textDidChange()
+    }
+
+}
+
