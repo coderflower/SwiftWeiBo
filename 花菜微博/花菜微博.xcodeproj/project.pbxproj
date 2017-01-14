@@ -69,12 +69,17 @@
 		B814A01B1E21054300DEFDEB /* CFComposeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814A01A1E21054300DEFDEB /* CFComposeView.xib */; };
 		B814A01D1E2117CE00DEFDEB /* CFComposeTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814A01C1E2117CE00DEFDEB /* CFComposeTypeButton.swift */; };
 		B814A0221E21476400DEFDEB /* CFComposeTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814A0211E21476400DEFDEB /* CFComposeTypeViewController.swift */; };
-		B81958C91E24E345006AAF86 /* CFEmoticon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B81958C11E24E345006AAF86 /* CFEmoticon.bundle */; };
-		B81958CA1E24E345006AAF86 /* CFEmoticonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81958C31E24E345006AAF86 /* CFEmoticonHelper.swift */; };
-		B81958CB1E24E345006AAF86 /* CFEmoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81958C71E24E345006AAF86 /* CFEmoticon.swift */; };
-		B81958CC1E24E345006AAF86 /* CFEmoticonPackge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81958C81E24E345006AAF86 /* CFEmoticonPackge.swift */; };
 		B8606FF71E1A4B82000F9ED0 /* CFRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */; };
 		B86070401E1A6991000F9ED0 /* CFRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */; };
+		B86796401E2A5E0A00391660 /* CFEmoticon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B86796341E2A5E0A00391660 /* CFEmoticon.bundle */; };
+		B86796411E2A5E0A00391660 /* CFEmoticonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86796361E2A5E0A00391660 /* CFEmoticonHelper.swift */; };
+		B86796421E2A5E0A00391660 /* CFEmoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86796381E2A5E0A00391660 /* CFEmoticon.swift */; };
+		B86796431E2A5E0A00391660 /* CFEmoticonAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86796391E2A5E0A00391660 /* CFEmoticonAttachment.swift */; };
+		B86796441E2A5E0A00391660 /* CFEmoticonPackge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867963A1E2A5E0A00391660 /* CFEmoticonPackge.swift */; };
+		B86796451E2A5E0A00391660 /* CFEmoticonInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867963C1E2A5E0A00391660 /* CFEmoticonInputView.swift */; };
+		B86796461E2A5E0A00391660 /* CFEmoticonInputViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867963D1E2A5E0A00391660 /* CFEmoticonInputViewCell.swift */; };
+		B86796471E2A5E0A00391660 /* CFEmoticonInputViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867963E1E2A5E0A00391660 /* CFEmoticonInputViewLayout.swift */; };
+		B86796481E2A5E0A00391660 /* CFEmoticonToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B867963F1E2A5E0A00391660 /* CFEmoticonToolbar.swift */; };
 		B88906381E286063006156A2 /* CFTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88906371E286063006156A2 /* CFTextLabel.swift */; };
 		B889064A1E28F48A006156A2 /* CFPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88906491E28F48A006156A2 /* CFPlaceholderTextView.swift */; };
 /* End PBXBuildFile section */
@@ -162,12 +167,17 @@
 		B814A01A1E21054300DEFDEB /* CFComposeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFComposeView.xib; sourceTree = "<group>"; };
 		B814A01C1E2117CE00DEFDEB /* CFComposeTypeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFComposeTypeButton.swift; sourceTree = "<group>"; };
 		B814A0211E21476400DEFDEB /* CFComposeTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFComposeTypeViewController.swift; sourceTree = "<group>"; };
-		B81958C11E24E345006AAF86 /* CFEmoticon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CFEmoticon.bundle; sourceTree = "<group>"; };
-		B81958C31E24E345006AAF86 /* CFEmoticonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFEmoticonHelper.swift; sourceTree = "<group>"; };
-		B81958C71E24E345006AAF86 /* CFEmoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFEmoticon.swift; sourceTree = "<group>"; };
-		B81958C81E24E345006AAF86 /* CFEmoticonPackge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFEmoticonPackge.swift; sourceTree = "<group>"; };
 		B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshView.swift; sourceTree = "<group>"; };
 		B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshControl.swift; sourceTree = "<group>"; };
+		B86796341E2A5E0A00391660 /* CFEmoticon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CFEmoticon.bundle; sourceTree = "<group>"; };
+		B86796361E2A5E0A00391660 /* CFEmoticonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFEmoticonHelper.swift; sourceTree = "<group>"; };
+		B86796381E2A5E0A00391660 /* CFEmoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFEmoticon.swift; sourceTree = "<group>"; };
+		B86796391E2A5E0A00391660 /* CFEmoticonAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFEmoticonAttachment.swift; sourceTree = "<group>"; };
+		B867963A1E2A5E0A00391660 /* CFEmoticonPackge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFEmoticonPackge.swift; sourceTree = "<group>"; };
+		B867963C1E2A5E0A00391660 /* CFEmoticonInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFEmoticonInputView.swift; sourceTree = "<group>"; };
+		B867963D1E2A5E0A00391660 /* CFEmoticonInputViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFEmoticonInputViewCell.swift; sourceTree = "<group>"; };
+		B867963E1E2A5E0A00391660 /* CFEmoticonInputViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFEmoticonInputViewLayout.swift; sourceTree = "<group>"; };
+		B867963F1E2A5E0A00391660 /* CFEmoticonToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFEmoticonToolbar.swift; sourceTree = "<group>"; };
 		B88906371E286063006156A2 /* CFTextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFTextLabel.swift; sourceTree = "<group>"; };
 		B88906491E28F48A006156A2 /* CFPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFPlaceholderTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -309,7 +319,7 @@
 		83D71D2D1DF0604D008A8CEA /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				B81958C01E24E345006AAF86 /* CFEmoticon */,
+				B86796331E2A5E0A00391660 /* CFEmoticon */,
 				83C938A81E0E4E3D00D05DA9 /* Vender */,
 				83D71D2E1DF06072008A8CEA /* CFUntilConst.swift */,
 				8317B0BC1E059DF8007F0138 /* CFCommon.swift */,
@@ -529,31 +539,44 @@
 			name = "选择发布微博视图";
 			sourceTree = "<group>";
 		};
-		B81958C01E24E345006AAF86 /* CFEmoticon */ = {
+		B86796331E2A5E0A00391660 /* CFEmoticon */ = {
 			isa = PBXGroup;
 			children = (
-				B81958C11E24E345006AAF86 /* CFEmoticon.bundle */,
-				B81958C21E24E345006AAF86 /* Helper */,
-				B81958C61E24E345006AAF86 /* Model */,
+				B86796341E2A5E0A00391660 /* CFEmoticon.bundle */,
+				B86796351E2A5E0A00391660 /* Helper */,
+				B86796371E2A5E0A00391660 /* Model */,
+				B867963B1E2A5E0A00391660 /* View */,
 			);
 			path = CFEmoticon;
 			sourceTree = "<group>";
 		};
-		B81958C21E24E345006AAF86 /* Helper */ = {
+		B86796351E2A5E0A00391660 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				B81958C31E24E345006AAF86 /* CFEmoticonHelper.swift */,
+				B86796361E2A5E0A00391660 /* CFEmoticonHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		B81958C61E24E345006AAF86 /* Model */ = {
+		B86796371E2A5E0A00391660 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B81958C71E24E345006AAF86 /* CFEmoticon.swift */,
-				B81958C81E24E345006AAF86 /* CFEmoticonPackge.swift */,
+				B86796381E2A5E0A00391660 /* CFEmoticon.swift */,
+				B86796391E2A5E0A00391660 /* CFEmoticonAttachment.swift */,
+				B867963A1E2A5E0A00391660 /* CFEmoticonPackge.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B867963B1E2A5E0A00391660 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B867963C1E2A5E0A00391660 /* CFEmoticonInputView.swift */,
+				B867963D1E2A5E0A00391660 /* CFEmoticonInputViewCell.swift */,
+				B867963E1E2A5E0A00391660 /* CFEmoticonInputViewLayout.swift */,
+				B867963F1E2A5E0A00391660 /* CFEmoticonToolbar.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B88906351E285FC0006156A2 /* Refresh */ = {
@@ -646,7 +669,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8322C3921DF43D43006C7EB7 /* main.json in Resources */,
-				B81958C91E24E345006AAF86 /* CFEmoticon.bundle in Resources */,
+				B86796401E2A5E0A00391660 /* CFEmoticon.bundle in Resources */,
 				83F6C6CF1DEF233900ACF9E5 /* LaunchScreen.storyboard in Resources */,
 				B814A01B1E21054300DEFDEB /* CFComposeView.xib in Resources */,
 				838A70891E1411CD00168A05 /* CFStatusRetweetedCell.xib in Resources */,
@@ -718,7 +741,9 @@
 				8317B0BD1E059DF8007F0138 /* CFCommon.swift in Sources */,
 				8353487B1E08202900E3B715 /* CFWelcomeView.swift in Sources */,
 				83D71D1A1DF02E12008A8CEA /* UIResponder+CFExtension.m in Sources */,
+				B86796411E2A5E0A00391660 /* CFEmoticonHelper.swift in Sources */,
 				8322C3901DF4165D006C7EB7 /* UIButton-Addition.swift in Sources */,
+				B86796481E2A5E0A00391660 /* CFEmoticonToolbar.swift in Sources */,
 				83B361FE1DFEECF30094ACCF /* CFStatus.swift in Sources */,
 				83D71D1D1DF02E12008A8CEA /* UIView+CFExtension.m in Sources */,
 				8322C3AC1DF4F0C8006C7EB7 /* Array-Addition.swift in Sources */,
@@ -731,9 +756,11 @@
 				8317B0C01E05A003007F0138 /* CFOAuthViewController.swift in Sources */,
 				83D71D3E1DF1937B008A8CEA /* UIColor-Addition.swift in Sources */,
 				83D71D191DF02E12008A8CEA /* UIImage+CFExtension.m in Sources */,
+				B86796471E2A5E0A00391660 /* CFEmoticonInputViewLayout.swift in Sources */,
 				83C938AD1E0E5A2500D05DA9 /* CFStatusToolBar.swift in Sources */,
 				83F6C6E91DEF262D00ACF9E5 /* CFMessageViewController.swift in Sources */,
 				83F6C6EB1DEF263B00ACF9E5 /* CFDiscoverViewController.swift in Sources */,
+				B86796441E2A5E0A00391660 /* CFEmoticonPackge.swift in Sources */,
 				B814A0191E20FCA900DEFDEB /* CFComposeView.swift in Sources */,
 				B86070401E1A6991000F9ED0 /* CFRefreshControl.swift in Sources */,
 				83F6C6E51DEF257900ACF9E5 /* CFBaseViewController.swift in Sources */,
@@ -741,13 +768,12 @@
 				83D71D211DF02E12008A8CEA /* UIImageView+CFExtension.m in Sources */,
 				83D71CFD1DF02DD5008A8CEA /* NSString+CFExtension.m in Sources */,
 				83F6C6E31DEF256D00ACF9E5 /* CFNavigationController.swift in Sources */,
-				B81958CC1E24E345006AAF86 /* CFEmoticonPackge.swift in Sources */,
 				83C938A71E0D80B800D05DA9 /* CFStatusViewModel.swift in Sources */,
 				83B362001DFEEED40094ACCF /* CFStatusListViewModel.swift in Sources */,
 				83D71D161DF02E12008A8CEA /* UIButton+CFCountDown.m in Sources */,
 				83F6C6E11DEF255600ACF9E5 /* CFMainViewController.swift in Sources */,
 				83C938A51E0D752100D05DA9 /* CFUser.swift in Sources */,
-				B81958CB1E24E345006AAF86 /* CFEmoticon.swift in Sources */,
+				B86796451E2A5E0A00391660 /* CFEmoticonInputView.swift in Sources */,
 				83B361F61DFEC01A0094ACCF /* CFNetworker.swift in Sources */,
 				8322C3941DF444F7006C7EB7 /* String-Addition.swift in Sources */,
 				8304BB3E1E067D8400F46D98 /* CFAccount.swift in Sources */,
@@ -761,12 +787,14 @@
 				B814A0221E21476400DEFDEB /* CFComposeTypeViewController.swift in Sources */,
 				83C9385F1E0D445600D05DA9 /* UIImage+Additon.swift in Sources */,
 				8353489F1E0930D800E3B715 /* UIView-Layer.swift in Sources */,
-				B81958CA1E24E345006AAF86 /* CFEmoticonHelper.swift in Sources */,
 				83D71D1B1DF02E12008A8CEA /* UITextField+Placeholder.m in Sources */,
+				B86796431E2A5E0A00391660 /* CFEmoticonAttachment.swift in Sources */,
+				B86796461E2A5E0A00391660 /* CFEmoticonInputViewCell.swift in Sources */,
 				8353487D1E08203B00E3B715 /* CFNewFeatureView.swift in Sources */,
 				B814A01D1E2117CE00DEFDEB /* CFComposeTypeButton.swift in Sources */,
 				83D71D171DF02E12008A8CEA /* UIButton+CFExtension.m in Sources */,
 				83D71D3D1DF1937B008A8CEA /* UIBarButtonItem-Addition.swift in Sources */,
+				B86796421E2A5E0A00391660 /* CFEmoticon.swift in Sources */,
 				83F6C6ED1DEF264A00ACF9E5 /* CFPofileViewController.swift in Sources */,
 				83691E201E0EDD0400578E5E /* CFPictureView.swift in Sources */,
 				83F6C6C51DEF233900ACF9E5 /* AppDelegate.swift in Sources */,
