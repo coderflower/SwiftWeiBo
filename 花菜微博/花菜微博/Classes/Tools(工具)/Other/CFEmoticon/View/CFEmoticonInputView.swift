@@ -48,6 +48,5 @@ fileprivate extension CFEmoticonInputView {
         collectionView.backgroundColor = UIColor.white
         // 添加 toolbar
         addSubview(toolbar)
-        toolbar.backgroundColor = UIColor.yellow
     }
 }
