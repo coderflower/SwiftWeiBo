@@ -66,8 +66,14 @@ public class CFEmoticon: NSObject {
         let height = font.lineHeight
         // 设置bounds
         attachment.bounds = CGRect(x: 0, y: -4, width: height, height: height)
+        // 获取属性文本
+        let attr = NSAttributedString(attachment: attachment)
+        // 转为可变
+        let attrM = NSMutableAttributedString(attributedString: attr)
+        // 添加字体属性
+        attrM.addAttributes([NSFontAttributeName: font], range: NSRange(location: 0, length: 1))
         
-        return NSAttributedString(attachment: attachment)
+        return attrM
     }
     
     
