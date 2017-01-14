@@ -9,7 +9,7 @@
 import UIKit
 
 
-/// 表情键盘 cell,每个 cell 包含20个表情 + 一个删除按钮
+/// 表情键盘 cell,每个 cell 是一个完整的页面 包含20个表情 + 一个删除按钮
 class CFEmoticonInputViewCell: UICollectionViewCell {
     var emoticons: [CFEmoticon]? {
         didSet {
@@ -18,16 +18,18 @@ class CFEmoticonInputViewCell: UICollectionViewCell {
             for v in contentView.subviews {
                 v.isHidden = true
             }
+            // 显示删除按钮
+            contentView.subviews.last?.isHidden = false
             
             // 遍历表情模型数组，设置按钮图片
             for (i,em) in (emoticons ?? []).enumerated() {
                 // 取出对应的按钮
                 if let btn = contentView.subviews[i] as? UIButton {
-                    // 设置两个避免重复利用问题
+                    // 设置标题、图片 避免重复利用问题
                     btn.setImage(em.image, for: .normal)
                     btn.setTitle(em.emoji, for: .normal)
+                    // 显示按钮
                     btn.isHidden = false
-                    print(em.emoji ?? "emoji")
                 }
             }
             
@@ -71,10 +73,15 @@ fileprivate extension CFEmoticonInputViewCell {
             btn.frame = CGRect(x: x, y: y, width: w, height: h)
             // 设置按钮字体大小，
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 32)
-            btn.setTitle("\(i)", for: .normal)
             btn.tag = i
             btn.addTarget(self, action: #selector(selectedEmoticon(buttn:)), for: .touchUpInside)
         }
+        
+        // 取出最后一个，设置图片
+        let removeButton = contentView.subviews.last as! UIButton
+        removeButton.setImage(UIImage(named: "compose_emotion_delete", in: CFEmoticonBundle, compatibleWith: nil), for: .normal)
+        removeButton.setImage(UIImage(named: "compose_emotion_delete_highlighted", in: CFEmoticonBundle, compatibleWith: nil), for: .highlighted)
+        
     }
 }
 
