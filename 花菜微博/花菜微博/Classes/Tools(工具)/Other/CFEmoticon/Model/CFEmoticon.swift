@@ -59,9 +59,11 @@ public class CFEmoticon: NSObject {
             return NSAttributedString(string: "")
         }
         // 创建文本附件
-        let attachment = NSTextAttachment()
+        let attachment = CFEmoticonAttachment()
         // 设置图片
         attachment.image = image
+        // 设置表情纯文本
+        attachment.chs = chs
         // 获取线高
         let height = font.lineHeight
         // 设置bounds
