@@ -9,7 +9,7 @@
 import UIKit
 
 let CFEmoticonBundlePath = Bundle.main.path(forResource: "CFEmoticon.bundle", ofType: nil)
-let CFEmoticonBundle = Bundle(path: CFEmoticonBundlePath!)
+let CFEmoticonBundle = Bundle(path: CFEmoticonBundlePath!)!
 
 public class CFEmoticonHelper: NSObject {
     // 单例对象,便于表情复用
@@ -36,8 +36,7 @@ fileprivate extension CFEmoticonHelper {
         // 根据路径加载Bundle
         // 加载plist文件
         // 从plist加载表情包数组
-        guard let bundel = CFEmoticonBundle,
-            let emoticonsPath = bundel.path(forResource: "emoticons.plist", ofType: nil),
+        guard let emoticonsPath = CFEmoticonBundle.path(forResource: "emoticons.plist", ofType: nil),
             let models = NSArray(contentsOfFile: emoticonsPath) as? [[String: AnyObject]]
             else {
                 return

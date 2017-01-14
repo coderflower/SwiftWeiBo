@@ -32,12 +32,11 @@ public class CFEmoticon: NSObject {
             return nil
         }
         guard let directory = directory,
-            let png = png,
-            let bundle = CFEmoticonBundle
+            let png = png
             else {
                 return nil
         }
-        return UIImage(named: "\(directory)/\(png)", in: bundle, compatibleWith: nil)
+        return UIImage(named: "\(directory)/\(png)", in: CFEmoticonBundle, compatibleWith: nil)
     }
     
     /// 将当前的图像转换生成图片的属性文本

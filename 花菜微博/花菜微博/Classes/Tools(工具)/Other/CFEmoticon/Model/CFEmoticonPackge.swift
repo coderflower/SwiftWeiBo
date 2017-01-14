@@ -19,8 +19,7 @@ public class CFEmoticonPackge: NSObject {
         didSet {
             // 从指定文件目录加载info.plist
             guard let directory = directory,
-                let bundel = CFEmoticonBundle,
-                let infoPath = bundel.path(forResource: directory, ofType: "plist", inDirectory: directory),
+                let infoPath = CFEmoticonBundle.path(forResource: directory, ofType: "plist", inDirectory: directory),
                 let array = NSArray(contentsOfFile: infoPath) as? [[String: AnyObject]]
                 else {
                     return
