@@ -99,13 +99,10 @@ fileprivate extension CFEmoticonInputViewCell {
 
 extension CFEmoticonInputViewCell {
     @objc fileprivate func selectedEmoticon(button: UIButton) {
-        print("选中第\(button.tag)按钮")
-        
         var em: CFEmoticon?
         if button.tag < emoticons?.count ?? 0 {
             em = emoticons?[tag]
         }
-        
         // 如果是删除按钮，则 em 为 nil
         delegate?.emoticonInputViewCellDidSelectedEmoticon(cell: self, emoticon: em)
         

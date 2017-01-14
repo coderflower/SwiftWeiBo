@@ -11,7 +11,6 @@ import UIKit
 private let CFEmoticonInputViewCellId = "CFEmoticonInputViewCellId"
 /// 表情键盘
 class CFEmoticonInputView: UIView {
-    
     /// 底部工具条
     lazy var toolbar: CFEmoticonToolbar = {
         return CFEmoticonToolbar()
@@ -21,13 +20,19 @@ class CFEmoticonInputView: UIView {
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: CFEmoticonInputViewLayout())
         return view
     }()
+    var selectedEmoticonCallBack: ((_ emoticon: CFEmoticon?) -> ())?
     
-    override init(frame: CGRect) {
+    class func inputView(frame: CGRect, selectedCallBack: @escaping (_ emoticon: CFEmoticon?) -> ()) -> CFEmoticonInputView {
+        let inputView = CFEmoticonInputView(frame: frame)
+        inputView.selectedEmoticonCallBack = selectedCallBack
+        return inputView
+    }
+    
+    private override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+    internal required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -56,6 +61,8 @@ fileprivate extension CFEmoticonInputView {
     }
 }
 
+
+// MARK: - UICollectionViewDataSource 数据源
 extension CFEmoticonInputView: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return CFEmoticonHelper.sharedHelper.packages.count
@@ -79,13 +86,11 @@ extension CFEmoticonInputView: UICollectionViewDataSource {
     }
 }
 
+
+// MARK: - CFEmoticonInputViewCellDelegate 
 extension CFEmoticonInputView: CFEmoticonInputViewCellDelegate {
     func emoticonInputViewCellDidSelectedEmoticon(cell: CFEmoticonInputViewCell, emoticon: CFEmoticon?) {
-        if let emoticon = emoticon {
-            print("点击的是\(emoticon)")
-        }
-        else {
-            print("点击的是删除按钮")
-        }
+        // 如果emoticon 为空则点击的是删除按钮
+        selectedEmoticonCallBack?(emoticon)
     }
 }
