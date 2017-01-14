@@ -18,7 +18,20 @@ public class CFEmoticon: NSObject {
     /// 表情图片名称，用于本地图文混排
     public var png: String?
     /// emoji 的十六进制编码
-    public var code: String?
+    public var code: String? {
+        didSet {
+            guard let code = code else {
+                return
+            }
+            
+            let scanner = Scanner(string: code)
+            
+            var result: UInt32 = 0
+            scanner.scanHexInt32(&result)
+            
+            emoji = String(Character(UnicodeScalar(result)!))
+        }
+    }
     /// 表情使用次数
     public var times: Int = 0
     /// emoji 的字符串

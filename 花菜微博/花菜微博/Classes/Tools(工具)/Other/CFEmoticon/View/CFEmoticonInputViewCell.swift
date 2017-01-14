@@ -27,6 +27,7 @@ class CFEmoticonInputViewCell: UICollectionViewCell {
                     btn.setImage(em.image, for: .normal)
                     btn.setTitle(em.emoji, for: .normal)
                     btn.isHidden = false
+                    print(em.emoji ?? "emoji")
                 }
             }
             
