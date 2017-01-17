@@ -30,6 +30,9 @@ extension CFNetworker {
         }
     }
     
+    /// 获取未读消息数
+    ///
+    /// - Parameter completion: 完成回调
     func unreadCount(completion: @escaping (_ count: Int) -> ()) {
         guard let uid = userAccount.uid else {
             return
@@ -65,10 +68,17 @@ extension CFNetworker {
 // MARK: - 发微博
 extension CFNetworker {
    
+    /// 发表微博
+    ///
+    /// - Parameters:
+    ///   - text: 需要发送的的微博文本
+    ///   - image: 需要上传的图片/默认为 nil,为 nil 时调用发送文本微博的接口，有值时调用上传图片接口
+    ///   - completion: 完成回调
     func postStatus(text: String, image: UIImage? = nil, completion: @escaping (_ dict: [String: AnyObject]?, _ isSuccess: Bool) -> ()) {
         var urlString: String = "https://api.weibo.com/2/statuses/update.json"
         var name: String?
         var data: Data?
+        // 如果有图片则调用发送图片微博接口
         if let image = image {
             // 上传图片
             urlString = "https://upload.api.weibo.com/2/statuses/upload.json"

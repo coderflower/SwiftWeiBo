@@ -15,6 +15,7 @@ class CFPlaceholderTextView: UITextView {
         if let attr = attributedText {
             let range = NSRange(location: 0, length: attr.length)
             attr.enumerateAttributes(in: range, options: [], using: { (dict, range, _) in
+                // 拼接字符串
                 // 获取附件，并从附件中获取图片表情对应的文本
                 if let attachment = dict["NSAttachment"] as? CFEmoticonAttachment,
                     let chs = attachment.chs {

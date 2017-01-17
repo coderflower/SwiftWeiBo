@@ -69,6 +69,8 @@
 		B814A01B1E21054300DEFDEB /* CFComposeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B814A01A1E21054300DEFDEB /* CFComposeView.xib */; };
 		B814A01D1E2117CE00DEFDEB /* CFComposeTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814A01C1E2117CE00DEFDEB /* CFComposeTypeButton.swift */; };
 		B814A0221E21476400DEFDEB /* CFComposeTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814A0211E21476400DEFDEB /* CFComposeTypeViewController.swift */; };
+		B81B807D1E2E702A005138AC /* CFDBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81B807B1E2E702A005138AC /* CFDBHelper.swift */; };
+		B81B807E1E2E702A005138AC /* status.sql in Resources */ = {isa = PBXBuildFile; fileRef = B81B807C1E2E702A005138AC /* status.sql */; };
 		B8606FF71E1A4B82000F9ED0 /* CFRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */; };
 		B86070401E1A6991000F9ED0 /* CFRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */; };
 		B86796401E2A5E0A00391660 /* CFEmoticon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B86796341E2A5E0A00391660 /* CFEmoticon.bundle */; };
@@ -167,6 +169,8 @@
 		B814A01A1E21054300DEFDEB /* CFComposeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFComposeView.xib; sourceTree = "<group>"; };
 		B814A01C1E2117CE00DEFDEB /* CFComposeTypeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFComposeTypeButton.swift; sourceTree = "<group>"; };
 		B814A0211E21476400DEFDEB /* CFComposeTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFComposeTypeViewController.swift; sourceTree = "<group>"; };
+		B81B807B1E2E702A005138AC /* CFDBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFDBHelper.swift; sourceTree = "<group>"; };
+		B81B807C1E2E702A005138AC /* status.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.sql; sourceTree = "<group>"; };
 		B8606FF61E1A4B82000F9ED0 /* CFRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshView.swift; sourceTree = "<group>"; };
 		B860703F1E1A6991000F9ED0 /* CFRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFRefreshControl.swift; sourceTree = "<group>"; };
 		B86796341E2A5E0A00391660 /* CFEmoticon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CFEmoticon.bundle; sourceTree = "<group>"; };
@@ -247,20 +251,21 @@
 			path = "NewFeature(新特性)";
 			sourceTree = "<group>";
 		};
-		83B361F71DFEC4930094ACCF /* Network */ = {
+		83B361F71DFEC4930094ACCF /* Network(网络) */ = {
 			isa = PBXGroup;
 			children = (
 				83B361F51DFEC01A0094ACCF /* CFNetworker.swift */,
 				83B361F81DFECD850094ACCF /* CFNetworker + Extension.swift */,
 			);
-			name = Network;
+			name = "Network(网络)";
 			sourceTree = "<group>";
 		};
 		83C938A81E0E4E3D00D05DA9 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				B81B807A1E2E7019005138AC /* SQLite(数据库) */,
 				83C938A91E0E4E6F00D05DA9 /* WebImage */,
-				83B361F71DFEC4930094ACCF /* Network */,
+				83B361F71DFEC4930094ACCF /* Network(网络) */,
 			);
 			name = Vender;
 			sourceTree = "<group>";
@@ -539,6 +544,15 @@
 			name = "选择发布微博视图";
 			sourceTree = "<group>";
 		};
+		B81B807A1E2E7019005138AC /* SQLite(数据库) */ = {
+			isa = PBXGroup;
+			children = (
+				B81B807B1E2E702A005138AC /* CFDBHelper.swift */,
+				B81B807C1E2E702A005138AC /* status.sql */,
+			);
+			path = "SQLite(数据库)";
+			sourceTree = "<group>";
+		};
 		B86796331E2A5E0A00391660 /* CFEmoticon */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,6 +686,7 @@
 				B86796401E2A5E0A00391660 /* CFEmoticon.bundle in Resources */,
 				83F6C6CF1DEF233900ACF9E5 /* LaunchScreen.storyboard in Resources */,
 				B814A01B1E21054300DEFDEB /* CFComposeView.xib in Resources */,
+				B81B807E1E2E702A005138AC /* status.sql in Resources */,
 				838A70891E1411CD00168A05 /* CFStatusRetweetedCell.xib in Resources */,
 				838A708B1E14121500168A05 /* CFStatusNormalCell.xib in Resources */,
 				83F6C6CC1DEF233900ACF9E5 /* Assets.xcassets in Resources */,
@@ -795,6 +810,7 @@
 				83D71D171DF02E12008A8CEA /* UIButton+CFExtension.m in Sources */,
 				83D71D3D1DF1937B008A8CEA /* UIBarButtonItem-Addition.swift in Sources */,
 				B86796421E2A5E0A00391660 /* CFEmoticon.swift in Sources */,
+				B81B807D1E2E702A005138AC /* CFDBHelper.swift in Sources */,
 				83F6C6ED1DEF264A00ACF9E5 /* CFPofileViewController.swift in Sources */,
 				83691E201E0EDD0400578E5E /* CFPictureView.swift in Sources */,
 				83F6C6C51DEF233900ACF9E5 /* AppDelegate.swift in Sources */,
