@@ -38,7 +38,14 @@ class CFStatusListViewModel {
         let since_id = isPullup ? 0 : (statusList.first?.status.id ?? 0)
         // 上拉刷新,最后一条数据的id否则为0
         let max_id = !isPullup ? 0 : (statusList.last?.status.id ?? 0)
-        CFNetworker.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
+        
+        print("最后一条 id\(max_id)")
+        print("数据总条数\(statusList.count)")
+        print("----")
+        
+        
+        CFStatusListDAL.loadStatus(since_id: since_id, max_id: max_id) { (list, isSuccess) in
+            
             // 网络失败处理
             if !isSuccess {
                 completion(false, false)
@@ -47,17 +54,18 @@ class CFStatusListViewModel {
             // 创建视图模型数组
             var tmpArray = [CFStatusViewModel]()
             
-            for dict in list ?? []{
-                // 字典转模型
-                guard let model = CFStatus.yy_model(with: dict) else {
-                    continue
-                }
-                //print(model.retweeted_status ?? "")
+            for dict in list ?? [] {
+                // 创建微博模型
+                let status = CFStatus()
+                // 使用字典设置模型数值
+                status.yy_modelSet(with: dict)
+                // 使用 `微博` 模型创建 `微博视图` 模型
+                let model = CFStatusViewModel(model: status)
                 // 添加到数组
-                tmpArray.append(CFStatusViewModel(model: model))
+                tmpArray.append(model)
             }
             
-           // print("新增 \(tmpArray.count)条数据")
+            print("新增 \(tmpArray.count)条数据")
             // 拼接数据
             if isPullup {
                 self.statusList += tmpArray

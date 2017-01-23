@@ -44,32 +44,42 @@ extension CFDBHelper {
     ///   - userId: 当前登录用户的 id
     ///   - array: 从网络获取的`字典数组`
     func updateStatus(userId:String, array: [[String: AnyObject]]) {
-        // 准备 sql 
+        // 1. 准备 SQL
         /**
-         statusId:   要保存的微博代号
-         userId:    当前登录的用户的 id
-         status:    完整微博字典的 json 二进制
+         statusId:  要保存的微博代号
+         userId:    当前登录用户的 id
+         status:    完整微博字典的 json 二进制数据
          */
-        let sql = "INSERT OR REPLACE INTO T_Status (statusId, userId,status) VALUES (?, ?, ?);"
+        let sql = "INSERT OR REPLACE INTO T_Status (statusId, userId, status) VALUES (?, ?, ?);"
         
+        // 2. 执行 SQL
         queue.inTransaction { (db, rollback) in
-            // 遍历数组，逐条插入数据
+            
+            // 遍历数组，逐条插入微博数据
             for dict in array {
-               guard let statusId = dict["idstr"] as? String,
-                let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: []) else {
-                    continue
+                
+                // 从字典获取微博代号／将字典序列化成二进制数据
+                guard let statusId = dict["idstr"] as? String,
+                    let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: [])
+                    else {
+                        continue
                 }
-                // 执行 sql
+                
+                // 执行 SQL
                 if db?.executeUpdate(sql, withArgumentsIn: [statusId, userId, jsonData]) == false {
-                    /**
-                     swift 1.x& 2.x => rollback.memory = true
-                     swift 3.0  => rollback?.pointee = true
-                     */
+                    
+                    // 需要回滚 *rollback = YES;
+                    // Xcode 的自动语法转换，不会处理此处！
+                    // Swift 1.x & 2.x => rollback.memory = true;
+                    // Swift 3.0 的写法
                     rollback?.pointee = true
+                    
                     break
                 }
+                
                 // 模拟回滚
                 // rollback?.pointee = true
+                // break
             }
         }
     }
@@ -98,7 +108,6 @@ extension CFDBHelper {
                         let value = result.object(forColumnIndex: col) else {
                             continue
                     }
-                    print(name,value)
                     // 追加结果
                     array.append([name: value as AnyObject])
                 }

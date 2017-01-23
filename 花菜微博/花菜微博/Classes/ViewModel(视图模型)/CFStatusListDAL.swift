@@ -9,12 +9,11 @@
 import Foundation
 
 /**
- 
+  DAL -> Data Access Layer 数据访问层
+  使命： 负责处理数据库和网络数据，给 listViewModel 返回微博的【字典数组】
+  在调整系统的时候，尽量做最小化的调整
  */
-
-class CFStatusListDAL {
-    
-    
+class CFStatusListDAL {  
     /// 从本地或者网络加载微博数据字典数组
     ///
     /// - Parameters:
@@ -34,8 +33,10 @@ class CFStatusListDAL {
             completion(array, true)
             return
         }
+        print(max_id)
         // 2. 加载网络数据
-        CFNetworker.shared.statusList { (json, isSuccess) in
+        
+        CFNetworker.shared.statusList(since_id: since_id, max_id: max_id) { (json, isSuccess) in
             if !isSuccess {
                 // 2.1网络加载失败返回 nil
                 completion(nil,false)
@@ -49,9 +50,7 @@ class CFStatusListDAL {
             CFDBHelper.sharedHelper.updateStatus(userId: userId, array: json)
             // 4. 返回网络数据
             completion(json, isSuccess)
-            
         }
-        
     }
     
     
